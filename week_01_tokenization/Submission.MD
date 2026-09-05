@@ -2,7 +2,7 @@
 
 A byte-level Byte pair tokenizer fully from scratch in python, with no tokenizer libraries used in the core algorithm.
 
-**Repo:**
+**Repo:** https://github.com/dgrim3434/FDE-Curriculum/tree/main/week_01_tokenization
 
 ## What I Built
 
@@ -73,7 +73,7 @@ Plain text was chosen over JSON because we must ensure the order is maintained w
 
 ## Code
 
-**Repo:** [link]
+**Repo:** [(https://github.com/dgrim3434/FDE-Curriculum/tree/main/week_01_tokenization)]
 
 ```python
 def merge(ids, pair, new_id):

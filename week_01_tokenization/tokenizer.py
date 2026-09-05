@@ -103,9 +103,7 @@ class Tokenizer:
     
     for idx in id_list:
       
-      if idx == -1:
-        parts.append(''.encode('utf-8'))
-      elif idx in self.vocab:
+      if idx in self.vocab:
         parts.append(self.vocab[idx])
       elif idx in special:
         parts.append(special[idx].encode('utf-8'))
@@ -147,8 +145,6 @@ class Tokenizer:
   def encode_text(self, text):
     ids = []
 
-    if len(re.findall(self.SPLIT_PATTERN, text)) == 0:
-      return [-1]
     for chunk in re.findall(self.SPLIT_PATTERN, text):
       ids.extend(self.encode_chunk(chunk.encode('utf-8')))
       
@@ -163,7 +159,12 @@ class Tokenizer:
       special = {}
     elif allowed_special == 'none_raise':
       special = {}
-      assert all(tok not in text for tok in self.special_tokens)
+      for tok_str in self.special_tokens:
+        if tok_str in text:
+          raise ValueError(
+            f"text contains special token {tok_str!r};"
+            f"use allowed_special='none' to encode it as literal text"
+          )
     else:
       raise ValueError(allowed_special)
       
@@ -203,7 +204,9 @@ class Tokenizer:
     merges, idx = {}, 256
 
     with open(model_file, 'r', encoding="utf-8") as f:
-      assert f.readline().strip() == "bpe-v1"
+      
+      f.readline().strip() != "bpe-v1"
+  
       self.SPLIT_PATTERN = f.readline().rstrip("\n")
       special_tokens = {}
 
@@ -219,6 +222,7 @@ class Tokenizer:
     self.merged = merges
     self.special_tokens = special_tokens
     self.vocab = self._build_vocab()
+    self.vocab_size = len(self.vocab)
       
   def _build_vocab(self):
     vocab = {i: bytes([i]) for i in range(256)}
@@ -242,5 +246,6 @@ class Tokenizer:
       curr_id += 1
       self.special_tokens[token] = curr_id
       self.vocab[curr_id] = token.encode('utf-8')
+      self.vocab_size += 1
       
 

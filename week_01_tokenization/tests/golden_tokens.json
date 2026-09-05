@@ -1,14 +1,12 @@
 {
-  "generated_at": "2026-09-04T23:01:28.971417+00:00",
+  "generated_at": "2026-09-05T18:09:25.715667+00:00",
   "model_file": "models/code_4096.model",
   "model_sha256": "aa5b25b9a93ea49fdd235134a57a345f37d499ec3f71ff749270bf482f186929",
   "vocab_size": 4096,
   "num_merges": 3840,
   "pattern": "'s|'t|'re|'ve|'m|'ll|'d| ?\\p{L}+| ?\\p{N}+| ?[^\\s\\p{L}\\p{N}]+|\\s+(?!\\S)|\\s+",
   "cases": {
-    "": [
-      -1
-    ],
+    "": [],
     " ": [
       32
     ],

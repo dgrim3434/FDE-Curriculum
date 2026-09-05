@@ -69,48 +69,50 @@ This setup ensures the system prompts work as designed and ensure the user can n
 
 ### Serialization format
 
-Plain text was chosen over JSON because we must ensure the order is maintained within the merged list. As discussed earlier this is extremely important and if the order is different between the two tokenizers it will cause the encoding behavior to change. Using a plain text file with a line dedicated for each merge allows for the order to be maintained in a way which is easily parsible and ensures the order is the exact same. On the other hand JSON files do not maintain order and can cause merges to change position. And given that merges happen in sequence with each merge relying on the prior merges changes in order can break the tokenizer.
+Plain text was chosen over JSON because JSON requires that keys must be strings which is violated within our design since we use tuples to represent merges. In order to correct this we would have to encode the ids as strings which is extra work and could lead to downstream errors. Plain text also ensures that ordering is preserved by convention. Using JSON means that users loading the file must also ensure they are using the correct packages to ensure order is preserved which adds additional overhead which can be avoided by using a simple text file. Within the text file the ordering is equal to the line number and it's extremely easy to visualize the ordering in a very simple manner.
 
 ## Code
 
 **Repo:** [(https://github.com/dgrim3434/FDE-Curriculum/tree/main/week_01_tokenization)]
 
 ```python
-def merge(ids, pair, new_id):
-
-    new_ids = []
+def merge(pair, arr, match_fill):
+    new_arr = []
     i = 0
-    while i < len(ids):
 
-        if i + 1 >= len(ids) or ids[i] != pair[0] or ids[i + 1] != pair[0]:
-            new_ids.append(ids[i])
-            i += 1
-        else:
-            new_ids.append(new_id)
-            i += 2
-    return new_ids
+    while i < len(arr):
 
-def get_stats(ids):
-
+      if arr[i] != pair[0] or i + 1 >= len(arr) or arr[i + 1] != pair[1]:
+        new_arr.append(arr[i])
+        i += 1
+      else:
+        new_arr.append(match_fill)
+        i += 2
     
-    counts = {}
-    best = None
+    return new_arr
 
-    for word in ids:
-
-        for i + 1 < len(word):
-            i = 0
-            pair = (ids[i], ids[i +1])
-
-            if pair not in counts:
-                counts[pair] = 0
-            if best not in counts or counts[best] < counts[pair] + 1:
-                best = pair
-        
-            counts[pair] += 1
-            i += 1
+def get_stats(arr):
     
-    return best, counts[best], counts
+    matches = {}
+    max_pair = None
+
+    for word in arr:
+      
+      i = 0
+      while i + 1 < len(word):
+        pair = (word[i], word[i + 1])
+
+        if pair not in matches:
+          matches[pair] = 0
+
+        if max_pair not in matches or matches[max_pair] < matches[pair] + 1:
+          max_pair = pair
+
+        matches[pair] += 1
+
+        i += 1
+
+    return max_pair, matches[max_pair], matches
     ...
 ```
 
@@ -154,7 +156,7 @@ Passed the Special Tokens Test
 | cl100k_base | 100,277 | 3.91 | 4.04 | 0.97 |
 | o200k_base | 200,019 | 3.86 | 4.06 | 0.95 |
 
-These results are extremely telling and show two very important things when working with tokenizers. The first is that when using a smaller vocabulary the training corpus becomes extremely important for the tokenizers ability to generalize well to new text. So if you are trying to save cost and use a smaller vocabulary you must ensure the corpus is a good representation of the text which the tokenizer will see in production. The second peice is that increasing the vocabulary size will improve the compression rate but with diminishing returns. You can see that moving from 50,000 to 100,000 significantly increases the compression rate and allows performance to stabalize across different types of text but when increasing from 100,000 to 200,000 you do not see as much of an increase. It's important to state that I do not know what kind of corpus cl100k_base and o200k_base where trained on but it's safe to say that o200k_base likely was not trained on much code which is likely the reason why it performs worse than cl100k_base on coding examples. This shows that increasing the vocabulary size is worth it to a certain point.
+These results are extremely telling and show two very important things when working with tokenizers. The first is that when using a smaller vocabulary the training corpus becomes extremely important for the tokenizers ability to generalize well to new text. So if you are trying to save cost and use a smaller vocabulary you must ensure the corpus is a good representation of the text which the tokenizer will see in production. The second peice is that increasing the vocabulary size will improve the compression rate but with diminishing returns. You can see that moving from 50,000 to 100,000 significantly increases the compression rate and allows performance to stabalize across different types of text. Upon further research I found that the regex pattern was changed from gpt2 to the larger vocabulary models with the goal of increasing performance on code based text so the performance increase cannot be soley attributed to the increase in vocabulary size. You can see that when increasing from 100,000 to 200,000 you do not see as much of an increase which shows that there is likely an optimal range for vocabulary size which maximizes the compression and overall efficiency. Another important observation is that both tokenizers trained strictly on python code outperformed the gpt2 tokenizer on python code. This is extremely important because the gpt2 tokenizer has a vocabulary size of 50,000 and both the 1024 and 4096 vocabulary tokenizers trained strictly on python code had higher compressions rates which is a significant finding. The cl100k_base did outperform both of these tokenizers which shows that scale does end up winning in the long run.
 
 ### Merge-list diff - Code-trained vs. prose-trained
 rank  code-trained            prose-trained           
@@ -222,6 +224,8 @@ rank  code-trained            prose-trained
 3| 54| making it hard for the LLM to answer the mathematical question. Similar to 'how many r's are in strawberry' when the tokenizer breaks 'strawberry' into 'str' 'aw' 'berry' and it hallucinates on the answer.
 
 5. FDE hack to never end a prompt with whitespace. When predicting the next token for a prompt which ends with whitespace it makes the tokenizer only search for sequences which show up within a word. This is because the Regex splits words so that they maintain the whitespace in front of it. I noticed this when tested where ' Hello' was represented as one token but 'Hello' was represented as two.
+
+6. Due to another error which I was encountering within my Tokenizer which was causing issues when decoding an empty string I had decided to encode an empty string with the ID -1. This is an issue as the tokenizer vobabulary has an invarient that the the range must be from 0 to vocab_size which is an important assumption which if false can have downstream affects. Upon making this change and re-running the test suit I noticed the golden tokenizer test failed since the tokenizer was changed. This is important since even a simple change must be flagged because it can have downstream affects which you might not realize at the time.
 
 ## Question
 

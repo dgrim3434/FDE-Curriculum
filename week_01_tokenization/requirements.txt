@@ -1,0 +1,4 @@
+regex
+tiktoken
+nltk
+pytest

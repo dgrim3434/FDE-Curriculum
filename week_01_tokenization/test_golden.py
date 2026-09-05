@@ -28,8 +28,8 @@ def test_metadata_unchanged():
     tok = Tokenizer()
     tok.load(GOLDEN["model_file"])
     assert len(tok.vocab) == GOLDEN["vocab_size"]
-    assert len(tok.merges) == GOLDEN["num_merges"]
-    assert tok.pattern == GOLDEN["pattern"], "pre-tokenizer regex changed"
+    assert len(tok.merged) == GOLDEN["num_merges"]
+    assert tok.SPLIT_PATTERN == GOLDEN["pattern"], "pre-tokenizer regex changed"
 
 
 def test_tokenization_unchanged():

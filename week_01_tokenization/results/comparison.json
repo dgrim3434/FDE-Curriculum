@@ -1,0 +1,79 @@
+[
+  {
+    "tokenizer": "mine-code-1024",
+    "V": 1024,
+    "code_test_chars": 85628,
+    "code_test_tokens": 36116,
+    "code_test_cpt": 2.3709159375346105,
+    "prose_test_chars": 60000,
+    "prose_test_tokens": 31838,
+    "prose_test_cpt": 1.8845404862114454,
+    "domain_ratio": 1.2580870269871154
+  },
+  {
+    "tokenizer": "mine-code-4096",
+    "V": 4096,
+    "code_test_chars": 85628,
+    "code_test_tokens": 28795,
+    "code_test_cpt": 2.9737107136655667,
+    "prose_test_chars": 60000,
+    "prose_test_tokens": 25553,
+    "prose_test_cpt": 2.3480608930458264,
+    "domain_ratio": 1.2664538311049371
+  },
+  {
+    "tokenizer": "mine-prose-1024",
+    "V": 1024,
+    "code_test_chars": 85628,
+    "code_test_tokens": 50370,
+    "code_test_cpt": 1.699980146912845,
+    "prose_test_chars": 60000,
+    "prose_test_tokens": 24991,
+    "prose_test_cpt": 2.4008643111520147,
+    "domain_ratio": 0.7080700641916485
+  },
+  {
+    "tokenizer": "mine-prose-4096",
+    "V": 4096,
+    "code_test_chars": 85628,
+    "code_test_tokens": 43452,
+    "code_test_cpt": 1.9706342630949094,
+    "prose_test_chars": 60000,
+    "prose_test_tokens": 19775,
+    "prose_test_cpt": 3.034134007585335,
+    "domain_ratio": 0.6494882092116973
+  },
+  {
+    "tokenizer": "gpt2",
+    "V": 50257,
+    "code_test_chars": 85628,
+    "code_test_tokens": 39338,
+    "code_test_cpt": 2.176724795363262,
+    "prose_test_chars": 60000,
+    "prose_test_tokens": 16200,
+    "prose_test_cpt": 3.7037037037037037,
+    "domain_ratio": 0.5877156947480807
+  },
+  {
+    "tokenizer": "cl100k_base",
+    "V": 100277,
+    "code_test_chars": 85628,
+    "code_test_tokens": 21912,
+    "code_test_cpt": 3.9078130704636727,
+    "prose_test_chars": 60000,
+    "prose_test_tokens": 14867,
+    "prose_test_cpt": 4.035783951032488,
+    "domain_ratio": 0.9682909486430571
+  },
+  {
+    "tokenizer": "o200k_base",
+    "V": 200019,
+    "code_test_chars": 85628,
+    "code_test_tokens": 22165,
+    "code_test_cpt": 3.8632077599819534,
+    "prose_test_chars": 60000,
+    "prose_test_tokens": 14765,
+    "prose_test_cpt": 4.063664070436844,
+    "domain_ratio": 0.950671042935559
+  }
+]

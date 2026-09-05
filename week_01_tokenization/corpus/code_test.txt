@@ -1,0 +1,2350 @@
+from enum import StrEnum, IntEnum, _simple_enum
+
+__all__ = ['HTTPStatus', 'HTTPMethod']
+
+
+@_simple_enum(IntEnum)
+class HTTPStatus:
+    """HTTP status codes and reason phrases
+
+    Status codes from the following RFCs are all observed:
+
+        * RFC 9110: HTTP Semantics, obsoletes 7231, which obsoleted 2616
+        * RFC 6585: Additional HTTP Status Codes
+        * RFC 3229: Delta encoding in HTTP
+        * RFC 4918: HTTP Extensions for WebDAV, obsoletes 2518
+        * RFC 5842: Binding Extensions to WebDAV
+        * RFC 7238: Permanent Redirect
+        * RFC 2295: Transparent Content Negotiation in HTTP
+        * RFC 2774: An HTTP Extension Framework
+        * RFC 7725: An HTTP Status Code to Report Legal Obstacles
+        * RFC 7540: Hypertext Transfer Protocol Version 2 (HTTP/2)
+        * RFC 2324: Hyper Text Coffee Pot Control Protocol (HTCPCP/1.0)
+        * RFC 8297: An HTTP Status Code for Indicating Hints
+        * RFC 8470: Using Early Data in HTTP
+    """
+    def __new__(cls, value, phrase, description=''):
+        obj = int.__new__(cls, value)
+        obj._value_ = value
+        obj.phrase = phrase
+        obj.description = description
+        return obj
+
+    @property
+    def is_informational(self):
+        return 100 <= self <= 199
+
+    @property
+    def is_success(self):
+        return 200 <= self <= 299
+
+    @property
+    def is_redirection(self):
+        return 300 <= self <= 399
+
+    @property
+    def is_client_error(self):
+        return 400 <= self <= 499
+
+    @property
+    def is_server_error(self):
+        return 500 <= self <= 599
+
+    # informational
+    CONTINUE = 100, 'Continue', 'Request received, please continue'
+    SWITCHING_PROTOCOLS = (101, 'Switching Protocols',
+            'Switching to new protocol; obey Upgrade header')
+    PROCESSING = 102, 'Processing'
+    EARLY_HINTS = 103, 'Early Hints'
+
+    # success
+    OK = 200, 'OK', 'Request fulfilled, document follows'
+    CREATED = 201, 'Created', 'Document created, URL follows'
+    ACCEPTED = (202, 'Accepted',
+        'Request accepted, processing continues off-line')
+    NON_AUTHORITATIVE_INFORMATION = (203,
+        'Non-Authoritative Information', 'Request fulfilled from cache')
+    NO_CONTENT = 204, 'No Content', 'Request fulfilled, nothing follows'
+    RESET_CONTENT = 205, 'Reset Content', 'Clear input form for further input'
+    PARTIAL_CONTENT = 206, 'Partial Content', 'Partial content follows'
+    MULTI_STATUS = 207, 'Multi-Status'
+    ALREADY_REPORTED = 208, 'Already Reported'
+    IM_USED = 226, 'IM Used'
+
+    # redirection
+    MULTIPLE_CHOICES = (300, 'Multiple Choices',
+        'Object has several resources -- see URI list')
+    MOVED_PERMANENTLY = (301, 'Moved Permanently',
+        'Object moved permanently -- see URI list')
+    FOUND = 302, 'Found', 'Object moved temporarily -- see URI list'
+    SEE_OTHER = 303, 'See Other', 'Object moved -- see Method and URL list'
+    NOT_MODIFIED = (304, 'Not Modified',
+        'Document has not changed since given time')
+    USE_PROXY = (305, 'Use Proxy',
+        'You must use proxy specified in Location to access this resource')
+    TEMPORARY_REDIRECT = (307, 'Temporary Redirect',
+        'Object moved temporarily -- see URI list')
+    PERMANENT_REDIRECT = (308, 'Permanent Redirect',
+        'Object moved permanently -- see URI list')
+
+    # client error
+    BAD_REQUEST = (400, 'Bad Request',
+        'Bad request syntax or unsupported method')
+    UNAUTHORIZED = (401, 'Unauthorized',
+        'No permission -- see authorization schemes')
+    PAYMENT_REQUIRED = (402, 'Payment Required',
+        'No payment -- see charging schemes')
+    FORBIDDEN = (403, 'Forbidden',
+        'Request forbidden -- authorization will not help')
+    NOT_FOUND = (404, 'Not Found',
+        'Nothing matches the given URI')
+    METHOD_NOT_ALLOWED = (405, 'Method Not Allowed',
+        'Specified method is invalid for this resource')
+    NOT_ACCEPTABLE = (406, 'Not Acceptable',
+        'URI not available in preferred format')
+    PROXY_AUTHENTICATION_REQUIRED = (407,
+        'Proxy Authentication Required',
+        'You must authenticate with this proxy before proceeding')
+    REQUEST_TIMEOUT = (408, 'Request Timeout',
+        'Request timed out; try again later')
+    CONFLICT = 409, 'Conflict', 'Request conflict'
+    GONE = (410, 'Gone',
+        'URI no longer exists and has been permanently removed')
+    LENGTH_REQUIRED = (411, 'Length Required',
+        'Client must specify Content-Length')
+    PRECONDITION_FAILED = (412, 'Precondition Failed',
+        'Precondition in headers is false')
+    CONTENT_TOO_LARGE = (413, 'Content Too Large',
+        'Content is too large')
+    REQUEST_ENTITY_TOO_LARGE = CONTENT_TOO_LARGE
+    URI_TOO_LONG = (414, 'URI Too Long',
+        'URI is too long')
+    REQUEST_URI_TOO_LONG = URI_TOO_LONG
+    UNSUPPORTED_MEDIA_TYPE = (415, 'Unsupported Media Type',
+        'Entity body in unsupported format')
+    RANGE_NOT_SATISFIABLE = (416, 'Range Not Satisfiable',
+        'Cannot satisfy request range')
+    REQUESTED_RANGE_NOT_SATISFIABLE = RANGE_NOT_SATISFIABLE
+    EXPECTATION_FAILED = (417, 'Expectation Failed',
+        'Expect condition could not be satisfied')
+    IM_A_TEAPOT = (418, 'I\'m a Teapot',
+        'Server refuses to brew coffee because it is a teapot.')
+    MISDIRECTED_REQUEST = (421, 'Misdirected Request',
+        'Server is not able to produce a response')
+    UNPROCESSABLE_CONTENT = 422, 'Unprocessable Content'
+    UNPROCESSABLE_ENTITY = UNPROCESSABLE_CONTENT
+    LOCKED = 423, 'Locked'
+    FAILED_DEPENDENCY = 424, 'Failed Dependency'
+    TOO_EARLY = 425, 'Too Early'
+    UPGRADE_REQUIRED = 426, 'Upgrade Required'
+    PRECONDITION_REQUIRED = (428, 'Precondition Required',
+        'The origin server requires the request to be conditional')
+    TOO_MANY_REQUESTS = (429, 'Too Many Requests',
+        'The user has sent too many requests in '
+        'a given amount of time ("rate limiting")')
+    REQUEST_HEADER_FIELDS_TOO_LARGE = (431,
+        'Request Header Fields Too Large',
+        'The server is unwilling to process the request because its header '
+        'fields are too large')
+    UNAVAILABLE_FOR_LEGAL_REASONS = (451,
+        'Unavailable For Legal Reasons',
+        'The server is denying access to the '
+        'resource as a consequence of a legal demand')
+
+    # server errors
+    INTERNAL_SERVER_ERROR = (500, 'Internal Server Error',
+        'Server got itself in trouble')
+    NOT_IMPLEMENTED = (501, 'Not Implemented',
+        'Server does not support this operation')
+    BAD_GATEWAY = (502, 'Bad Gateway',
+        'Invalid responses from another server/proxy')
+    SERVICE_UNAVAILABLE = (503, 'Service Unavailable',
+        'The server cannot process the request due to a high load')
+    GATEWAY_TIMEOUT = (504, 'Gateway Timeout',
+        'The gateway server did not receive a timely response')
+    HTTP_VERSION_NOT_SUPPORTED = (505, 'HTTP Version Not Supported',
+        'Cannot fulfill request')
+    VARIANT_ALSO_NEGOTIATES = 506, 'Variant Also Negotiates'
+    INSUFFICIENT_STORAGE = 507, 'Insufficient Storage'
+    LOOP_DETECTED = 508, 'Loop Detected'
+    NOT_EXTENDED = 510, 'Not Extended'
+    NETWORK_AUTHENTICATION_REQUIRED = (511,
+        'Network Authentication Required',
+        'The client needs to authenticate to gain network access')
+
+
+@_simple_enum(StrEnum)
+class HTTPMethod:
+    """HTTP methods and descriptions
+
+    Methods from the following RFCs are all observed:
+
+        * RFC 9110: HTTP Semantics, obsoletes 7231, which obsoleted 2616
+        * RFC 5789: PATCH Method for HTTP
+    """
+    def __new__(cls, value, description):
+        obj = str.__new__(cls, value)
+        obj._value_ = value
+        obj.description = description
+        return obj
+
+    def __repr__(self):
+        return "<%s.%s>" % (self.__class__.__name__, self._name_)
+
+    CONNECT = 'CONNECT', 'Establish a connection to the server.'
+    DELETE = 'DELETE', 'Remove the target.'
+    GET = 'GET', 'Retrieve the target.'
+    HEAD = 'HEAD', 'Same as GET, but only retrieve the status line and header section.'
+    OPTIONS = 'OPTIONS', 'Describe the communication options for the target.'
+    PATCH = 'PATCH', 'Apply partial modifications to a target.'
+    POST = 'POST', 'Perform target-specific processing with the request payload.'
+    PUT = 'PUT', 'Replace the target with the request payload.'
+    TRACE = 'TRACE', 'Perform a message loop-back test along the path to the target.'
+
+#   Copyright 2000-2004 Michael Hudson-Doyle <micahel@gmail.com>
+#
+#                        All Rights Reserved
+#
+#
+# Permission to use, copy, modify, and distribute this software and
+# its documentation for any purpose is hereby granted without fee,
+# provided that the above copyright notice appear in all copies and
+# that both that copyright notice and this permission notice appear in
+# supporting documentation.
+#
+# THE AUTHOR MICHAEL HUDSON DISCLAIMS ALL WARRANTIES WITH REGARD TO
+# THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+# AND FITNESS, IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL,
+# INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
+# RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
+# CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+# CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+from __future__ import annotations
+
+from contextlib import contextmanager
+from dataclasses import dataclass, field
+
+from . import commands, input
+from .reader import Reader
+
+
+if False:
+    from .types import SimpleContextManager, KeySpec, CommandName
+
+
+isearch_keymap: tuple[tuple[KeySpec, CommandName], ...] = tuple(
+    [("\\%03o" % c, "isearch-end") for c in range(256) if chr(c) != "\\"]
+    + [(c, "isearch-add-character") for c in map(chr, range(32, 127)) if c != "\\"]
+    + [
+        ("\\%03o" % c, "isearch-add-character")
+        for c in range(256)
+        if chr(c).isalpha() and chr(c) != "\\"
+    ]
+    + [
+        ("\\\\", "self-insert"),
+        (r"\C-r", "isearch-backwards"),
+        (r"\C-s", "isearch-forwards"),
+        (r"\C-c", "isearch-cancel"),
+        (r"\C-g", "isearch-cancel"),
+        (r"\<backspace>", "isearch-backspace"),
+    ]
+)
+
+ISEARCH_DIRECTION_NONE = ""
+ISEARCH_DIRECTION_BACKWARDS = "r"
+ISEARCH_DIRECTION_FORWARDS = "f"
+
+
+class next_history(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        if r.historyi == len(r.history):
+            r.error("end of history list")
+            return
+        r.select_item(r.historyi + 1)
+
+
+class previous_history(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        if r.historyi == 0:
+            r.error("start of history list")
+            return
+        r.select_item(r.historyi - 1)
+
+
+class history_search_backward(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        r.search_next(forwards=False)
+
+
+class history_search_forward(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        r.search_next(forwards=True)
+
+
+class restore_history(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        if r.historyi != len(r.history):
+            if r.get_unicode() != r.history[r.historyi]:
+                r.buffer = list(r.history[r.historyi])
+                r.pos = len(r.buffer)
+                r.dirty = True
+
+
+class first_history(commands.Command):
+    def do(self) -> None:
+        self.reader.select_item(0)
+
+
+class last_history(commands.Command):
+    def do(self) -> None:
+        self.reader.select_item(len(self.reader.history))
+
+
+class operate_and_get_next(commands.FinishCommand):
+    def do(self) -> None:
+        self.reader.next_history = self.reader.historyi + 1
+
+
+class yank_arg(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        if r.last_command is self.__class__:
+            r.yank_arg_i += 1
+        else:
+            r.yank_arg_i = 0
+        if r.historyi < r.yank_arg_i:
+            r.error("beginning of history list")
+            return
+        a = r.get_arg(-1)
+        # XXX how to split?
+        words = r.get_item(r.historyi - r.yank_arg_i - 1).split()
+        if a < -len(words) or a >= len(words):
+            r.error("no such arg")
+            return
+        w = words[a]
+        b = r.buffer
+        if r.yank_arg_i > 0:
+            o = len(r.yank_arg_yanked)
+        else:
+            o = 0
+        b[r.pos - o : r.pos] = list(w)
+        r.yank_arg_yanked = w
+        r.pos += len(w) - o
+        r.dirty = True
+
+
+class forward_history_isearch(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        r.isearch_direction = ISEARCH_DIRECTION_FORWARDS
+        r.isearch_start = r.historyi, r.pos
+        r.isearch_term = ""
+        r.dirty = True
+        r.push_input_trans(r.isearch_trans)
+
+
+class reverse_history_isearch(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        r.isearch_direction = ISEARCH_DIRECTION_BACKWARDS
+        r.dirty = True
+        r.isearch_term = ""
+        r.push_input_trans(r.isearch_trans)
+        r.isearch_start = r.historyi, r.pos
+
+
+class isearch_cancel(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        r.isearch_direction = ISEARCH_DIRECTION_NONE
+        r.pop_input_trans()
+        r.select_item(r.isearch_start[0])
+        r.pos = r.isearch_start[1]
+        r.dirty = True
+
+
+class isearch_add_character(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        b = r.buffer
+        r.isearch_term += self.event[-1]
+        r.dirty = True
+        p = r.pos + len(r.isearch_term) - 1
+        if b[p : p + 1] != [r.isearch_term[-1]]:
+            r.isearch_next()
+
+
+class isearch_backspace(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        if len(r.isearch_term) > 0:
+            r.isearch_term = r.isearch_term[:-1]
+            r.dirty = True
+        else:
+            r.error("nothing to rubout")
+
+
+class isearch_forwards(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        r.isearch_direction = ISEARCH_DIRECTION_FORWARDS
+        r.isearch_next()
+
+
+class isearch_backwards(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        r.isearch_direction = ISEARCH_DIRECTION_BACKWARDS
+        r.isearch_next()
+
+
+class isearch_end(commands.Command):
+    def do(self) -> None:
+        r = self.reader
+        r.isearch_direction = ISEARCH_DIRECTION_NONE
+        r.console.forgetinput()
+        r.pop_input_trans()
+        r.dirty = True
+
+
+@dataclass
+class HistoricalReader(Reader):
+    """Adds history support (with incremental history searching) to the
+    Reader class.
+    """
+
+    history: list[str] = field(default_factory=list)
+    historyi: int = 0
+    next_history: int | None = None
+    transient_history: dict[int, str] = field(default_factory=dict)
+    isearch_term: str = ""
+    isearch_direction: str = ISEARCH_DIRECTION_NONE
+    isearch_start: tuple[int, int] = field(init=False)
+    isearch_trans: input.KeymapTranslator = field(init=False)
+    yank_arg_i: int = 0
+    yank_arg_yanked: str = ""
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        for c in [
+            next_history,
+            previous_history,
+            restore_history,
+            first_history,
+            last_history,
+            yank_arg,
+            forward_history_isearch,
+            reverse_history_isearch,
+            isearch_end,
+            isearch_add_character,
+            isearch_cancel,
+            isearch_add_character,
+            isearch_backspace,
+            isearch_forwards,
+            isearch_backwards,
+            operate_and_get_next,
+            history_search_backward,
+            history_search_forward,
+        ]:
+            self.commands[c.__name__] = c
+            self.commands[c.__name__.replace("_", "-")] = c
+        self.isearch_start = self.historyi, self.pos
+        self.isearch_trans = input.KeymapTranslator(
+            isearch_keymap, invalid_cls=isearch_end, character_cls=isearch_add_character
+        )
+
+    def collect_keymap(self) -> tuple[tuple[KeySpec, CommandName], ...]:
+        return super().collect_keymap() + (
+            (r"\C-n", "next-history"),
+            (r"\C-p", "previous-history"),
+            (r"\C-o", "operate-and-get-next"),
+            (r"\C-r", "reverse-history-isearch"),
+            (r"\C-s", "forward-history-isearch"),
+            (r"\M-r", "restore-history"),
+            (r"\M-.", "yank-arg"),
+            (r"\<page down>", "history-search-forward"),
+            (r"\x1b[6~", "history-search-forward"),
+            (r"\<page up>", "history-search-backward"),
+            (r"\x1b[5~", "history-search-backward"),
+        )
+
+    def select_item(self, i: int) -> None:
+        self.transient_history[self.historyi] = self.get_unicode()
+        buf = self.transient_history.get(i)
+        if buf is None:
+            buf = self.history[i].rstrip()
+        self.buffer = list(buf)
+        self.historyi = i
+        self.pos = len(self.buffer)
+        self.dirty = True
+        self.last_refresh_cache.invalidated = True
+
+    def get_item(self, i: int) -> str:
+        if i != len(self.history):
+            return self.transient_history.get(i, self.history[i])
+        else:
+            return self.transient_history.get(i, self.get_unicode())
+
+    @contextmanager
+    def suspend(self) -> SimpleContextManager:
+        with super().suspend(), self.suspend_history():
+            yield
+
+    @contextmanager
+    def suspend_history(self) -> SimpleContextManager:
+        try:
+            old_history = self.history[:]
+            del self.history[:]
+            yield
+        finally:
+            self.history[:] = old_history
+
+    def prepare(self) -> None:
+        super().prepare()
+        try:
+            self.transient_history = {}
+            if self.next_history is not None and self.next_history < len(self.history):
+                self.historyi = self.next_history
+                self.buffer[:] = list(self.history[self.next_history])
+                self.pos = len(self.buffer)
+                self.transient_history[len(self.history)] = ""
+            else:
+                self.historyi = len(self.history)
+            self.next_history = None
+        except:
+            self.restore()
+            raise
+
+    def get_prompt(self, lineno: int, cursor_on_line: bool) -> str:
+        if cursor_on_line and self.isearch_direction != ISEARCH_DIRECTION_NONE:
+            d = "rf"[self.isearch_direction == ISEARCH_DIRECTION_FORWARDS]
+            return "(%s-search `%s') " % (d, self.isearch_term)
+        else:
+            return super().get_prompt(lineno, cursor_on_line)
+
+    def search_next(self, *, forwards: bool) -> None:
+        """Search history for the current line contents up to the cursor.
+
+        Selects the first item found. If nothing is under the cursor, any next
+        item in history is selected.
+        """
+        pos = self.pos
+        s = self.get_unicode()
+        history_index = self.historyi
+
+        # In multiline contexts, we're only interested in the current line.
+        nl_index = s.rfind('\n', 0, pos)
+        prefix = s[nl_index + 1:pos]
+        pos = len(prefix)
+
+        match_prefix = len(prefix)
+        len_item = 0
+        if history_index < len(self.history):
+            len_item = len(self.get_item(history_index))
+        if len_item and pos == len_item:
+            match_prefix = False
+        elif not pos:
+            match_prefix = False
+
+        while 1:
+            if forwards:
+                out_of_bounds = history_index >= len(self.history) - 1
+            else:
+                out_of_bounds = history_index == 0
+            if out_of_bounds:
+                if forwards and not match_prefix:
+                    self.pos = 0
+                    self.buffer = []
+                    self.dirty = True
+                else:
+                    self.error("not found")
+                return
+
+            history_index += 1 if forwards else -1
+            s = self.get_item(history_index)
+
+            if not match_prefix:
+                self.select_item(history_index)
+                return
+
+            len_acc = 0
+            for i, line in enumerate(s.splitlines(keepends=True)):
+                if line.startswith(prefix):
+                    self.select_item(history_index)
+                    self.pos = pos + len_acc
+                    return
+                len_acc += len(line)
+
+    def isearch_next(self) -> None:
+        st = self.isearch_term
+        p = self.pos
+        i = self.historyi
+        s = self.get_unicode()
+        forwards = self.isearch_direction == ISEARCH_DIRECTION_FORWARDS
+        while 1:
+            if forwards:
+                p = s.find(st, p + 1)
+            else:
+                p = s.rfind(st, 0, p + len(st) - 1)
+            if p != -1:
+                self.select_item(i)
+                self.pos = p
+                return
+            elif (forwards and i >= len(self.history) - 1) or (not forwards and i == 0):
+                self.error("not found")
+                return
+            else:
+                if forwards:
+                    i += 1
+                    s = self.get_item(i)
+                    p = -1
+                else:
+                    i -= 1
+                    s = self.get_item(i)
+                    p = len(s)
+
+    def finish(self) -> None:
+        super().finish()
+        ret = self.get_unicode()
+        for i, t in self.transient_history.items():
+            if i < len(self.history) and i != self.historyi:
+                self.history[i] = t
+        if ret and should_auto_add_history:
+            self.history.append(ret)
+
+
+should_auto_add_history = True
+
+# This module implements the RFCs 3490 (IDNA) and 3491 (Nameprep)
+
+import stringprep, re, codecs
+from unicodedata import ucd_3_2_0 as unicodedata
+
+# IDNA section 3.1
+dots = re.compile("[\u002E\u3002\uFF0E\uFF61]")
+
+# IDNA section 5
+ace_prefix = b"xn--"
+sace_prefix = "xn--"
+
+# This assumes query strings, so AllowUnassigned is true
+def nameprep(label):  # type: (str) -> str
+    # Map
+    newlabel = []
+    for c in label:
+        if stringprep.in_table_b1(c):
+            # Map to nothing
+            continue
+        newlabel.append(stringprep.map_table_b2(c))
+    label = "".join(newlabel)
+
+    # Normalize
+    label = unicodedata.normalize("NFKC", label)
+
+    # Prohibit
+    for i, c in enumerate(label):
+        if stringprep.in_table_c12(c) or \
+           stringprep.in_table_c22(c) or \
+           stringprep.in_table_c3(c) or \
+           stringprep.in_table_c4(c) or \
+           stringprep.in_table_c5(c) or \
+           stringprep.in_table_c6(c) or \
+           stringprep.in_table_c7(c) or \
+           stringprep.in_table_c8(c) or \
+           stringprep.in_table_c9(c):
+            raise UnicodeEncodeError("idna", label, i, i+1, f"Invalid character {c!r}")
+
+    # Check bidi
+    RandAL = [stringprep.in_table_d1(x) for x in label]
+    if any(RandAL):
+        # There is a RandAL char in the string. Must perform further
+        # tests:
+        # 1) The characters in section 5.8 MUST be prohibited.
+        # This is table C.8, which was already checked
+        # 2) If a string contains any RandALCat character, the string
+        # MUST NOT contain any LCat character.
+        for i, x in enumerate(label):
+            if stringprep.in_table_d2(x):
+                raise UnicodeEncodeError("idna", label, i, i+1,
+                                         "Violation of BIDI requirement 2")
+        # 3) If a string contains any RandALCat character, a
+        # RandALCat character MUST be the first character of the
+        # string, and a RandALCat character MUST be the last
+        # character of the string.
+        if not RandAL[0]:
+            raise UnicodeEncodeError("idna", label, 0, 1,
+                                     "Violation of BIDI requirement 3")
+        if not RandAL[-1]:
+            raise UnicodeEncodeError("idna", label, len(label)-1, len(label),
+                                     "Violation of BIDI requirement 3")
+
+    return label
+
+def ToASCII(label):  # type: (str) -> bytes
+    try:
+        # Step 1: try ASCII
+        label_ascii = label.encode("ascii")
+    except UnicodeEncodeError:
+        pass
+    else:
+        # Skip to step 3: UseSTD3ASCIIRules is false, so
+        # Skip to step 8.
+        if 0 < len(label_ascii) < 64:
+            return label_ascii
+        if len(label) == 0:
+            raise UnicodeEncodeError("idna", label, 0, 1, "label empty")
+        else:
+            raise UnicodeEncodeError("idna", label, 0, len(label), "label too long")
+
+    # Step 2: nameprep
+    label = nameprep(label)
+
+    # Step 3: UseSTD3ASCIIRules is false
+    # Step 4: try ASCII
+    try:
+        label_ascii = label.encode("ascii")
+    except UnicodeEncodeError:
+        pass
+    else:
+        # Skip to step 8.
+        if 0 < len(label) < 64:
+            return label_ascii
+        if len(label) == 0:
+            raise UnicodeEncodeError("idna", label, 0, 1, "label empty")
+        else:
+            raise UnicodeEncodeError("idna", label, 0, len(label), "label too long")
+
+    # Step 5: Check ACE prefix
+    if label.lower().startswith(sace_prefix):
+        raise UnicodeEncodeError(
+            "idna", label, 0, len(sace_prefix), "Label starts with ACE prefix")
+
+    # Step 6: Encode with PUNYCODE
+    label_ascii = label.encode("punycode")
+
+    # Step 7: Prepend ACE prefix
+    label_ascii = ace_prefix + label_ascii
+
+    # Step 8: Check size
+    # do not check for empty as we prepend ace_prefix.
+    if len(label_ascii) < 64:
+        return label_ascii
+    raise UnicodeEncodeError("idna", label, 0, len(label), "label too long")
+
+def ToUnicode(label):
+    if len(label) > 1024:
+        # Protection from https://github.com/python/cpython/issues/98433.
+        # https://datatracker.ietf.org/doc/html/rfc5894#section-6
+        # doesn't specify a label size limit prior to NAMEPREP. But having
+        # one makes practical sense.
+        # This leaves ample room for nameprep() to remove Nothing characters
+        # per https://www.rfc-editor.org/rfc/rfc3454#section-3.1 while still
+        # preventing us from wasting time decoding a big thing that'll just
+        # hit the actual <= 63 length limit in Step 6.
+        if isinstance(label, str):
+            label = label.encode("utf-8", errors="backslashreplace")
+        raise UnicodeDecodeError("idna", label, 0, len(label), "label way too long")
+    # Step 1: Check for ASCII
+    if isinstance(label, bytes):
+        pure_ascii = True
+    else:
+        try:
+            label = label.encode("ascii")
+            pure_ascii = True
+        except UnicodeEncodeError:
+            pure_ascii = False
+    if not pure_ascii:
+        assert isinstance(label, str)
+        # Step 2: Perform nameprep
+        label = nameprep(label)
+        # It doesn't say this, but apparently, it should be ASCII now
+        try:
+            label = label.encode("ascii")
+        except UnicodeEncodeError as exc:
+            raise UnicodeEncodeError("idna", label, exc.start, exc.end,
+                                     "Invalid character in IDN label")
+    # Step 3: Check for ACE prefix
+    assert isinstance(label, bytes)
+    if not label.lower().startswith(ace_prefix):
+        return str(label, "ascii")
+
+    # Step 4: Remove ACE prefix
+    label1 = label[len(ace_prefix):]
+
+    # Step 5: Decode using PUNYCODE
+    try:
+        result = label1.decode("punycode")
+    except UnicodeDecodeError as exc:
+        offset = len(ace_prefix)
+        raise UnicodeDecodeError("idna", label, offset+exc.start, offset+exc.end, exc.reason)
+
+    # Step 6: Apply ToASCII
+    label2 = ToASCII(result)
+
+    # Step 7: Compare the result of step 6 with the one of step 3
+    # label2 will already be in lower case.
+    if str(label, "ascii").lower() != str(label2, "ascii"):
+        raise UnicodeDecodeError("idna", label, 0, len(label),
+                                 f"IDNA does not round-trip, '{label!r}' != '{label2!r}'")
+
+    # Step 8: return the result of step 5
+    return result
+
+### Codec APIs
+
+class Codec(codecs.Codec):
+    def encode(self, input, errors='strict'):
+
+        if errors != 'strict':
+            # IDNA is quite clear that implementations must be strict
+            raise UnicodeError(f"Unsupported error handling: {errors}")
+
+        if not input:
+            return b'', 0
+
+        try:
+            result = input.encode('ascii')
+        except UnicodeEncodeError:
+            pass
+        else:
+            # ASCII name: fast path
+            labels = result.split(b'.')
+            for i, label in enumerate(labels[:-1]):
+                if len(label) == 0:
+                    offset = sum(len(l) for l in labels[:i]) + i
+                    raise UnicodeEncodeError("idna", input, offset, offset+1,
+                                             "label empty")
+            for i, label in enumerate(labels):
+                if len(label) >= 64:
+                    offset = sum(len(l) for l in labels[:i]) + i
+                    raise UnicodeEncodeError("idna", input, offset, offset+len(label),
+                                             "label too long")
+            return result, len(input)
+
+        result = bytearray()
+        labels = dots.split(input)
+        if labels and not labels[-1]:
+            trailing_dot = b'.'
+            del labels[-1]
+        else:
+            trailing_dot = b''
+        for i, label in enumerate(labels):
+            if result:
+                # Join with U+002E
+                result.extend(b'.')
+            try:
+                result.extend(ToASCII(label))
+            except (UnicodeEncodeError, UnicodeDecodeError) as exc:
+                offset = sum(len(l) for l in labels[:i]) + i
+                raise UnicodeEncodeError(
+                    "idna",
+                    input,
+                    offset + exc.start,
+                    offset + exc.end,
+                    exc.reason,
+                )
+        return bytes(result+trailing_dot), len(input)
+
+    def decode(self, input, errors='strict'):
+
+        if errors != 'strict':
+            raise UnicodeError(f"Unsupported error handling: {errors}")
+
+        if not input:
+            return "", 0
+
+        # IDNA allows decoding to operate on Unicode strings, too.
+        if not isinstance(input, bytes):
+            # XXX obviously wrong, see #3232
+            input = bytes(input)
+
+        if ace_prefix not in input.lower():
+            # Fast path
+            try:
+                return input.decode('ascii'), len(input)
+            except UnicodeDecodeError:
+                pass
+
+        labels = input.split(b".")
+
+        if labels and len(labels[-1]) == 0:
+            trailing_dot = '.'
+            del labels[-1]
+        else:
+            trailing_dot = ''
+
+        result = []
+        for i, label in enumerate(labels):
+            try:
+                u_label = ToUnicode(label)
+            except (UnicodeEncodeError, UnicodeDecodeError) as exc:
+                offset = sum(len(x) for x in labels[:i]) + len(labels[:i])
+                raise UnicodeDecodeError(
+                    "idna", input, offset+exc.start, offset+exc.end, exc.reason)
+            else:
+                result.append(u_label)
+
+        return ".".join(result)+trailing_dot, len(input)
+
+class IncrementalEncoder(codecs.BufferedIncrementalEncoder):
+    def _buffer_encode(self, input, errors, final):
+        if errors != 'strict':
+            # IDNA is quite clear that implementations must be strict
+            raise UnicodeError(f"Unsupported error handling: {errors}")
+
+        if not input:
+            return (b'', 0)
+
+        labels = dots.split(input)
+        trailing_dot = b''
+        if labels:
+            if not labels[-1]:
+                trailing_dot = b'.'
+                del labels[-1]
+            elif not final:
+                # Keep potentially unfinished label until the next call
+                del labels[-1]
+                if labels:
+                    trailing_dot = b'.'
+
+        result = bytearray()
+        size = 0
+        for label in labels:
+            if size:
+                # Join with U+002E
+                result.extend(b'.')
+                size += 1
+            try:
+                result.extend(ToASCII(label))
+            except (UnicodeEncodeError, UnicodeDecodeError) as exc:
+                raise UnicodeEncodeError(
+                    "idna",
+                    input,
+                    size + exc.start,
+                    size + exc.end,
+                    exc.reason,
+                )
+            size += len(label)
+
+        result += trailing_dot
+        size += len(trailing_dot)
+        return (bytes(result), size)
+
+class IncrementalDecoder(codecs.BufferedIncrementalDecoder):
+    def _buffer_decode(self, input, errors, final):
+        if errors != 'strict':
+            raise UnicodeError(f"Unsupported error handling: {errors}")
+
+        if not input:
+            return ("", 0)
+
+        # IDNA allows decoding to operate on Unicode strings, too.
+        if isinstance(input, str):
+            labels = dots.split(input)
+        else:
+            # Must be ASCII string
+            try:
+                input = str(input, "ascii")
+            except (UnicodeEncodeError, UnicodeDecodeError) as exc:
+                raise UnicodeDecodeError("idna", input,
+                                         exc.start, exc.end, exc.reason)
+            labels = input.split(".")
+
+        trailing_dot = ''
+        if labels:
+            if not labels[-1]:
+                trailing_dot = '.'
+                del labels[-1]
+            elif not final:
+                # Keep potentially unfinished label until the next call
+                del labels[-1]
+                if labels:
+                    trailing_dot = '.'
+
+        result = []
+        size = 0
+        for label in labels:
+            try:
+                u_label = ToUnicode(label)
+            except (UnicodeEncodeError, UnicodeDecodeError) as exc:
+                raise UnicodeDecodeError(
+                    "idna",
+                    input.encode("ascii", errors="backslashreplace"),
+                    size + exc.start,
+                    size + exc.end,
+                    exc.reason,
+                )
+            else:
+                result.append(u_label)
+            if size:
+                size += 1
+            size += len(label)
+
+        result = ".".join(result) + trailing_dot
+        size += len(trailing_dot)
+        return (result, size)
+
+class StreamWriter(Codec,codecs.StreamWriter):
+    pass
+
+class StreamReader(Codec,codecs.StreamReader):
+    pass
+
+### encodings module API
+
+def getregentry():
+    return codecs.CodecInfo(
+        name='idna',
+        encode=Codec().encode,
+        decode=Codec().decode,
+        incrementalencoder=IncrementalEncoder,
+        incrementaldecoder=IncrementalDecoder,
+        streamwriter=StreamWriter,
+        streamreader=StreamReader,
+    )
+
+""" Python Character Mapping Codec cp1006 generated from 'MAPPINGS/VENDORS/MISC/CP1006.TXT' with gencodec.py.
+
+"""#"
+
+import codecs
+
+### Codec APIs
+
+class Codec(codecs.Codec):
+
+    def encode(self,input,errors='strict'):
+        return codecs.charmap_encode(input,errors,encoding_table)
+
+    def decode(self,input,errors='strict'):
+        return codecs.charmap_decode(input,errors,decoding_table)
+
+class IncrementalEncoder(codecs.IncrementalEncoder):
+    def encode(self, input, final=False):
+        return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+
+class IncrementalDecoder(codecs.IncrementalDecoder):
+    def decode(self, input, final=False):
+        return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+
+class StreamWriter(Codec,codecs.StreamWriter):
+    pass
+
+class StreamReader(Codec,codecs.StreamReader):
+    pass
+
+### encodings module API
+
+def getregentry():
+    return codecs.CodecInfo(
+        name='cp1006',
+        encode=Codec().encode,
+        decode=Codec().decode,
+        incrementalencoder=IncrementalEncoder,
+        incrementaldecoder=IncrementalDecoder,
+        streamreader=StreamReader,
+        streamwriter=StreamWriter,
+    )
+
+
+### Decoding Table
+
+decoding_table = (
+    '\x00'     #  0x00 -> NULL
+    '\x01'     #  0x01 -> START OF HEADING
+    '\x02'     #  0x02 -> START OF TEXT
+    '\x03'     #  0x03 -> END OF TEXT
+    '\x04'     #  0x04 -> END OF TRANSMISSION
+    '\x05'     #  0x05 -> ENQUIRY
+    '\x06'     #  0x06 -> ACKNOWLEDGE
+    '\x07'     #  0x07 -> BELL
+    '\x08'     #  0x08 -> BACKSPACE
+    '\t'       #  0x09 -> HORIZONTAL TABULATION
+    '\n'       #  0x0A -> LINE FEED
+    '\x0b'     #  0x0B -> VERTICAL TABULATION
+    '\x0c'     #  0x0C -> FORM FEED
+    '\r'       #  0x0D -> CARRIAGE RETURN
+    '\x0e'     #  0x0E -> SHIFT OUT
+    '\x0f'     #  0x0F -> SHIFT IN
+    '\x10'     #  0x10 -> DATA LINK ESCAPE
+    '\x11'     #  0x11 -> DEVICE CONTROL ONE
+    '\x12'     #  0x12 -> DEVICE CONTROL TWO
+    '\x13'     #  0x13 -> DEVICE CONTROL THREE
+    '\x14'     #  0x14 -> DEVICE CONTROL FOUR
+    '\x15'     #  0x15 -> NEGATIVE ACKNOWLEDGE
+    '\x16'     #  0x16 -> SYNCHRONOUS IDLE
+    '\x17'     #  0x17 -> END OF TRANSMISSION BLOCK
+    '\x18'     #  0x18 -> CANCEL
+    '\x19'     #  0x19 -> END OF MEDIUM
+    '\x1a'     #  0x1A -> SUBSTITUTE
+    '\x1b'     #  0x1B -> ESCAPE
+    '\x1c'     #  0x1C -> FILE SEPARATOR
+    '\x1d'     #  0x1D -> GROUP SEPARATOR
+    '\x1e'     #  0x1E -> RECORD SEPARATOR
+    '\x1f'     #  0x1F -> UNIT SEPARATOR
+    ' '        #  0x20 -> SPACE
+    '!'        #  0x21 -> EXCLAMATION MARK
+    '"'        #  0x22 -> QUOTATION MARK
+    '#'        #  0x23 -> NUMBER SIGN
+    '$'        #  0x24 -> DOLLAR SIGN
+    '%'        #  0x25 -> PERCENT SIGN
+    '&'        #  0x26 -> AMPERSAND
+    "'"        #  0x27 -> APOSTROPHE
+    '('        #  0x28 -> LEFT PARENTHESIS
+    ')'        #  0x29 -> RIGHT PARENTHESIS
+    '*'        #  0x2A -> ASTERISK
+    '+'        #  0x2B -> PLUS SIGN
+    ','        #  0x2C -> COMMA
+    '-'        #  0x2D -> HYPHEN-MINUS
+    '.'        #  0x2E -> FULL STOP
+    '/'        #  0x2F -> SOLIDUS
+    '0'        #  0x30 -> DIGIT ZERO
+    '1'        #  0x31 -> DIGIT ONE
+    '2'        #  0x32 -> DIGIT TWO
+    '3'        #  0x33 -> DIGIT THREE
+    '4'        #  0x34 -> DIGIT FOUR
+    '5'        #  0x35 -> DIGIT FIVE
+    '6'        #  0x36 -> DIGIT SIX
+    '7'        #  0x37 -> DIGIT SEVEN
+    '8'        #  0x38 -> DIGIT EIGHT
+    '9'        #  0x39 -> DIGIT NINE
+    ':'        #  0x3A -> COLON
+    ';'        #  0x3B -> SEMICOLON
+    '<'        #  0x3C -> LESS-THAN SIGN
+    '='        #  0x3D -> EQUALS SIGN
+    '>'        #  0x3E -> GREATER-THAN SIGN
+    '?'        #  0x3F -> QUESTION MARK
+    '@'        #  0x40 -> COMMERCIAL AT
+    'A'        #  0x41 -> LATIN CAPITAL LETTER A
+    'B'        #  0x42 -> LATIN CAPITAL LETTER B
+    'C'        #  0x43 -> LATIN CAPITAL LETTER C
+    'D'        #  0x44 -> LATIN CAPITAL LETTER D
+    'E'        #  0x45 -> LATIN CAPITAL LETTER E
+    'F'        #  0x46 -> LATIN CAPITAL LETTER F
+    'G'        #  0x47 -> LATIN CAPITAL LETTER G
+    'H'        #  0x48 -> LATIN CAPITAL LETTER H
+    'I'        #  0x49 -> LATIN CAPITAL LETTER I
+    'J'        #  0x4A -> LATIN CAPITAL LETTER J
+    'K'        #  0x4B -> LATIN CAPITAL LETTER K
+    'L'        #  0x4C -> LATIN CAPITAL LETTER L
+    'M'        #  0x4D -> LATIN CAPITAL LETTER M
+    'N'        #  0x4E -> LATIN CAPITAL LETTER N
+    'O'        #  0x4F -> LATIN CAPITAL LETTER O
+    'P'        #  0x50 -> LATIN CAPITAL LETTER P
+    'Q'        #  0x51 -> LATIN CAPITAL LETTER Q
+    'R'        #  0x52 -> LATIN CAPITAL LETTER R
+    'S'        #  0x53 -> LATIN CAPITAL LETTER S
+    'T'        #  0x54 -> LATIN CAPITAL LETTER T
+    'U'        #  0x55 -> LATIN CAPITAL LETTER U
+    'V'        #  0x56 -> LATIN CAPITAL LETTER V
+    'W'        #  0x57 -> LATIN CAPITAL LETTER W
+    'X'        #  0x58 -> LATIN CAPITAL LETTER X
+    'Y'        #  0x59 -> LATIN CAPITAL LETTER Y
+    'Z'        #  0x5A -> LATIN CAPITAL LETTER Z
+    '['        #  0x5B -> LEFT SQUARE BRACKET
+    '\\'       #  0x5C -> REVERSE SOLIDUS
+    ']'        #  0x5D -> RIGHT SQUARE BRACKET
+    '^'        #  0x5E -> CIRCUMFLEX ACCENT
+    '_'        #  0x5F -> LOW LINE
+    '`'        #  0x60 -> GRAVE ACCENT
+    'a'        #  0x61 -> LATIN SMALL LETTER A
+    'b'        #  0x62 -> LATIN SMALL LETTER B
+    'c'        #  0x63 -> LATIN SMALL LETTER C
+    'd'        #  0x64 -> LATIN SMALL LETTER D
+    'e'        #  0x65 -> LATIN SMALL LETTER E
+    'f'        #  0x66 -> LATIN SMALL LETTER F
+    'g'        #  0x67 -> LATIN SMALL LETTER G
+    'h'        #  0x68 -> LATIN SMALL LETTER H
+    'i'        #  0x69 -> LATIN SMALL LETTER I
+    'j'        #  0x6A -> LATIN SMALL LETTER J
+    'k'        #  0x6B -> LATIN SMALL LETTER K
+    'l'        #  0x6C -> LATIN SMALL LETTER L
+    'm'        #  0x6D -> LATIN SMALL LETTER M
+    'n'        #  0x6E -> LATIN SMALL LETTER N
+    'o'        #  0x6F -> LATIN SMALL LETTER O
+    'p'        #  0x70 -> LATIN SMALL LETTER P
+    'q'        #  0x71 -> LATIN SMALL LETTER Q
+    'r'        #  0x72 -> LATIN SMALL LETTER R
+    's'        #  0x73 -> LATIN SMALL LETTER S
+    't'        #  0x74 -> LATIN SMALL LETTER T
+    'u'        #  0x75 -> LATIN SMALL LETTER U
+    'v'        #  0x76 -> LATIN SMALL LETTER V
+    'w'        #  0x77 -> LATIN SMALL LETTER W
+    'x'        #  0x78 -> LATIN SMALL LETTER X
+    'y'        #  0x79 -> LATIN SMALL LETTER Y
+    'z'        #  0x7A -> LATIN SMALL LETTER Z
+    '{'        #  0x7B -> LEFT CURLY BRACKET
+    '|'        #  0x7C -> VERTICAL LINE
+    '}'        #  0x7D -> RIGHT CURLY BRACKET
+    '~'        #  0x7E -> TILDE
+    '\x7f'     #  0x7F -> DELETE
+    '\x80'     #  0x80 -> <control>
+    '\x81'     #  0x81 -> <control>
+    '\x82'     #  0x82 -> <control>
+    '\x83'     #  0x83 -> <control>
+    '\x84'     #  0x84 -> <control>
+    '\x85'     #  0x85 -> <control>
+    '\x86'     #  0x86 -> <control>
+    '\x87'     #  0x87 -> <control>
+    '\x88'     #  0x88 -> <control>
+    '\x89'     #  0x89 -> <control>
+    '\x8a'     #  0x8A -> <control>
+    '\x8b'     #  0x8B -> <control>
+    '\x8c'     #  0x8C -> <control>
+    '\x8d'     #  0x8D -> <control>
+    '\x8e'     #  0x8E -> <control>
+    '\x8f'     #  0x8F -> <control>
+    '\x90'     #  0x90 -> <control>
+    '\x91'     #  0x91 -> <control>
+    '\x92'     #  0x92 -> <control>
+    '\x93'     #  0x93 -> <control>
+    '\x94'     #  0x94 -> <control>
+    '\x95'     #  0x95 -> <control>
+    '\x96'     #  0x96 -> <control>
+    '\x97'     #  0x97 -> <control>
+    '\x98'     #  0x98 -> <control>
+    '\x99'     #  0x99 -> <control>
+    '\x9a'     #  0x9A -> <control>
+    '\x9b'     #  0x9B -> <control>
+    '\x9c'     #  0x9C -> <control>
+    '\x9d'     #  0x9D -> <control>
+    '\x9e'     #  0x9E -> <control>
+    '\x9f'     #  0x9F -> <control>
+    '\xa0'     #  0xA0 -> NO-BREAK SPACE
+    '\u06f0'   #  0xA1 -> EXTENDED ARABIC-INDIC DIGIT ZERO
+    '\u06f1'   #  0xA2 -> EXTENDED ARABIC-INDIC DIGIT ONE
+    '\u06f2'   #  0xA3 -> EXTENDED ARABIC-INDIC DIGIT TWO
+    '\u06f3'   #  0xA4 -> EXTENDED ARABIC-INDIC DIGIT THREE
+    '\u06f4'   #  0xA5 -> EXTENDED ARABIC-INDIC DIGIT FOUR
+    '\u06f5'   #  0xA6 -> EXTENDED ARABIC-INDIC DIGIT FIVE
+    '\u06f6'   #  0xA7 -> EXTENDED ARABIC-INDIC DIGIT SIX
+    '\u06f7'   #  0xA8 -> EXTENDED ARABIC-INDIC DIGIT SEVEN
+    '\u06f8'   #  0xA9 -> EXTENDED ARABIC-INDIC DIGIT EIGHT
+    '\u06f9'   #  0xAA -> EXTENDED ARABIC-INDIC DIGIT NINE
+    '\u060c'   #  0xAB -> ARABIC COMMA
+    '\u061b'   #  0xAC -> ARABIC SEMICOLON
+    '\xad'     #  0xAD -> SOFT HYPHEN
+    '\u061f'   #  0xAE -> ARABIC QUESTION MARK
+    '\ufe81'   #  0xAF -> ARABIC LETTER ALEF WITH MADDA ABOVE ISOLATED FORM
+    '\ufe8d'   #  0xB0 -> ARABIC LETTER ALEF ISOLATED FORM
+    '\ufe8e'   #  0xB1 -> ARABIC LETTER ALEF FINAL FORM
+    '\ufe8e'   #  0xB2 -> ARABIC LETTER ALEF FINAL FORM
+    '\ufe8f'   #  0xB3 -> ARABIC LETTER BEH ISOLATED FORM
+    '\ufe91'   #  0xB4 -> ARABIC LETTER BEH INITIAL FORM
+    '\ufb56'   #  0xB5 -> ARABIC LETTER PEH ISOLATED FORM
+    '\ufb58'   #  0xB6 -> ARABIC LETTER PEH INITIAL FORM
+    '\ufe93'   #  0xB7 -> ARABIC LETTER TEH MARBUTA ISOLATED FORM
+    '\ufe95'   #  0xB8 -> ARABIC LETTER TEH ISOLATED FORM
+    '\ufe97'   #  0xB9 -> ARABIC LETTER TEH INITIAL FORM
+    '\ufb66'   #  0xBA -> ARABIC LETTER TTEH ISOLATED FORM
+    '\ufb68'   #  0xBB -> ARABIC LETTER TTEH INITIAL FORM
+    '\ufe99'   #  0xBC -> ARABIC LETTER THEH ISOLATED FORM
+    '\ufe9b'   #  0xBD -> ARABIC LETTER THEH INITIAL FORM
+    '\ufe9d'   #  0xBE -> ARABIC LETTER JEEM ISOLATED FORM
+    '\ufe9f'   #  0xBF -> ARABIC LETTER JEEM INITIAL FORM
+    '\ufb7a'   #  0xC0 -> ARABIC LETTER TCHEH ISOLATED FORM
+    '\ufb7c'   #  0xC1 -> ARABIC LETTER TCHEH INITIAL FORM
+    '\ufea1'   #  0xC2 -> ARABIC LETTER HAH ISOLATED FORM
+    '\ufea3'   #  0xC3 -> ARABIC LETTER HAH INITIAL FORM
+    '\ufea5'   #  0xC4 -> ARABIC LETTER KHAH ISOLATED FORM
+    '\ufea7'   #  0xC5 -> ARABIC LETTER KHAH INITIAL FORM
+    '\ufea9'   #  0xC6 -> ARABIC LETTER DAL ISOLATED FORM
+    '\ufb84'   #  0xC7 -> ARABIC LETTER DAHAL ISOLATED FORMN
+    '\ufeab'   #  0xC8 -> ARABIC LETTER THAL ISOLATED FORM
+    '\ufead'   #  0xC9 -> ARABIC LETTER REH ISOLATED FORM
+    '\ufb8c'   #  0xCA -> ARABIC LETTER RREH ISOLATED FORM
+    '\ufeaf'   #  0xCB -> ARABIC LETTER ZAIN ISOLATED FORM
+    '\ufb8a'   #  0xCC -> ARABIC LETTER JEH ISOLATED FORM
+    '\ufeb1'   #  0xCD -> ARABIC LETTER SEEN ISOLATED FORM
+    '\ufeb3'   #  0xCE -> ARABIC LETTER SEEN INITIAL FORM
+    '\ufeb5'   #  0xCF -> ARABIC LETTER SHEEN ISOLATED FORM
+    '\ufeb7'   #  0xD0 -> ARABIC LETTER SHEEN INITIAL FORM
+    '\ufeb9'   #  0xD1 -> ARABIC LETTER SAD ISOLATED FORM
+    '\ufebb'   #  0xD2 -> ARABIC LETTER SAD INITIAL FORM
+    '\ufebd'   #  0xD3 -> ARABIC LETTER DAD ISOLATED FORM
+    '\ufebf'   #  0xD4 -> ARABIC LETTER DAD INITIAL FORM
+    '\ufec1'   #  0xD5 -> ARABIC LETTER TAH ISOLATED FORM
+    '\ufec5'   #  0xD6 -> ARABIC LETTER ZAH ISOLATED FORM
+    '\ufec9'   #  0xD7 -> ARABIC LETTER AIN ISOLATED FORM
+    '\ufeca'   #  0xD8 -> ARABIC LETTER AIN FINAL FORM
+    '\ufecb'   #  0xD9 -> ARABIC LETTER AIN INITIAL FORM
+    '\ufecc'   #  0xDA -> ARABIC LETTER AIN MEDIAL FORM
+    '\ufecd'   #  0xDB -> ARABIC LETTER GHAIN ISOLATED FORM
+    '\ufece'   #  0xDC -> ARABIC LETTER GHAIN FINAL FORM
+    '\ufecf'   #  0xDD -> ARABIC LETTER GHAIN INITIAL FORM
+    '\ufed0'   #  0xDE -> ARABIC LETTER GHAIN MEDIAL FORM
+    '\ufed1'   #  0xDF -> ARABIC LETTER FEH ISOLATED FORM
+    '\ufed3'   #  0xE0 -> ARABIC LETTER FEH INITIAL FORM
+    '\ufed5'   #  0xE1 -> ARABIC LETTER QAF ISOLATED FORM
+    '\ufed7'   #  0xE2 -> ARABIC LETTER QAF INITIAL FORM
+    '\ufed9'   #  0xE3 -> ARABIC LETTER KAF ISOLATED FORM
+    '\ufedb'   #  0xE4 -> ARABIC LETTER KAF INITIAL FORM
+    '\ufb92'   #  0xE5 -> ARABIC LETTER GAF ISOLATED FORM
+    '\ufb94'   #  0xE6 -> ARABIC LETTER GAF INITIAL FORM
+    '\ufedd'   #  0xE7 -> ARABIC LETTER LAM ISOLATED FORM
+    '\ufedf'   #  0xE8 -> ARABIC LETTER LAM INITIAL FORM
+    '\ufee0'   #  0xE9 -> ARABIC LETTER LAM MEDIAL FORM
+    '\ufee1'   #  0xEA -> ARABIC LETTER MEEM ISOLATED FORM
+    '\ufee3'   #  0xEB -> ARABIC LETTER MEEM INITIAL FORM
+    '\ufb9e'   #  0xEC -> ARABIC LETTER NOON GHUNNA ISOLATED FORM
+    '\ufee5'   #  0xED -> ARABIC LETTER NOON ISOLATED FORM
+    '\ufee7'   #  0xEE -> ARABIC LETTER NOON INITIAL FORM
+    '\ufe85'   #  0xEF -> ARABIC LETTER WAW WITH HAMZA ABOVE ISOLATED FORM
+    '\ufeed'   #  0xF0 -> ARABIC LETTER WAW ISOLATED FORM
+    '\ufba6'   #  0xF1 -> ARABIC LETTER HEH GOAL ISOLATED FORM
+    '\ufba8'   #  0xF2 -> ARABIC LETTER HEH GOAL INITIAL FORM
+    '\ufba9'   #  0xF3 -> ARABIC LETTER HEH GOAL MEDIAL FORM
+    '\ufbaa'   #  0xF4 -> ARABIC LETTER HEH DOACHASHMEE ISOLATED FORM
+    '\ufe80'   #  0xF5 -> ARABIC LETTER HAMZA ISOLATED FORM
+    '\ufe89'   #  0xF6 -> ARABIC LETTER YEH WITH HAMZA ABOVE ISOLATED FORM
+    '\ufe8a'   #  0xF7 -> ARABIC LETTER YEH WITH HAMZA ABOVE FINAL FORM
+    '\ufe8b'   #  0xF8 -> ARABIC LETTER YEH WITH HAMZA ABOVE INITIAL FORM
+    '\ufef1'   #  0xF9 -> ARABIC LETTER YEH ISOLATED FORM
+    '\ufef2'   #  0xFA -> ARABIC LETTER YEH FINAL FORM
+    '\ufef3'   #  0xFB -> ARABIC LETTER YEH INITIAL FORM
+    '\ufbb0'   #  0xFC -> ARABIC LETTER YEH BARREE WITH HAMZA ABOVE ISOLATED FORM
+    '\ufbae'   #  0xFD -> ARABIC LETTER YEH BARREE ISOLATED FORM
+    '\ufe7c'   #  0xFE -> ARABIC SHADDA ISOLATED FORM
+    '\ufe7d'   #  0xFF -> ARABIC SHADDA MEDIAL FORM
+)
+
+### Encoding table
+encoding_table=codecs.charmap_build(decoding_table)
+
+#   Copyright 2000-2010 Michael Hudson-Doyle <micahel@gmail.com>
+#                       Antonio Cuni
+#
+#                        All Rights Reserved
+#
+#
+# Permission to use, copy, modify, and distribute this software and
+# its documentation for any purpose is hereby granted without fee,
+# provided that the above copyright notice appear in all copies and
+# that both that copyright notice and this permission notice appear in
+# supporting documentation.
+#
+# THE AUTHOR MICHAEL HUDSON DISCLAIMS ALL WARRANTIES WITH REGARD TO
+# THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+# AND FITNESS, IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL,
+# INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
+# RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
+# CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+# CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+
+import re
+from . import commands, console, reader
+from .reader import Reader
+
+
+# types
+Command = commands.Command
+if False:
+    from .types import KeySpec, CommandName
+
+
+def prefix(wordlist: list[str], j: int = 0) -> str:
+    d = {}
+    i = j
+    try:
+        while 1:
+            for word in wordlist:
+                d[word[i]] = 1
+            if len(d) > 1:
+                return wordlist[0][j:i]
+            i += 1
+            d = {}
+    except IndexError:
+        return wordlist[0][j:i]
+    return ""
+
+
+STRIPCOLOR_REGEX = re.compile(r"\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[m|K]")
+
+def stripcolor(s: str) -> str:
+    return STRIPCOLOR_REGEX.sub('', s)
+
+
+def real_len(s: str) -> int:
+    return len(stripcolor(s))
+
+
+def left_align(s: str, maxlen: int) -> str:
+    stripped = stripcolor(s)
+    if len(stripped) > maxlen:
+        # too bad, we remove the color
+        return stripped[:maxlen]
+    padding = maxlen - len(stripped)
+    return s + ' '*padding
+
+
+def build_menu(
+        cons: console.Console,
+        wordlist: list[str],
+        start: int,
+        use_brackets: bool,
+        sort_in_column: bool,
+) -> tuple[list[str], int]:
+    if use_brackets:
+        item = "[ %s ]"
+        padding = 4
+    else:
+        item = "%s  "
+        padding = 2
+    maxlen = min(max(map(real_len, wordlist)), cons.width - padding)
+    cols = int(cons.width / (maxlen + padding))
+    rows = int((len(wordlist) - 1)/cols + 1)
+
+    if sort_in_column:
+        # sort_in_column=False (default)     sort_in_column=True
+        #          A B C                       A D G
+        #          D E F                       B E
+        #          G                           C F
+        #
+        # "fill" the table with empty words, so we always have the same amout
+        # of rows for each column
+        missing = cols*rows - len(wordlist)
+        wordlist = wordlist + ['']*missing
+        indexes = [(i % cols) * rows + i // cols for i in range(len(wordlist))]
+        wordlist = [wordlist[i] for i in indexes]
+    menu = []
+    i = start
+    for r in range(rows):
+        row = []
+        for col in range(cols):
+            row.append(item % left_align(wordlist[i], maxlen))
+            i += 1
+            if i >= len(wordlist):
+                break
+        menu.append(''.join(row))
+        if i >= len(wordlist):
+            i = 0
+            break
+        if r + 5 > cons.height:
+            menu.append("   %d more... " % (len(wordlist) - i))
+            break
+    return menu, i
+
+# this gets somewhat user interface-y, and as a result the logic gets
+# very convoluted.
+#
+#  To summarise the summary of the summary:- people are a problem.
+#                  -- The Hitch-Hikers Guide to the Galaxy, Episode 12
+
+#### Desired behaviour of the completions commands.
+# the considerations are:
+# (1) how many completions are possible
+# (2) whether the last command was a completion
+# (3) if we can assume that the completer is going to return the same set of
+#     completions: this is controlled by the ``assume_immutable_completions``
+#     variable on the reader, which is True by default to match the historical
+#     behaviour of pyrepl, but e.g. False in the ReadlineAlikeReader to match
+#     more closely readline's semantics (this is needed e.g. by
+#     fancycompleter)
+#
+# if there's no possible completion, beep at the user and point this out.
+# this is easy.
+#
+# if there's only one possible completion, stick it in.  if the last thing
+# user did was a completion, point out that he isn't getting anywhere, but
+# only if the ``assume_immutable_completions`` is True.
+#
+# now it gets complicated.
+#
+# for the first press of a completion key:
+#  if there's a common prefix, stick it in.
+
+#  irrespective of whether anything got stuck in, if the word is now
+#  complete, show the "complete but not unique" message
+
+#  if there's no common prefix and if the word is not now complete,
+#  beep.
+
+#        common prefix ->    yes          no
+#        word complete \/
+#            yes           "cbnu"      "cbnu"
+#            no              -          beep
+
+# for the second bang on the completion key
+#  there will necessarily be no common prefix
+#  show a menu of the choices.
+
+# for subsequent bangs, rotate the menu around (if there are sufficient
+# choices).
+
+
+class complete(commands.Command):
+    def do(self) -> None:
+        r: CompletingReader
+        r = self.reader  # type: ignore[assignment]
+        last_is_completer = r.last_command_is(self.__class__)
+        immutable_completions = r.assume_immutable_completions
+        completions_unchangable = last_is_completer and immutable_completions
+        stem = r.get_stem()
+        if not completions_unchangable:
+            r.cmpltn_menu_choices = r.get_completions(stem)
+
+        completions = r.cmpltn_menu_choices
+        if not completions:
+            r.error("no matches")
+        elif len(completions) == 1:
+            if completions_unchangable and len(completions[0]) == len(stem):
+                r.msg = "[ sole completion ]"
+                r.dirty = True
+            r.insert(completions[0][len(stem):])
+        else:
+            p = prefix(completions, len(stem))
+            if p:
+                r.insert(p)
+            if last_is_completer:
+                r.cmpltn_menu_visible = True
+                r.cmpltn_message_visible = False
+                r.cmpltn_menu, r.cmpltn_menu_end = build_menu(
+                    r.console, completions, r.cmpltn_menu_end,
+                    r.use_brackets, r.sort_in_column)
+                r.dirty = True
+            elif not r.cmpltn_menu_visible:
+                r.cmpltn_message_visible = True
+                if stem + p in completions:
+                    r.msg = "[ complete but not unique ]"
+                    r.dirty = True
+                else:
+                    r.msg = "[ not unique ]"
+                    r.dirty = True
+
+
+class self_insert(commands.self_insert):
+    def do(self) -> None:
+        r: CompletingReader
+        r = self.reader  # type: ignore[assignment]
+
+        commands.self_insert.do(self)
+        if r.cmpltn_menu_visible:
+            stem = r.get_stem()
+            if len(stem) < 1:
+                r.cmpltn_reset()
+            else:
+                completions = [w for w in r.cmpltn_menu_choices
+                               if w.startswith(stem)]
+                if completions:
+                    r.cmpltn_menu, r.cmpltn_menu_end = build_menu(
+                        r.console, completions, 0,
+                        r.use_brackets, r.sort_in_column)
+                else:
+                    r.cmpltn_reset()
+
+
+@dataclass
+class CompletingReader(Reader):
+    """Adds completion support"""
+
+    ### Class variables
+    # see the comment for the complete command
+    assume_immutable_completions = True
+    use_brackets = True  # display completions inside []
+    sort_in_column = False
+
+    ### Instance variables
+    cmpltn_menu: list[str] = field(init=False)
+    cmpltn_menu_visible: bool = field(init=False)
+    cmpltn_message_visible: bool = field(init=False)
+    cmpltn_menu_end: int = field(init=False)
+    cmpltn_menu_choices: list[str] = field(init=False)
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        self.cmpltn_reset()
+        for c in (complete, self_insert):
+            self.commands[c.__name__] = c
+            self.commands[c.__name__.replace('_', '-')] = c
+
+    def collect_keymap(self) -> tuple[tuple[KeySpec, CommandName], ...]:
+        return super().collect_keymap() + (
+            (r'\t', 'complete'),)
+
+    def after_command(self, cmd: Command) -> None:
+        super().after_command(cmd)
+        if not isinstance(cmd, (complete, self_insert)):
+            self.cmpltn_reset()
+
+    def calc_screen(self) -> list[str]:
+        screen = super().calc_screen()
+        if self.cmpltn_menu_visible:
+            # We display the completions menu below the current prompt
+            ly = self.lxy[1] + 1
+            screen[ly:ly] = self.cmpltn_menu
+            # If we're not in the middle of multiline edit, don't append to screeninfo
+            # since that screws up the position calculation in pos2xy function.
+            # This is a hack to prevent the cursor jumping
+            # into the completions menu when pressing left or down arrow.
+            if self.pos != len(self.buffer):
+                self.screeninfo[ly:ly] = [(0, [])]*len(self.cmpltn_menu)
+        return screen
+
+    def finish(self) -> None:
+        super().finish()
+        self.cmpltn_reset()
+
+    def cmpltn_reset(self) -> None:
+        self.cmpltn_menu = []
+        self.cmpltn_menu_visible = False
+        self.cmpltn_message_visible = False
+        self.cmpltn_menu_end = 0
+        self.cmpltn_menu_choices = []
+
+    def get_stem(self) -> str:
+        st = self.syntax_table
+        SW = reader.SYNTAX_WORD
+        b = self.buffer
+        p = self.pos - 1
+        while p >= 0 and st.get(b[p], SW) == SW:
+            p -= 1
+        return ''.join(b[p+1:self.pos])
+
+    def get_completions(self, stem: str) -> list[str]:
+        return []
+
+"""Python part of the warnings subsystem."""
+
+import sys
+
+
+__all__ = ["warn", "warn_explicit", "showwarning",
+           "formatwarning", "filterwarnings", "simplefilter",
+           "resetwarnings", "catch_warnings", "deprecated"]
+
+def showwarning(message, category, filename, lineno, file=None, line=None):
+    """Hook to write a warning to a file; replace if you like."""
+    msg = WarningMessage(message, category, filename, lineno, file, line)
+    _showwarnmsg_impl(msg)
+
+def formatwarning(message, category, filename, lineno, line=None):
+    """Function to format a warning the standard way."""
+    msg = WarningMessage(message, category, filename, lineno, None, line)
+    return _formatwarnmsg_impl(msg)
+
+def _showwarnmsg_impl(msg):
+    file = msg.file
+    if file is None:
+        file = sys.stderr
+        if file is None:
+            # sys.stderr is None when run with pythonw.exe:
+            # warnings get lost
+            return
+    text = _formatwarnmsg(msg)
+    try:
+        file.write(text)
+    except OSError:
+        # the file (probably stderr) is invalid - this warning gets lost.
+        pass
+
+def _formatwarnmsg_impl(msg):
+    category = msg.category.__name__
+    s =  f"{msg.filename}:{msg.lineno}: {category}: {msg.message}\n"
+
+    if msg.line is None:
+        try:
+            import linecache
+            line = linecache.getline(msg.filename, msg.lineno)
+        except Exception:
+            # When a warning is logged during Python shutdown, linecache
+            # and the import machinery don't work anymore
+            line = None
+            linecache = None
+    else:
+        line = msg.line
+    if line:
+        line = line.strip()
+        s += "  %s\n" % line
+
+    if msg.source is not None:
+        try:
+            import tracemalloc
+        # Logging a warning should not raise a new exception:
+        # catch Exception, not only ImportError and RecursionError.
+        except Exception:
+            # don't suggest to enable tracemalloc if it's not available
+            suggest_tracemalloc = False
+            tb = None
+        else:
+            try:
+                suggest_tracemalloc = not tracemalloc.is_tracing()
+                tb = tracemalloc.get_object_traceback(msg.source)
+            except Exception:
+                # When a warning is logged during Python shutdown, tracemalloc
+                # and the import machinery don't work anymore
+                suggest_tracemalloc = False
+                tb = None
+
+        if tb is not None:
+            s += 'Object allocated at (most recent call last):\n'
+            for frame in tb:
+                s += ('  File "%s", lineno %s\n'
+                      % (frame.filename, frame.lineno))
+
+                try:
+                    if linecache is not None:
+                        line = linecache.getline(frame.filename, frame.lineno)
+                    else:
+                        line = None
+                except Exception:
+                    line = None
+                if line:
+                    line = line.strip()
+                    s += '    %s\n' % line
+        elif suggest_tracemalloc:
+            s += (f'{category}: Enable tracemalloc to get the object '
+                  f'allocation traceback\n')
+    return s
+
+# Keep a reference to check if the function was replaced
+_showwarning_orig = showwarning
+
+def _showwarnmsg(msg):
+    """Hook to write a warning to a file; replace if you like."""
+    try:
+        sw = showwarning
+    except NameError:
+        pass
+    else:
+        if sw is not _showwarning_orig:
+            # warnings.showwarning() was replaced
+            if not callable(sw):
+                raise TypeError("warnings.showwarning() must be set to a "
+                                "function or method")
+
+            sw(msg.message, msg.category, msg.filename, msg.lineno,
+               msg.file, msg.line)
+            return
+    _showwarnmsg_impl(msg)
+
+# Keep a reference to check if the function was replaced
+_formatwarning_orig = formatwarning
+
+def _formatwarnmsg(msg):
+    """Function to format a warning the standard way."""
+    try:
+        fw = formatwarning
+    except NameError:
+        pass
+    else:
+        if fw is not _formatwarning_orig:
+            # warnings.formatwarning() was replaced
+            return fw(msg.message, msg.category,
+                      msg.filename, msg.lineno, msg.line)
+    return _formatwarnmsg_impl(msg)
+
+def filterwarnings(action, message="", category=Warning, module="", lineno=0,
+                   append=False):
+    """Insert an entry into the list of warnings filters (at the front).
+
+    'action' -- one of "error", "ignore", "always", "default", "module",
+                or "once"
+    'message' -- a regex that the warning message must match
+    'category' -- a class that the warning must be a subclass of
+    'module' -- a regex that the module name must match
+    'lineno' -- an integer line number, 0 matches all warnings
+    'append' -- if true, append to the list of filters
+    """
+    if action not in {"error", "ignore", "always", "default", "module", "once"}:
+        raise ValueError(f"invalid action: {action!r}")
+    if not isinstance(message, str):
+        raise TypeError("message must be a string")
+    if not isinstance(category, type) or not issubclass(category, Warning):
+        raise TypeError("category must be a Warning subclass")
+    if not isinstance(module, str):
+        raise TypeError("module must be a string")
+    if not isinstance(lineno, int):
+        raise TypeError("lineno must be an int")
+    if lineno < 0:
+        raise ValueError("lineno must be an int >= 0")
+
+    if message or module:
+        import re
+
+    if message:
+        message = re.compile(message, re.I)
+    else:
+        message = None
+    if module:
+        module = re.compile(module)
+    else:
+        module = None
+
+    _add_filter(action, message, category, module, lineno, append=append)
+
+def simplefilter(action, category=Warning, lineno=0, append=False):
+    """Insert a simple entry into the list of warnings filters (at the front).
+
+    A simple filter matches all modules and messages.
+    'action' -- one of "error", "ignore", "always", "default", "module",
+                or "once"
+    'category' -- a class that the warning must be a subclass of
+    'lineno' -- an integer line number, 0 matches all warnings
+    'append' -- if true, append to the list of filters
+    """
+    if action not in {"error", "ignore", "always", "default", "module", "once"}:
+        raise ValueError(f"invalid action: {action!r}")
+    if not isinstance(lineno, int):
+        raise TypeError("lineno must be an int")
+    if lineno < 0:
+        raise ValueError("lineno must be an int >= 0")
+    _add_filter(action, None, category, None, lineno, append=append)
+
+def _add_filter(*item, append):
+    # Remove possible duplicate filters, so new one will be placed
+    # in correct place. If append=True and duplicate exists, do nothing.
+    if not append:
+        try:
+            filters.remove(item)
+        except ValueError:
+            pass
+        filters.insert(0, item)
+    else:
+        if item not in filters:
+            filters.append(item)
+    _filters_mutated()
+
+def resetwarnings():
+    """Clear the list of warning filters, so that no filters are active."""
+    filters[:] = []
+    _filters_mutated()
+
+class _OptionError(Exception):
+    """Exception used by option processing helpers."""
+    pass
+
+# Helper to process -W options passed via sys.warnoptions
+def _processoptions(args):
+    for arg in args:
+        try:
+            _setoption(arg)
+        except _OptionError as msg:
+            print("Invalid -W option ignored:", msg, file=sys.stderr)
+
+# Helper for _processoptions()
+def _setoption(arg):
+    parts = arg.split(':')
+    if len(parts) > 5:
+        raise _OptionError("too many fields (max 5): %r" % (arg,))
+    while len(parts) < 5:
+        parts.append('')
+    action, message, category, module, lineno = [s.strip()
+                                                 for s in parts]
+    action = _getaction(action)
+    category = _getcategory(category)
+    if message or module:
+        import re
+    if message:
+        message = re.escape(message)
+    if module:
+        module = re.escape(module) + r'\Z'
+    if lineno:
+        try:
+            lineno = int(lineno)
+            if lineno < 0:
+                raise ValueError
+        except (ValueError, OverflowError):
+            raise _OptionError("invalid lineno %r" % (lineno,)) from None
+    else:
+        lineno = 0
+    filterwarnings(action, message, category, module, lineno)
+
+# Helper for _setoption()
+def _getaction(action):
+    if not action:
+        return "default"
+    if action == "all": return "always" # Alias
+    for a in ('default', 'always', 'ignore', 'module', 'once', 'error'):
+        if a.startswith(action):
+            return a
+    raise _OptionError("invalid action: %r" % (action,))
+
+# Helper for _setoption()
+def _getcategory(category):
+    if not category:
+        return Warning
+    if '.' not in category:
+        import builtins as m
+        klass = category
+    else:
+        module, _, klass = category.rpartition('.')
+        try:
+            m = __import__(module, None, None, [klass])
+        except ImportError:
+            raise _OptionError("invalid module name: %r" % (module,)) from None
+    try:
+        cat = getattr(m, klass)
+    except AttributeError:
+        raise _OptionError("unknown warning category: %r" % (category,)) from None
+    if not issubclass(cat, Warning):
+        raise _OptionError("invalid warning category: %r" % (category,))
+    return cat
+
+
+def _is_internal_filename(filename):
+    return 'importlib' in filename and '_bootstrap' in filename
+
+
+def _is_filename_to_skip(filename, skip_file_prefixes):
+    return any(filename.startswith(prefix) for prefix in skip_file_prefixes)
+
+
+def _is_internal_frame(frame):
+    """Signal whether the frame is an internal CPython implementation detail."""
+    return _is_internal_filename(frame.f_code.co_filename)
+
+
+def _next_external_frame(frame, skip_file_prefixes):
+    """Find the next frame that doesn't involve Python or user internals."""
+    frame = frame.f_back
+    while frame is not None and (
+            _is_internal_filename(filename := frame.f_code.co_filename) or
+            _is_filename_to_skip(filename, skip_file_prefixes)):
+        frame = frame.f_back
+    return frame
+
+
+# Code typically replaced by _warnings
+def warn(message, category=None, stacklevel=1, source=None,
+         *, skip_file_prefixes=()):
+    """Issue a warning, or maybe ignore it or raise an exception."""
+    # Check if message is already a Warning object
+    if isinstance(message, Warning):
+        category = message.__class__
+    # Check category argument
+    if category is None:
+        category = UserWarning
+    if not (isinstance(category, type) and issubclass(category, Warning)):
+        raise TypeError("category must be a Warning subclass, "
+                        "not '{:s}'".format(type(category).__name__))
+    if not isinstance(skip_file_prefixes, tuple):
+        # The C version demands a tuple for implementation performance.
+        raise TypeError('skip_file_prefixes must be a tuple of strs.')
+    if skip_file_prefixes:
+        stacklevel = max(2, stacklevel)
+    # Get context information
+    try:
+        if stacklevel <= 1 or _is_internal_frame(sys._getframe(1)):
+            # If frame is too small to care or if the warning originated in
+            # internal code, then do not try to hide any frames.
+            frame = sys._getframe(stacklevel)
+        else:
+            frame = sys._getframe(1)
+            # Look for one frame less since the above line starts us off.
+            for x in range(stacklevel-1):
+                frame = _next_external_frame(frame, skip_file_prefixes)
+                if frame is None:
+                    raise ValueError
+    except ValueError:
+        globals = sys.__dict__
+        filename = "<sys>"
+        lineno = 0
+    else:
+        globals = frame.f_globals
+        filename = frame.f_code.co_filename
+        lineno = frame.f_lineno
+    if '__name__' in globals:
+        module = globals['__name__']
+    else:
+        module = "<string>"
+    registry = globals.setdefault("__warningregistry__", {})
+    warn_explicit(message, category, filename, lineno, module, registry,
+                  globals, source)
+
+def warn_explicit(message, category, filename, lineno,
+                  module=None, registry=None, module_globals=None,
+                  source=None):
+    lineno = int(lineno)
+    if module is None:
+        module = filename or "<unknown>"
+        if module[-3:].lower() == ".py":
+            module = module[:-3] # XXX What about leading pathname?
+    if registry is None:
+        registry = {}
+    if registry.get('version', 0) != _filters_version:
+        registry.clear()
+        registry['version'] = _filters_version
+    if isinstance(message, Warning):
+        text = str(message)
+        category = message.__class__
+    else:
+        text = message
+        message = category(message)
+    key = (text, category, lineno)
+    # Quick test for common case
+    if registry.get(key):
+        return
+    # Search the filters
+    for item in filters:
+        action, msg, cat, mod, ln = item
+        if ((msg is None or msg.match(text)) and
+            issubclass(category, cat) and
+            (mod is None or mod.match(module)) and
+            (ln == 0 or lineno == ln)):
+            break
+    else:
+        action = defaultaction
+    # Early exit actions
+    if action == "ignore":
+        return
+
+    # Prime the linecache for formatting, in case the
+    # "file" is actually in a zipfile or something.
+    import linecache
+    linecache.getlines(filename, module_globals)
+
+    if action == "error":
+        raise message
+    # Other actions
+    if action == "once":
+        registry[key] = 1
+        oncekey = (text, category)
+        if onceregistry.get(oncekey):
+            return
+        onceregistry[oncekey] = 1
+    elif action == "always":
+        pass
+    elif action == "module":
+        registry[key] = 1
+        altkey = (text, category, 0)
+        if registry.get(altkey):
+            return
+        registry[altkey] = 1
+    elif action == "default":
+        registry[key] = 1
+    else:
+        # Unrecognized actions are errors
+        raise RuntimeError(
+              "Unrecognized action (%r) in warnings.filters:\n %s" %
+              (action, item))
+    # Print message and context
+    msg = WarningMessage(message, category, filename, lineno, source=source)
+    _showwarnmsg(msg)
+
+
+class WarningMessage(object):
+
+    _WARNING_DETAILS = ("message", "category", "filename", "lineno", "file",
+                        "line", "source")
+
+    def __init__(self, message, category, filename, lineno, file=None,
+                 line=None, source=None):
+        self.message = message
+        self.category = category
+        self.filename = filename
+        self.lineno = lineno
+        self.file = file
+        self.line = line
+        self.source = source
+        self._category_name = category.__name__ if category else None
+
+    def __str__(self):
+        return ("{message : %r, category : %r, filename : %r, lineno : %s, "
+                    "line : %r}" % (self.message, self._category_name,
+                                    self.filename, self.lineno, self.line))
+
+
+class catch_warnings(object):
+
+    """A context manager that copies and restores the warnings filter upon
+    exiting the context.
+
+    The 'record' argument specifies whether warnings should be captured by a
+    custom implementation of warnings.showwarning() and be appended to a list
+    returned by the context manager. Otherwise None is returned by the context
+    manager. The objects appended to the list are arguments whose attributes
+    mirror the arguments to showwarning().
+
+    The 'module' argument is to specify an alternative module to the module
+    named 'warnings' and imported under that name. This argument is only useful
+    when testing the warnings module itself.
+
+    If the 'action' argument is not None, the remaining arguments are passed
+    to warnings.simplefilter() as if it were called immediately on entering the
+    context.
+    """
+
+    def __init__(self, *, record=False, module=None,
+                 action=None, category=Warning, lineno=0, append=False):
+        """Specify whether to record warnings and if an alternative module
+        should be used other than sys.modules['warnings'].
+
+        For compatibility with Python 3.0, please consider all arguments to be
+        keyword-only.
+
+        """
+        self._record = record
+        self._module = sys.modules['warnings'] if module is None else module
+        self._entered = False
+        if action is None:
+            self._filter = None
+        else:
+            self._filter = (action, category, lineno, append)
+
+    def __repr__(self):
+        args = []
+        if self._record:
+            args.append("record=True")
+        if self._module is not sys.modules['warnings']:
+            args.append("module=%r" % self._module)
+        name = type(self).__name__
+        return "%s(%s)" % (name, ", ".join(args))
+
+    def __enter__(self):
+        if self._entered:
+            raise RuntimeError("Cannot enter %r twice" % self)
+        self._entered = True
+        self._filters = self._module.filters
+        self._module.filters = self._filters[:]
+        self._module._filters_mutated()
+        self._showwarning = self._module.showwarning
+        self._showwarnmsg_impl = self._module._showwarnmsg_impl
+        if self._filter is not None:
+            simplefilter(*self._filter)
+        if self._record:
+            log = []
+            self._module._showwarnmsg_impl = log.append
+            # Reset showwarning() to the default implementation to make sure
+            # that _showwarnmsg() calls _showwarnmsg_impl()
+            self._module.showwarning = self._module._showwarning_orig
+            return log
+        else:
+            return None
+
+    def __exit__(self, *exc_info):
+        if not self._entered:
+            raise RuntimeError("Cannot exit %r without entering first" % self)
+        self._module.filters = self._filters
+        self._module._filters_mutated()
+        self._module.showwarning = self._showwarning
+        self._module._showwarnmsg_impl = self._showwarnmsg_impl
+
+
+class deprecated:
+    """Indicate that a class, function or overload is deprecated.
+
+    When this decorator is applied to an object, the type checker
+    will generate a diagnostic on usage of the deprecated object.
+
+    Usage:
+
+        @deprecated("Use B instead")
+        class A:
+            pass
+
+        @deprecated("Use g instead")
+        def f():
+            pass
+
+        @overload
+        @deprecated("int support is deprecated")
+        def g(x: int) -> int: ...
+        @overload
+        def g(x: str) -> int: ...
+
+    The warning specified by *category* will be emitted at runtime
+    on use of deprecated objects. For functions, that happens on calls;
+    for classes, on instantiation and on creation of subclasses.
+    If the *category* is ``None``, no warning is emitted at runtime.
+    The *stacklevel* determines where the
+    warning is emitted. If it is ``1`` (the default), the warning
+    is emitted at the direct caller of the deprecated object; if it
+    is higher, it is emitted further up the stack.
+    Static type checker behavior is not affected by the *category*
+    and *stacklevel* arguments.
+
+    The deprecation message passed to the decorator is saved in the
+    ``__deprecated__`` attribute on the decorated object.
+    If applied to an overload, the decorator
+    must be after the ``@overload`` decorator for the attribute to
+    exist on the overload as returned by ``get_overloads()``.
+
+    See PEP 702 for details.
+
+    """
+    def __init__(
+        self,
+        message: str,
+        /,
+        *,
+        category: type[Warning] | None = DeprecationWarning,
+        stacklevel: int = 1,
+    ) -> None:
+        if not isinstance(message, str):
+            raise TypeError(
+                f"Expected an object of type str for 'message', not {type(message).__name__!r}"
+            )
+        self.message = message
+        self.category = category
+        self.stacklevel = stacklevel
+
+    def __call__(self, arg, /):
+        # Make sure the inner functions created below don't
+        # retain a reference to self.
+        msg = self.message
+        category = self.category
+        stacklevel = self.stacklevel
+        if category is None:
+            arg.__deprecated__ = msg
+            return arg
+        elif isinstance(arg, type):
+            import functools
+            from types import MethodType
+
+            original_new = arg.__new__
+
+            @functools.wraps(original_new)
+            def __new__(cls, /, *args, **kwargs):
+                if cls is arg:
+                    warn(msg, category=category, stacklevel=stacklevel + 1)
+                if original_new is not object.__new__:
+                    return original_new(cls, *args, **kwargs)
+                # Mirrors a similar check in object.__new__.
+                elif cls.__init__ is object.__init__ and (args or kwargs):
+                    raise TypeError(f"{cls.__name__}() takes no arguments")
+                else:
+                    return original_new(cls)
+
+            arg.__new__ = staticmethod(__new__)
+
+            if "__init_subclass__" in arg.__dict__:
+                # __init_subclass__ is directly present on the decorated class.
+                # Synthesize a wrapper that calls this method directly.
+                original_init_subclass = arg.__init_subclass__
+                # We need slightly different behavior if __init_subclass__
+                # is a bound method (likely if it was implemented in Python).
+                # Otherwise, it likely means it's a builtin such as
+                # object's implementation of __init_subclass__.
+                if isinstance(original_init_subclass, MethodType):
+                    original_init_subclass = original_init_subclass.__func__
+
+                @functools.wraps(original_init_subclass)
+                def __init_subclass__(*args, **kwargs):
+                    warn(msg, category=category, stacklevel=stacklevel + 1)
+                    return original_init_subclass(*args, **kwargs)
+            else:
+                def __init_subclass__(cls, *args, **kwargs):
+                    warn(msg, category=category, stacklevel=stacklevel + 1)
+                    return super(arg, cls).__init_subclass__(*args, **kwargs)
+
+            arg.__init_subclass__ = classmethod(__init_subclass__)
+
+            arg.__deprecated__ = __new__.__deprecated__ = msg
+            __init_subclass__.__deprecated__ = msg
+            return arg
+        elif callable(arg):
+            import functools
+            import inspect
+
+            @functools.wraps(arg)
+            def wrapper(*args, **kwargs):
+                warn(msg, category=category, stacklevel=stacklevel + 1)
+                return arg(*args, **kwargs)
+
+            if inspect.iscoroutinefunction(arg):
+                wrapper = inspect.markcoroutinefunction(wrapper)
+
+            arg.__deprecated__ = wrapper.__deprecated__ = msg
+            return wrapper
+        else:
+            raise TypeError(
+                "@deprecated decorator with non-None category must be applied to "
+                f"a class or callable, not {arg!r}"
+            )
+
+
+_DEPRECATED_MSG = "{name!r} is deprecated and slated for removal in Python {remove}"
+
+def _deprecated(name, message=_DEPRECATED_MSG, *, remove, _version=sys.version_info):
+    """Warn that *name* is deprecated or should be removed.
+
+    RuntimeError is raised if *remove* specifies a major/minor tuple older than
+    the current Python version or the same version but past the alpha.
+
+    The *message* argument is formatted with *name* and *remove* as a Python
+    version tuple (e.g. (3, 11)).
+
+    """
+    remove_formatted = f"{remove[0]}.{remove[1]}"
+    if (_version[:2] > remove) or (_version[:2] == remove and _version[3] != "alpha"):
+        msg = f"{name!r} was slated for removal after Python {remove_formatted} alpha"
+        raise RuntimeError(msg)
+    else:
+        msg = message.format(name=name, remove=remove_formatted)
+        warn(msg, DeprecationWarning, stacklevel=3)
+
+
+# Private utility function called by _PyErr_WarnUnawaitedCoroutine
+def _warn_unawaited_coroutine(coro):
+    msg_lines = [
+        f"coroutine '{coro.__qualname__}' was never awaited\n"
+    ]
+    if coro.cr_origin is not None:
+        import linecache, traceback
+        def extract():
+            for filename, lineno, funcname in reversed(coro.cr_origin):
+                line = linecache.getline(filename, lineno)
+                yield (filename, lineno, funcname, line)
+        msg_lines.append("Coroutine created at (most recent call last)\n")
+        msg_lines += traceback.format_list(list(extract()))
+    msg = "".join(msg_lines).rstrip("\n")
+    # Passing source= here means that if the user happens to have tracemalloc
+    # enabled and tracking where the coroutine was created, the warning will
+    # contain that traceback. This does mean that if they have *both*
+    # coroutine origin tracking *and* tracemalloc enabled, they'll get two
+    # partially-redundant tracebacks. If we wanted to be clever we could
+    # probably detect this case and avoid it, but for now we don't bother.
+    warn(msg, category=RuntimeWarning, stacklevel=2, source=coro)
+
+
+# filters contains a sequence of filter 5-tuples
+# The components of the 5-tuple are:
+# - an action: error, ignore, always, default, module, or once
+# - a compiled regex that must match the warning message
+# - a class representing the warning category
+# - a compiled regex that must match the module that is being warned
+# - a line number for the line being warning, or 0 to mean any line
+# If either if the compiled regexs are None, match anything.
+try:
+    from _warnings import (filters, _defaultaction, _onceregistry,
+                           warn, warn_explicit, _filters_mutated)
+    defaultaction = _defaultaction
+    onceregistry = _onceregistry
+    _warnings_defaults = True
+except ImportError:
+    filters = []
+    defaultaction = "default"
+    onceregistry = {}
+
+    _filters_version = 1
+
+    def _filters_mutated():
+        global _filters_version
+        _filters_version += 1
+
+    _warnings_defaults = False
+
+
+# Module initialization
+_processoptions(sys.warnoptions)
+if not _warnings_defaults:
+    # Several warning categories are ignored by default in regular builds
+    if not hasattr(sys, 'gettotalrefcount'):
+        filterwarnings("default", category=DeprecationWarning,
+                       module="__main__", append=1)
+        simplefilter("ignore", category=DeprecationWarning, append=1)
+        simplefilter("ignore", category=PendingDeprecationWarning, append=1)
+        simplefilter("ignore", category=ImportWarning, append=1)
+        simplefilter("ignore", category=ResourceWarning, append=1)
+
+del _warnings_defaults

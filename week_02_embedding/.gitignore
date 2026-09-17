@@ -1,0 +1,17 @@
+# corpora — 95 MB, regenerate with the download command in the README
+corpus/text8
+corpus/prose_text.txt
+corpus/*.txt
+corpus/text8_length.py
+corpus/vocab_creation.py
+
+# trained models — regenerate with `python main.py`
+models/
+*.npz
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+main.py

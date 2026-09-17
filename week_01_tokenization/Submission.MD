@@ -70,7 +70,7 @@ This setup ensures the system prompts work as designed and ensure the user can n
 ### How BPE learns Merges
 
 Within the BPE tokenizer a merge is selected by finding which sequence of bytes occur most often within the training corpus within a word. The within a word peice is extremely import the tokeinzer only looks at sequences which occur within a single word and not across words which is extremely important when it comes time for the tokenizer to generalize to text it hasn't seen. When a merge is selected that means the sequence of bytes will now become a token and thus must receive an ID and be added to the vocab dictionary. The next step is updating the corpus so that every time that sequence of bytes is seen it is now replaced with the new ID. This is an extremely important step because all future merges rely on the fact that the corpus has been updated after the last merge was completed. This process continue until we have reached the token limit.
-In the case of ties it's important that the selection is deterministic meaning if the tokenizer is trained on the same data it will take the same exact merge at each step. When updating the corpus 
+In the case of ties it's important that the selection is deterministic meaning if the tokenizer is trained on the same data it will take the same exact merge at each step.
 
 ### Serialization format
 

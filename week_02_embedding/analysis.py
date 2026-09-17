@@ -54,7 +54,7 @@ class Embedding_Analyzer:
             
             v_d = v_b - v_a + v_c
             norm = np.linalg.norm(v_d)
-            v_norm = v_d / np.maximum(norm, 1e9)
+            v_norm = v_d / np.maximum(norm, 1e-9)
             
             sims = np.einsum('D, VD -> V', v_norm, self.E)
         

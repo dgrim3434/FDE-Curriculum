@@ -101,7 +101,9 @@ class Skip_Gram:
         path = prefix + ".model"
         
         with open(path, 'r', encoding='utf-8') as f:
-            assert f.readline().strip() == "Embedding Model V1"
+            
+            if f.readline().strip() != "Embedding Model V1":
+                raise ValueError("ERROR: Invalid file")
             
             total_vocab = int(f.readline().strip())
             

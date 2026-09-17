@@ -1,148 +1,148 @@
-Prose Baseline Similarity: 0.9989133656059889
-Text 8 Baseline Similarity: 0.3677123943755314
+Prose Baseline Similarity: 0.9987970781886895
+Text 8 Baseline Similarity: 0.3687050376939312
 MODEL WORD SIMILARITY COMPARISON:
 
 Prose Similarities:
 word: king:
-      similar word: august, score: 0.999394014264846
-      similar word: pieces, score: 0.9993580693446256
-      similar word: beale, score: 0.9993524143091526
+      similar word: fleet, score: 0.9992259221555585
+      similar word: appeared, score: 0.9992239333192484
+      similar word: bringing, score: 0.9992069334048039
 word: man:
-      similar word: enough, score: 0.9992315053544752
-      similar word: m, score: 0.9992128574547681
-      similar word: take, score: 0.9991678437511804
+      similar word: good, score: 0.9991903678902108
+      similar word: take, score: 0.9990903207718891
+      similar word: m, score: 0.9990336779120541
 word: water:
-      similar word: hung, score: 0.9993618216353604
-      similar word: seemingly, score: 0.9993427351888666
-      similar word: forming, score: 0.9993385418287903
+      similar word: entire, score: 0.9992840174850613
+      similar word: waters, score: 0.9992584775136801
+      similar word: waves, score: 0.9992124060482792
 word: one:
-      similar word: mortal, score: 0.9993881430286213
-      similar word: equal, score: 0.9993772633107817
-      similar word: picture, score: 0.9993769570568074
+      similar word: spermaceti, score: 0.9993673807414976
+      similar word: others, score: 0.9993649194564675
+      similar word: number, score: 0.999364113934587
 word: city:
-      similar word: change, score: 0.9995389625134926
-      similar word: namely, score: 0.9995363905642909
-      similar word: introduced, score: 0.9995287019272274
+      similar word: namely, score: 0.9995536149116141
+      similar word: change, score: 0.999552587299005
+      similar word: introduced, score: 0.9995501110008608
 word: france:
-      similar word: possess, score: 0.9995396023707204
-      similar word: hollow, score: 0.9995344836080013
-      similar word: laborers, score: 0.9995290633735877
+      similar word: hollow, score: 0.9995664577096213
+      similar word: extracts, score: 0.999541629067348
+      similar word: windows, score: 0.9995415666286127
 word: run:
-      similar word: souls, score: 0.9992820895113829
-      similar word: leave, score: 0.9992816696755744
-      similar word: vacant, score: 0.9992778939238974
+      similar word: expressed, score: 0.9993880458373346
+      similar word: harmless, score: 0.9993823861738202
+      similar word: peter, score: 0.9993815293896058
 word: good:
-      similar word: take, score: 0.9991312406714452
-      similar word: yes, score: 0.9991006980530064
-      similar word: bye, score: 0.9990653064282331
+      similar word: man, score: 0.9991903678902108
+      similar word: make, score: 0.9991811877889771
+      similar word: yes, score: 0.9991296937916977
 word: two:
-      similar word: above, score: 0.9992071217828549
-      similar word: american, score: 0.9992064390351447
-      similar word: length, score: 0.9992035372485844
+      similar word: above, score: 0.9993937004286884
+      similar word: leaving, score: 0.9993653424418293
+      similar word: floating, score: 0.9992484951518542
 word: said:
-      similar word: me, score: 0.9988577154071139
-      similar word: didn, score: 0.9987760826876995
-      similar word: tell, score: 0.9985854742628932
+      similar word: me, score: 0.9989602591141443
+      similar word: what, score: 0.9988356690478871
+      similar word: sir, score: 0.9987547452079157
 Text8 Similarities:
 word: king:
-      similar word: consort, score: 0.7888738257512286
-      similar word: throne, score: 0.7751808009607295
-      similar word: isabella, score: 0.7530005772861976
+      similar word: vii, score: 0.7731255222377127
+      similar word: consort, score: 0.7706812518282572
+      similar word: macedon, score: 0.7400358571255137
 word: man:
-      similar word: philia, score: 0.6447138250659386
-      similar word: gentleman, score: 0.6358291793224579
-      similar word: stranger, score: 0.6337251026024577
+      similar word: stranger, score: 0.6907521610250538
+      similar word: loving, score: 0.6859081366800599
+      similar word: wise, score: 0.6849985145337321
 word: water:
-      similar word: pouring, score: 0.7331029145153082
-      similar word: brackish, score: 0.7326254962002778
-      similar word: inflow, score: 0.7268036379879292
+      similar word: brackish, score: 0.7623956286979795
+      similar word: inflow, score: 0.745642190700756
+      similar word: pouring, score: 0.7337843811609739
 word: one:
-      similar word: six, score: 0.9593184132793242
-      similar word: eight, score: 0.9538823624797981
-      similar word: five, score: 0.9425947548353955
+      similar word: eight, score: 0.9463834120322204
+      similar word: seven, score: 0.9395131912479545
+      similar word: five, score: 0.9375607282590341
 word: city:
-      similar word: town, score: 0.7644444062116744
-      similar word: suburbs, score: 0.7642977292389255
-      similar word: seaport, score: 0.7424143314980162
+      similar word: town, score: 0.8074152947362297
+      similar word: suburbs, score: 0.7638565449600172
+      similar word: bustling, score: 0.7498887725538422
 word: france:
-      similar word: italy, score: 0.7781573784986391
-      similar word: spain, score: 0.7637060329383993
-      similar word: nantes, score: 0.7445079540688804
+      similar word: italy, score: 0.7901869621152673
+      similar word: spain, score: 0.755041921674038
+      similar word: netherlands, score: 0.7347493361048958
 word: run:
-      similar word: runs, score: 0.720124096644267
-      similar word: running, score: 0.6745525029999292
-      similar word: ditch, score: 0.6203533485526589
+      similar word: runs, score: 0.7232933255954138
+      similar word: running, score: 0.7124815745020685
+      similar word: catches, score: 0.6129996861911005
 word: good:
-      similar word: bad, score: 0.6998923338340066
-      similar word: luck, score: 0.6257681615946872
-      similar word: excellent, score: 0.6257016911024909
+      similar word: bad, score: 0.6726519583300734
+      similar word: luck, score: 0.640920956857751
+      similar word: excellent, score: 0.5968907279331496
 word: two:
-      similar word: three, score: 0.955176446290892
-      similar word: four, score: 0.949245107560355
-      similar word: five, score: 0.9398500078110774
+      similar word: three, score: 0.9439449674342559
+      similar word: four, score: 0.9326204980041192
+      similar word: five, score: 0.9275796312525321
 word: said:
-      similar word: replied, score: 0.7160660377123249
-      similar word: pleased, score: 0.7157753970879877
-      similar word: remarked, score: 0.7077428597290283
+      similar word: answered, score: 0.7328095104837171
+      similar word: pleased, score: 0.7262237905003057
+      similar word: replied, score: 0.7237689509686802
 MODEL WORD ANALOGIES COMPARISON
 
 Prose Similarities (add)
 two is to one as three is to: ?
-      similar word: boats, score: 9.997348199674612e-10
-      similar word: side, score: 9.997031736407135e-10
-      similar word: bows, score: 9.994932151102766e-10
+      similar word: flew, score: 0.9980841929777371
+      similar word: each, score: 0.9979815477331783
+      similar word: on, score: 0.9979641429293798
 running is to run as walk is to: ?
-      similar word: arched, score: 1.0002520116941244e-09
-      similar word: laws, score: 1.0002249435255267e-09
-      similar word: removing, score: 1.0002197306934192e-09
+      similar word: enormous, score: 0.9986697666798445
+      similar word: flew, score: 0.9985911111243708
+      similar word: arched, score: 0.9985653774622101
 king is to man as woman is to: ?
-      similar word: vast, score: 1.0028795314235728e-09
-      similar word: which, score: 1.0027640617358636e-09
-      similar word: coast, score: 1.0025444453799919e-09
+      similar word: vast, score: 0.9976721524144399
+      similar word: their, score: 0.9976237124564269
+      similar word: side, score: 0.9975923196034011
 Text8 Similarities (add)
 two is to one as three is to: ?
-      similar word: four, score: 9.83097834167557e-10
-      similar word: zero, score: 9.586455863999797e-10
-      similar word: five, score: 9.57881940349573e-10
+      similar word: four, score: 0.8970072145065292
+      similar word: five, score: 0.8647338800010697
+      similar word: six, score: 0.8613648587576106
 running is to run as walk is to: ?
-      similar word: walking, score: 8.94498857716155e-10
-      similar word: weave, score: 8.112909294214248e-10
-      similar word: lip, score: 8.09386238814633e-10
+      similar word: walking, score: 0.7054996313208268
+      similar word: tore, score: 0.660428489076643
+      similar word: shoulders, score: 0.6566011971253718
 dogs is to dog as cat is to: ?
-      similar word: cows, score: 8.215038384218331e-10
-      similar word: honey, score: 8.061343611289826e-10
-      similar word: bovine, score: 7.985368259011872e-10
+      similar word: cows, score: 0.6472521927366288
+      similar word: peanuts, score: 0.6460070803973282
+      similar word: bees, score: 0.6392248885008605
 king is to man as woman is to: ?
-      similar word: consort, score: 8.553080881326826e-10
-      similar word: queen, score: 8.419226167574561e-10
-      similar word: throne, score: 8.379696325540325e-10
+      similar word: consort, score: 0.5942014772538244
+      similar word: concubine, score: 0.5872559571733151
+      similar word: queen, score: 0.5841509500619888
 Prose Similarities (mult)
 two is to one as three is to: ?
-      similar word: boats, score: 0.9988676054986838
-      similar word: side, score: 0.9988519423727025
-      similar word: bows, score: 0.9987471227576865
+      similar word: flew, score: 0.9986627701546343
+      similar word: each, score: 0.9986111931062855
+      similar word: on, score: 0.9986024731439441
 running is to run as walk is to: ?
-      similar word: arched, score: 0.9991263076595291
-      similar word: laws, score: 0.9991128309664156
-      similar word: removing, score: 0.9991102385177335
+      similar word: enormous, score: 0.9989721990823225
+      similar word: flew, score: 0.9989329201489061
+      similar word: arched, score: 0.9989200814416338
 king is to man as woman is to: ?
-      similar word: vast, score: 1.000441453637554
-      similar word: which, score: 1.0003848888370122
-      similar word: coast, score: 1.0002730260490684
+      similar word: vast, score: 1.001648231419059
+      similar word: their, score: 1.0016269443048398
+      similar word: side, score: 1.0016122181517817
 Text8 Similarities (mult)
 two is to one as three is to: ?
-      similar word: four, score: 0.9906283377731443
-      similar word: zero, score: 0.9789170128933675
-      similar word: five, score: 0.9779214114816404
+      similar word: four, score: 0.9886396864699868
+      similar word: five, score: 0.9708391516626236
+      similar word: six, score: 0.9689744332549305
 running is to run as walk is to: ?
-      similar word: walking, score: 0.9713571972526329
-      similar word: lip, score: 0.9282460183273544
-      similar word: lips, score: 0.9218290409986779
+      similar word: walking, score: 0.9594888583848696
+      similar word: shoulders, score: 0.932711699777967
+      similar word: shoulder, score: 0.9252171407981518
 dogs is to dog as cat is to: ?
-      similar word: cows, score: 0.9089976138146866
-      similar word: honey, score: 0.9036539016754995
-      similar word: bovine, score: 0.9026536290661248
+      similar word: peanuts, score: 0.9140592874095507
+      similar word: bees, score: 0.9074849955442775
+      similar word: cows, score: 0.9038214055358088
 king is to man as woman is to: ?
-      similar word: queen, score: 0.9483007989534586
-      similar word: consort, score: 0.9355636008287285
-      similar word: daughter, score: 0.9304604066140977
+      similar word: queen, score: 0.9197404576011062
+      similar word: consort, score: 0.9139453197644754
+      similar word: concubine, score: 0.910677329898269

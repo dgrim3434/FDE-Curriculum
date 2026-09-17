@@ -1,4 +1,3 @@
-# corpora — 95 MB, regenerate with the download command in the README
 corpus/text8
 corpus/prose_text.txt
 corpus/*.txt
@@ -13,5 +12,3 @@ models/
 __pycache__/
 *.pyc
 .venv/
-
-main.py

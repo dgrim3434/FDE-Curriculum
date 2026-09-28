@@ -1,0 +1,11 @@
+{% if examples %}
+Here are some examples of how a model should be correctly routed:
+{% for example in examples %}
+Query: {{example.question}}
+Model: {{example.model}}
+
+{% endfor %}
+{% endif %}
+
+Here is the question:
+{{query}}

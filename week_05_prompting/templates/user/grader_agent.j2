@@ -1,0 +1,13 @@
+{% if examples %}
+Here all all of the examples which where provided to the previos agent:
+{% for example in examples %}
+    - {{example}}
+{% endfor %}
+
+{% endif %}
+
+Here is the previous answer which was provided by the agent:
+{{agent_answer}}
+
+And here is the query which the agent was answering:
+{{query}}

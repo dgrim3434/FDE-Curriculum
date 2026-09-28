@@ -1,0 +1,15 @@
+{%if examples %}
+Here are some examples for how you must reason through the problem.
+
+{%for example in examples%}
+Question: {{example.question}}
+Thinking: {{example.thinking}}
+Answer: {{example.answer}}
+
+{% endfor %}
+
+{% endif %}
+
+Here is the math problem you must work on. All of your work must be shown before the answer should appear.
+{{query}}
+

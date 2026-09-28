@@ -1,0 +1,13 @@
+{{system_prompt}}
+
+You must break this task down into peices and provide your full thought process for how you arrived at the answer. Your response must start with all of your thinking being inside of <thinking>
+tags, once you have completed all of your thinking and have reached the final answer you must wrap the answer in <answer> tags
+
+{%if examples%}
+{%for example in examples%}
+Here is an example of how you should navigate to the solution:
+    <question>{{example.question}}</question>
+    <thinking>{{example.thinking}}</thinking>
+    <answer>{{example.answer}}</answer>
+{% endfor %}
+{% endif %}

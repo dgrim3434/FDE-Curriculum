@@ -1,0 +1,20 @@
+Your previous messages had issues when being parsed. 
+Your output must be strictly JSON and nothing else.
+
+Return ONLY a JSON object with exactly these fields:
+{% for f in fields %}
+- "{{ f.name }}": {{ f.type }}{{ " or null" if f.nullable else "" }}
+{% if f.allowed %}
+  Allowed values: {{ f.allowed | join(", ") }}
+{% endif %}
+{% if f.description %}
+  Meaning: {{ f.description }}
+{% endif %}
+{% endfor %}
+
+
+And Here is a list of all the errors encountered during the Return
+{% for error in errors%}
+    - {{error}}
+{% endfor %}
+Return ONLY the corrected JSON, no other text.

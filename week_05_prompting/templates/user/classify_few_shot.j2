@@ -1,0 +1,11 @@
+Here are some examples to help understand what the classification process looks like. Each example query will be incased by <example></example>
+and the answer will be incased in <answer></answer>. These examples are here to show you how the answer should be derived from the user query but
+should not bias your answer in any meaningful way.
+
+Examples:
+{% for query, answer in examples%}
+<example>{{query}}</example>
+<answer>{{answer}}</answer>
+{% endfor %}
+Here is the query which must now be classified:
+{{query}}

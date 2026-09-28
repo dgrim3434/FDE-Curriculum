@@ -4,7 +4,7 @@ from experiments.load_data import load_banking77
 import numpy as np
 import pandas as pd
 from pathlib import Path
-from constants import RESULTS_DIR, LABEL_COLUMN, QUERY_COLUMN
+from experiments.constants import RESULTS_DIR, LABEL_COLUMN, QUERY_COLUMN
 
 
 MODEL_NAME = "all-MiniLM-L6-v2"

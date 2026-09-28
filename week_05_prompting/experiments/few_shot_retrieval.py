@@ -9,7 +9,7 @@ from jinja2 import Environment, FileSystemLoader
 from prompting.sampler.sample_generator import top_similarity, capped_label
 from prompting.sampler.embeddings import embed_queries
 
-from constants import TEMPLATE_DIR, RESULTS_DIR, ARTIFACT_DIR, LABEL_COLUMN, QUERY_COLUMN
+from experiments.constants import TEMPLATE_DIR, RESULTS_DIR, ARTIFACT_DIR, LABEL_COLUMN, QUERY_COLUMN
 llm = AnthropicClient()
 
 env = Environment(loader=FileSystemLoader(TEMPLATE_DIR), trim_blocks=0)
@@ -46,8 +46,8 @@ def run_few_shot():
         
         query_answers = []
         
-        for row in data.itertuples():
-            query_answers.append((row.text, row.label_name))
+        for ex in data.itertuples():
+            query_answers.append((ex.text, ex.label_name))
         
         user_prompt_sims = user_template.render(examples = query_answers, query = query)
         

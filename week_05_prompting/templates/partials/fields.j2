@@ -1,0 +1,9 @@
+{% for f in fields %}
+- "{{ f.name }}": {{ f.type }}{{ " or null" if f.nullable else "" }}
+{% if f.allowed %}
+  Allowed values: {{ f.allowed | join(", ") }}
+{% endif %}
+{% if f.description %}
+  Meaning: {{ f.description }}
+{% endif %}
+{% endfor %}

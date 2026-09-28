@@ -8,7 +8,6 @@ Cell    = cosine similarity(query, example)
 Outline = the example's intent matches the query's true intent   ("the diagonal")
 Number  = shown only on cells this query's selector actually picked
 
-Run from week_05_prompting/:  python -m experiments.similarity_heatmap
 """
 import json
 from pathlib import Path
@@ -149,16 +148,13 @@ def compute_stats(m):
 
 
 if __name__ == "__main__":
-    from sentence_transformers import SentenceTransformer
     from prompting.sampler.sample_generator import top_similarity   # ← the selector to visualize
-
-    train_df = pd.read_csv(ROOT / "data" / "banking77_train.csv", encoding="utf-8")
+    from experiments.load_data import load_banking77
+    from prompting.sampler.embeddings import embed_pool
+    train_df, _ = load_banking77(testing_size=50, seed=SEED)  
     test_df = pd.read_csv(ROOT / "data" / "banking77_test.csv", encoding="utf-8")
-
-    model = SentenceTransformer("all-MiniLM-L6-v2")
-    # ← replace with your cached loader, e.g. E = load_embeddings(model, train_df["text"].tolist())
-    E = model.encode(train_df["text"].tolist(), normalize_embeddings=True, batch_size=64,
-                     show_progress_bar=True)
+    
+    E, model = embed_pool(train_df, "text")
 
     # one test query per intent, in QUERY_LABELS order (seeded → same rows every run)
     queries = pd.concat([test_df[test_df["label_name"] == lab].sample(1, random_state=SEED)

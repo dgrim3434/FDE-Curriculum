@@ -56,7 +56,7 @@ def run_zero_shot_baseline():
     invalid_count = int(len(df.loc[df['valid'] == False]))
     cost_per_correct = total_cost / len(df.loc[df['correct']]) if len(df.loc[df['correct']]) > 0 else None
     
-    summary = {'n': int(len(df)), 'seed': SEED, 'model': 'base', 'accuracy': accuracy, 'invalid_count': invalid_count, 'total_cost_usd': total_cost, 'cost_per_correct': cost_per_correct}
+    summary = {'n': int(len(df)), 'seed': SEED, 'model': llm.model, 'accuracy': accuracy, 'invalid_count': invalid_count, 'total_cost_usd': total_cost, 'cost_per_correct': cost_per_correct}
     (RESULTS_DIR / "zero_shot_baseline.json").write_text(json.dumps(summary, indent=2), encoding='utf-8')
     
     plot_confusion_matrix(df, ARTIFACT_DIR / "baseline_confusion_matrix.png", 'Zero-shot baseline (n=50)')

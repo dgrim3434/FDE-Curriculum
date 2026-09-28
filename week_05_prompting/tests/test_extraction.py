@@ -28,8 +28,8 @@ from prompting.extraction import (
     parse_json,
     validate_json_fields,
 )
-from prompting.budget import BudgetExceeded
-from experiments.extraction import get_schema_template
+from prompting.budget import BudgetExceeded, BudgetTracker
+from prompting.extraction import get_schema_template
 
 # ---------------------------------------------------------------------------
 # Test fixtures
@@ -101,7 +101,7 @@ def run(responses, budget=None, max_retries=3, max_tokens=200):
     """Call extraction with a fake LLM. Returns (result, llm) so tests can inspect calls."""
     llm = RecordingLLM(responses)
     template = get_schema_template(SCHEMA)
-    budget = budget if budget is not None else BudgetExceeded(1.00)
+    budget = budget if budget is not None else BudgetTracker(1.00)
     result = extraction(llm, system_prompt="SYS", user_prompt="USER MESSAGE", schema=SCHEMA, schema_template=template,
                         budget=budget, max_retries=max_retries, max_tokens=max_tokens)
     return result, llm
@@ -287,7 +287,7 @@ def test_max_tokens_every_time_ends_truncated_without_empty_messages():
 # ---------------------------------------------------------------------------
 
 def test_budget_already_spent_makes_no_calls():
-    tracker = BudgetExceeded(0.0)
+    tracker = BudgetTracker(0.0)
     result, llm = run([R(js())], budget=tracker)
     assert not result.ok and result.reason == "budget"
     assert len(llm.calls) == 0
@@ -300,7 +300,7 @@ def test_total_cost_is_sum_of_this_items_responses():
 
 
 def test_shared_tracker_accumulates_across_items_but_item_cost_does_not():
-    tracker = BudgetExceeded(1.00)
+    tracker = BudgetTracker(1.00)
     a = R(js(), inp=500, out=30)
     b = R(js(), inp=900, out=30)
     res_a, _ = run([a], budget=tracker)
@@ -309,7 +309,7 @@ def test_shared_tracker_accumulates_across_items_but_item_cost_does_not():
     assert res_a.total_cost == pytest.approx(a.cost)
     assert res_b.total_cost == pytest.approx(b.cost)
     # …while the run-level tracker blocks once the shared budget is gone
-    tiny = BudgetExceeded(a.cost)          # budget exactly one call
+    tiny = BudgetTracker(a.cost)          # budget exactly one call
     run([R(js())], budget=tiny)
     res_c, llm_c = run([R(js())], budget=tiny)
     assert res_c.reason == "budget" and len(llm_c.calls) == 0
@@ -353,7 +353,7 @@ MAPPING = define_schema_field_mapping(SCHEMA)
 
 
 def test_validate_all_valid():
-    out, found, errors = validate_json_fields(dict(VALID), SCHEMA, MAPPING)
+    out, errors = validate_json_fields(dict(VALID), SCHEMA, MAPPING); found = bool(errors)
     assert out == VALID and not found and errors == []
 
 
@@ -365,7 +365,7 @@ def test_validate_all_valid():
     ({"urgency": None}, "urgency"),
 ])
 def test_validate_single_bad_field_gives_exactly_one_error(override, field):
-    _, found, errors = validate_json_fields({**VALID, **override}, SCHEMA, MAPPING)
+    _, errors = validate_json_fields({**VALID, **override}, SCHEMA, MAPPING); found = bool(errors)
     assert found
     assert len(errors) == 1, f"expected one error for {field}, got: {errors}"
     assert field in errors[0].lower()
@@ -373,10 +373,10 @@ def test_validate_single_bad_field_gives_exactly_one_error(override, field):
 
 def test_validate_missing_field():
     obj = {k: v for k, v in VALID.items() if k != "urgency"}
-    _, found, errors = validate_json_fields(obj, SCHEMA, MAPPING)
+    _, errors = validate_json_fields(obj, SCHEMA, MAPPING); found = bool(errors)
     assert found and any("urgency" in e.lower() for e in errors)
 
 
 def test_validate_extra_field():
-    _, found, errors = validate_json_fields({**VALID, "sentiment": "angry"}, SCHEMA, MAPPING)
+    _, errors = validate_json_fields({**VALID, "sentiment": "angry"}, SCHEMA, MAPPING); found = bool(errors)
     assert found and any("sentiment" in e.lower() for e in errors)

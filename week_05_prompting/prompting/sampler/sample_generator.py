@@ -1,117 +1,69 @@
 import numpy as np
 
 
-MODEL_NAME = "all-MiniLM-L6-v2"
-BANKING_NAME = "banking77"
+def _encode(query, model, query_vec):
+    return query_vec if query_vec is not None else model.encode(query, normalize_embeddings=True)
 
 
-def random_sampler(query, data, model, E, samples=5, seed=42):
-    
-    embedding = model.encode(query, normalize_embeddings=True)
-    
-    rng = np.random.default_rng(seed=seed)
-    
-    idx = rng.choice(len(data), size = min(samples, len(data)), replace=False)
-    
-    return data.iloc[idx], E[idx], embedding
+def _check_k(samples: int, E) -> int:
+    if samples < 1:
+        raise ValueError(f"samples must be >= 1, got {samples}")
+    return min(samples, len(E))
 
 
-def top_similarity(query, data, model, E, samples=5):
-    
-    embedding = model.encode(query, normalize_embeddings=True)
-    
-    scores = E @ embedding
-    
-    samples = min(samples, len(E))
-    
-    if samples < len(E):
-        top = np.argpartition(-scores, samples)[:samples]
-    
-        sort = top[np.argsort(-scores[top])]
-    else:
-        sort = np.argsort(-scores)[:samples]
-    
-    idx = np.flip(sort)
-    
-    return data.iloc[idx], E[idx], embedding
+def _pack(data, E, order, q):
+    idx = np.asarray(order, dtype=int)
+    return data.iloc[idx], E[idx], q
 
-def top_diverse(query, data, model, E, lam =0.7 , samples=5):
-    
-    embedding = model.encode(query, normalize_embeddings=True)
-    idx = []
-    # Number of embeddings which have been selected
-    count = 0
-    
-    scores = E @ embedding
-    
-    loops = min(samples, len(E))
-    
-    while count < loops:
-        
-        if count == 0:
-            
-            best = int(np.argmax(scores))
-            idx.append(best)
-        else:
-            redundancy = (E @ E[idx].T).max(axis = 1)
-            
-            upd_score = lam * scores - redundancy * (1 - lam)
-            
-            upd_score[idx] = float("-inf")
-            
-            best = int(np.argmax(upd_score))
-            idx.append(best)
-                
-        count += 1
-    
-    results = np.flip(idx)
-    return data.iloc[results], E[results], embedding
 
-"""
+def random_sampler(query, data, model, E, samples=5, seed=42, query_vec=None):
+    q = _encode(query, model, query_vec)
+    k = _check_k(samples, E)
+    idx = np.random.default_rng(seed).choice(len(E), size=k, replace=False)
+    return _pack(data, E, idx, q)
 
-"""
-def capped_label(query, data, model, E, label_column, cap = 0.5, samples=5):
+
+def top_similarity(query, data, model, E, samples=5, query_vec=None):
+    q = _encode(query, model, query_vec)
+    k = _check_k(samples, E)
+    scores = E @ q
+    top = np.argpartition(-scores, k - 1)[:k] if k < len(E) else np.arange(len(E))
+    best_first = top[np.argsort(-scores[top])]
+    return _pack(data, E, best_first[::-1], q)
+
+
+def top_diverse(query, data, model, E, lam=0.7, samples=5, query_vec=None):
     
-    embedding = model.encode(query, normalize_embeddings=True)
-    
-    if label_column not in set(data.columns):
-        raise ValueError("ERROR: Label Column Must be present within the dataframe")
-    
+    q = _encode(query, model, query_vec)
+    k = _check_k(samples, E)
+    relevance = E @ q
+    max_sim = np.full(len(E), -np.inf)     
+    picked = []
+    for _ in range(k):
+        score = relevance if not picked else lam * relevance - (1 - lam) * max_sim
+        score = score.copy()
+        score[picked] = -np.inf
+        best = int(np.argmax(score))
+        picked.append(best)
+        max_sim = np.maximum(max_sim, E @ E[best])
+    return _pack(data, E, picked[::-1], q)
+
+
+def capped_label(query, data, model, E, label_column, cap=0.5, samples=5, query_vec=None):
+    if label_column not in data.columns:
+        raise ValueError(f"label column {label_column!r} not in data")
+    q = _encode(query, model, query_vec)
+    k = _check_k(samples, E)
+    max_reps = max(1, int(k * cap))
     labels = data[label_column].to_numpy()
-    
-    samples = min(samples, len(E))
-    
-    max_reps = max(1, int(samples * cap))
-    
-    scores = E @ embedding
-    counts = {}
-    
-    order = np.argsort(-scores)
-    idx = []
-    
-    for i in order:
-        
-        label = labels[i]
-        
-        if label not in counts:
-            
-            counts[label] = 0
-        
-        if counts[label] < max_reps:
-            counts[label] += 1
-            idx.append(int(i))
-        
-        if len(idx) >= samples:
-            break
-    
-    idx = np.flip(idx)
-    
-    return data.iloc[idx], E[idx], embedding
-            
-        
-            
-            
-        
-    
-    
-    
+
+    counts: dict = {}
+    picked = []
+    for i in np.argsort(-(E @ q)):
+        lab = labels[i]
+        if counts.get(lab, 0) < max_reps:
+            counts[lab] = counts.get(lab, 0) + 1
+            picked.append(int(i))
+            if len(picked) == k:
+                break
+    return _pack(data, E, picked[::-1], q)

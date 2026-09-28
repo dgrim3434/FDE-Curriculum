@@ -1,16 +1,15 @@
-from dataclasses import dataclass
-from prompting.llm import LLMResponse
 import json
 import re
-from pathlib import Path
-from jinja2 import Environment, FileSystemLoader
-from prompting.budget import BudgetExceeded
-TEMPLATE_DIR = Path(__file__).resolve().parent.parent / "templates"
+from dataclasses import dataclass
 
-env = Environment(loader=FileSystemLoader(TEMPLATE_DIR), trim_blocks=0)
+from prompting.budget import BudgetExceeded, BudgetTracker
+from prompting.llm import LLMResponse
+from prompting.templates import render
 
-error_template = env.get_template("user/json_repair_user.j2")
+TYPE_NAMES = {int: "integer", float: "number", str: "string", bool: "boolean"}
+MAX_TOKENS_CAP = 4096 
 
+@dataclass(frozen=True)
 class ExtractionResults:
     ok : bool
     data: dict | None
@@ -20,137 +19,124 @@ class ExtractionResults:
     total_cost: float
     raw: LLMResponse | None
 
-def extraction(llm, system_prompt: str, user_prompt: str, schema: dict, budget: BudgetExceeded, schema_template: list[dict], max_retries = 4, max_tokens=50) -> ExtractionResults:
+def extraction(llm, system_prompt: str, user_prompt: str, schema: dict, budget: BudgetTracker, schema_template: list[dict] | None = None, max_retries = 4, max_tokens=256) -> ExtractionResults:
     
-    total_spend = 0
+    schema_template = schema_template or get_schema_template(schema)
     schema_mapping = define_schema_field_mapping(schema)
-    history = []
+    
+    total_spend = 0.0
+    history = [{'role': 'user', 'content': user_prompt}]
     error_log = []
-    history.append({'role': 'user', 'content': user_prompt})
 
-    invalid_json = False
+    cur_max = max_tokens
     attempt = 0
-    while attempt < max_retries:
+    resp = None
+    
+    def result(ok, reason, data=None):
         
-        feedback = []
+        return ExtractionResults(ok=ok, data=data, reason=reason, attempts=attempt,
+                                 error_log=error_log, total_cost=total_spend, raw=resp)
+    
+    while attempt < max_retries:
         
         try:
             budget.check()
         except BudgetExceeded:
-            return ExtractionResults(ok=False, data=None, reason="budget", attempts=attempt, error_log=error_log, total_cost=total_spend, raw=None)
+            return result(False, "budget")
         
-        resp = llm.complete(system = system_prompt, messages = history, temperature=0.0, max_tokens = max_tokens)
+        resp = llm.complete(system = system_prompt, messages = history, temperature=0.0, max_tokens = cur_max)
         attempt += 1
         budget.add(resp.cost)
         total_spend += resp.cost
+        
         if resp.stop_reason == 'refusal':
-            return ExtractionResults(ok=False, data=None, reason='refusal', attempts=attempt, error_log=error_log, total_cost=total_spend, raw=resp)
+            return result(False, "refusal")
         
         if resp.stop_reason == 'max_tokens':
             
-            curr_max = max_tokens
-            while resp.stop_reason == 'max_tokens' and attempt < max_retries:
-                
-                invalid_json = False
-                try:
-                    budget.check()
-                except BudgetExceeded:
-                    return ExtractionResults(ok=False, data=None, reason='truncated', attempts=attempt, error_log =error_log, total_cost=total_spend, raw=resp)
-                
-                curr_max = int(curr_max * 1.5)
-
-                resp = llm.complete(system=system_prompt, messages=history, temperature=0.0, max_tokens=curr_max)
-                budget.add(resp.cost)
-                total_spend += resp.cost
-                attempt += 1
+            error_log.append(f"truncated at max_tokens={cur_max}")
+            cur_max = min(int(cur_max * 1.5), MAX_TOKENS_CAP)
+            continue
         
-        # Parsing the JSON
-        if resp.stop_reason == "end_turn":
-            parsed, errors = parse_json(resp.text)
-            if len(errors) > 0:
-                feedback.append(errors[-1])
-                error_log += errors
+        parsed, parse_errors = parse_json(resp.text)
+        error_log += parse_errors
+        if parsed is None:
+            feedback = parse_errors[-1:]
+        else:
+            validated, field_errors = validate_json_fields(parsed, schema, schema_mapping)
             
-            if parsed is not None:
-                valid_schema, found_errors, errors = validate_json_fields(parsed, schema, schema_mapping) 
-                
-                if not found_errors:
+            if not field_errors:
+                return result(True, 'ok', data=validated)
             
-                    return ExtractionResults(ok=True, data=valid_schema, reason="ok", attempts=attempt, error_log=error_log, total_cost=total_spend, raw=resp)
-            
-                error_log += errors
-                feedback += errors
-                
-            invalid_json = True
+            error_log += field_errors
+            feedback = field_errors
+        
         history.append({'role': 'assistant', 'content': resp.text})
-        upd_prompt = error_template.render(fields = schema_template, errors = feedback)
-        history.append({'role': 'user', 'content': upd_prompt})
+        history.append({'role': 'user', 'content': render("user/json_repair_user.j2", fields=schema_template, errors=feedback)})
     
-    if invalid_json:
-        return ExtractionResults(ok=False, data=None, reason='exhausted', attempts=attempt, error_log=error_log, total_cost=total_spend, raw=resp)
-    
-    return ExtractionResults(ok=False, data=None, reason='truncated', attempts=attempt, error_log=error_log, total_cost=total_spend, raw=resp)
+    last_truncated = resp is not None and resp.stop_reason == "max_tokens"
+    return result(False, "truncated" if last_truncated else "exhausted")
 
 
-def norm(s): 
+def norm(s: str) -> str: 
     return s.strip().lower().replace(" ", "_")     
 
 
 def validate_json_fields(parsed, schema, schema_mapping):
     
-    validated_schema = {}
-    norm_fields = set()
-    errors_found = False
+    validated = {}
+    seen = set()
     errors = []
+    
+    
     for field, value in parsed.items():
         
-        if norm(field) not in schema_mapping:
-            errors.append(f"ERROR When Parsing the provided json : Invalid Field Found. {field} was not within the provided schema")
-            errors_found = True
+        key = schema_mapping.get(norm(field))
+        
+        if key is None:
+            errors.append(f'Unknown field "{field}": it is not in the schema')
             continue
         
-        normalized_field = schema_mapping[norm(field)]
-        
-        norm_fields.add(normalized_field)
-        if schema[normalized_field]['nullable'] and parsed[field] is None:
-            validated_schema[normalized_field] = None
+        if key in seen:
+            errors.append(f'Field "{key}" appears more than once')
             continue
+        seen.add(key)
         
-        allowed_dtype = schema[normalized_field]['type']
+        spec = schema[key]
         
-        if isinstance(value, allowed_dtype):
+        if value is None:
+            if not spec.get("nullable", False):
+                errors.append(f'"{key}" cannot be null')
+            else:
+                validated[key] = None
             
-            if int in allowed_dtype and bool not in allowed_dtype and isinstance(value, bool):
-                errors.append(f"Invalid Datatype for field: {normalized_field}, allowed datatypes are: {allowed_dtype} but dtype was: {type(value)}")
-                errors_found = True
+            continue
+        
+        types = _as_tuple(spec["type"])
+        wrong_type = not isinstance(value, types)
+        bool_as_number = isinstance(value, bool) and bool not in types
+        
+        if wrong_type or bool_as_number:
+            expected = " or ".join(TYPE_NAMES.get(t, t.__name__) for t in types)
+            errors.append(f'"{key}" must be {expected}, got {type(value).__name__} ({value!r})')
+            continue
+        
+        allowed = spec.get("allowed")
+        if allowed:
+            lookup = {norm(a) if isinstance(a, str) else a: a for a in allowed}
+            canonical = lookup.get(norm(value) if isinstance(value, str) else value)
+            if canonical is None:
+                errors.append(f'"{key}" must be one of the allowed values, got {value!r}')
                 continue
-            
-            if 'allowed' in schema[normalized_field]:
-                
-                allowed_mapping = {norm(v): v for v in schema[normalized_field]['allowed']}
-                lookup = allowed_mapping.get(norm(value))
-                
-                if lookup is not None:
+            value = canonical
+        
+        validated[key] = value
+        
+    missing = set(schema) - seen
+    if missing:
+        errors.append(f"Missing required fields: {sorted(missing)}")
 
-                    validated_schema[normalized_field] = lookup
-                else:
-                    errors.append(f"{field} requires values to be in the set: {schema[normalized_field]['allowed']} but it's value was: {value}")
-                    errors_found = True
-                continue
-        
-            validated_schema[normalized_field] = value
-        else:
-            errors.append(f"{field} must be of type: {allowed_dtype} but was: {type(value)}")
-            errors_found = True
-            
-    if set(schema) != set(norm_fields):
-        missing = set(schema) - set(norm_fields)
-            
-        errors.append(f"The output was missing required fields: {missing}")
-        errors_found = True
-            
-    return validated_schema, errors_found, errors
-            
+    return validated, errors
             
         
 """
@@ -191,7 +177,7 @@ def parse_json(text):
         return None, error_logger
     
     try:
-        result, end = json.JSONDecoder().raw_decode(text, start)
+        result, _ = json.JSONDecoder().raw_decode(text, start)
         if isinstance(result, dict):
             return result, error_logger
         
@@ -212,10 +198,22 @@ Returns a mapping of all the possible field variants which can be expected witho
 """
 def define_schema_field_mapping(schema: dict) -> dict:
     
-    mapping = {}
-    
-    for field_name in schema.keys():
-        
-        mapping[norm(field_name)] = field_name
-    
-    return mapping
+    return {norm(field): field for field in schema}
+
+def _as_tuple(t) -> tuple:
+    return t if isinstance(t, tuple) else (t,)
+
+def get_schema_template(schema: dict) -> list[dict]:
+    """Schema (Python types) -> list of plain dicts the Jinja templates can print.
+    Lives in the library, next to the schema format it reads, so the two can't drift apart."""
+    fields = []
+    for name, spec in schema.items():
+        types = _as_tuple(spec["type"])
+        fields.append({
+            "name": name,
+            "type": "number" if float in types else " or ".join(TYPE_NAMES.get(t, t.__name__) for t in types),
+            "nullable": spec.get("nullable", False),
+            "allowed": spec.get("allowed"),
+            "description": spec.get("description"),
+        })
+    return fields

@@ -24,19 +24,7 @@ def load_gsm8k(training_size = 1000, testing_size = 200, seed = 42):
     
     return train, test
 
-def random_sampling(data, size, seed = 42):
-    
-    rng = np.random.default_rng(seed=seed)
-    
-    
-    if size >= len(data):
-        return data
-    
-    if size <= 0:
-        raise ValueError("ERROR: Sampling size must be atleast 1")
-    
-    
-    idx = rng.integers(0, len(data), size=size)
-    
-    return data.iloc[idx].reset_index(drop='index')
+def banking77_labels() -> list[str]:
+    """All 77 intents from the full file — never from a sample."""
+    return sorted(pd.read_csv(DATA_PATH / "banking77_train.csv")["label_name"].unique())
     

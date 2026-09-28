@@ -9,7 +9,7 @@ from prompting.chain_of_thought import (  # ← change module name if yours diff
     generate_cot_system,
     parse_output,
 )
-from prompting.budget import BudgetExceeded
+from prompting.budget import BudgetExceeded, BudgetTracker
 from prompting.llm import LLMResponse
 
 # ---------------------------------------------------------------------------
@@ -44,7 +44,7 @@ class RecordingLLM:
 
 def run(responses, budget=None, max_retries=3, **kwargs):
     llm = RecordingLLM(responses)
-    budget = budget if budget is not None else BudgetExceeded(1.00)
+    budget = budget if budget is not None else BudgetTracker(1.00)
     result = chain_of_thought(llm, system_prompt="SOLVE MATH", user_prompt="QUESTION",
                               budget=budget, max_retries=max_retries, **kwargs)
     return result, llm
@@ -88,7 +88,7 @@ def test_DECISION_default_max_tokens_leaves_room_for_reasoning():
     """DECISION: reasoning is ~150-300 tokens; a default near 50 truncates almost every call."""
     llm = RecordingLLM([R(GOOD)])
     chain_of_thought(llm, system_prompt="SOLVE MATH", user_prompt="QUESTION",
-                     budget=BudgetExceeded(1.00))
+                     budget=BudgetTracker(1.00))
     assert llm.calls[0]["max_tokens"] >= 512
 
 
@@ -225,21 +225,21 @@ def test_refusal_is_not_retried():
 
 
 def test_budget_already_spent_makes_no_calls():
-    result, llm = run([R(GOOD)], budget=BudgetExceeded(0.0))
+    result, llm = run([R(GOOD)], budget=BudgetTracker(0.0))
     assert not result.valid and result.reason == "budget"
     assert len(llm.calls) == 0
 
 
 def test_budget_stops_retries_midway():
     first = R(UNPARSABLE, inp=300, out=150)
-    budget = BudgetExceeded(first.cost)                  # exactly one call's worth
+    budget = BudgetTracker(first.cost)                  # exactly one call's worth
     result, llm = run([first, R(GOOD)], budget=budget)
     assert result.reason == "budget"
     assert len(llm.calls) == 1
 
 
 def test_total_cost_is_this_items_cost_only():
-    shared = BudgetExceeded(1.00)
+    shared = BudgetTracker(1.00)
     a, b = R(GOOD, inp=300, out=150), R(GOOD, inp=900, out=150)
     ra, _ = run([a], budget=shared)
     rb, _ = run([b], budget=shared)

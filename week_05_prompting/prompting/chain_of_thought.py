@@ -1,187 +1,128 @@
-from dataclasses import dataclass
-from prompting.llm import LLMResponse
-from jinja2 import Environment, FileSystemLoader
-from pathlib import Path
-from prompting.extraction import BudgetExceeded
+"""Chain-of-thought wrapper: adds CoT instructions to any system prompt and extracts the final answer."""
 import re
+from dataclasses import dataclass
 
+from prompting.budget import BudgetExceeded, BudgetTracker
+from prompting.llm import LLMResponse
+from prompting.templates import render
 
-
-TEMPLATE_DIR = Path(__file__).resolve().parent.parent / "templates"
-env = Environment(loader=FileSystemLoader(TEMPLATE_DIR), trim_blocks=0)
-
-cot_template = env.get_template("system/cot.j2")
-error_template = env.get_template("user/invalid_output_error_log.j2")
+MAX_TOKENS_CAP = 4096
+FLAGS = re.DOTALL | re.IGNORECASE
+RE_TAG = r"<\s*answer\s*>(.*?)<\s*/\s*answer\s*>"
+RE_OPEN = r"<\s*answer\s*>\s*([^<\n]*)"
+RE_MARKER = r"(?:####|final answer\s*(?:is)?\s*[:=]?|the answer is|answer\s*:)\s*\$?\s*(-?\d[\d,]*(?:\.\d+)?)"
+RE_THINKING = r"<\s*thinking\s*>(.*?)<\s*/\s*thinking\s*>"
 
 
 @dataclass(frozen=True)
 class CoTResult:
-    method: str
+    method: str | None
     format_ok: bool
-    answer: int | str | None
-    valid: bool
-    reason: str
+    answer: float | None
+    valid: bool            
+    reason: str               
     thought: str | None
     attempts: int
     total_cost: float
+    input_tokens: int         
+    output_tokens: int
     error_log: list
-    raw: LLMResponse
-    
+    raw: LLMResponse | None
 
-def generate_cot_system(system_prompt, examples = None) -> str:
-    
-    if examples is None or len(examples) == 0:
-        return cot_template.render(system_prompt=system_prompt)
-    
-    if not isinstance(examples, list):
-        raise ValueError("ERROR: examples must be a list")
-    if not isinstance(examples[0], dict):
-        raise ValueError("ERROR: examples must be a list of dictionaries")
-    
-    return cot_template.render(system_prompt=system_prompt, examples=examples)
 
-def chain_of_thought(llm, system_prompt: str, user_prompt: str,budget: BudgetExceeded, examples: list[dict] = None, max_retries= 4, max_tokens = 512, COT=True) -> CoTResult:
-    
-    total_spend = 0
-    history = []
+def generate_cot_system(system_prompt: str, examples: list[dict] | None = None) -> str:
+    if examples:
+        if not isinstance(examples, list) or not all(isinstance(e, dict) for e in examples):
+            raise ValueError("examples must be a list of dicts with question/thinking/answer")
+    return render("system/cot.j2", system_prompt=system_prompt, examples=examples or None)
+
+
+def chain_of_thought(llm, system_prompt: str, user_prompt: str, budget: BudgetTracker,
+                     examples: list[dict] | None = None, max_retries: int = 4,
+                     max_tokens: int = 512, use_cot: bool = True) -> CoTResult:
+    if use_cot:
+        system_prompt = generate_cot_system(system_prompt, examples)
+
+    history = [{"role": "user", "content": user_prompt}]
+    error_log: list[str] = []
+    total_spend, in_tok, out_tok = 0.0, 0, 0
     curr_max = max_tokens
-    
-    if COT:
-        system_prompt = generate_cot_system(system_prompt=system_prompt, examples=examples)
-    
-    history.append({'role': 'user', 'content': user_prompt})
     attempt = 0
-    error_log = []
-    
+    resp = None
+
+    def result(reason, answer=None, thought=None, method=None, format_ok=False):
+        return CoTResult(method=method, format_ok=format_ok, answer=answer, valid=answer is not None,
+                         reason=reason, thought=thought, attempts=attempt, total_cost=total_spend,
+                         input_tokens=in_tok, output_tokens=out_tok, error_log=error_log, raw=resp)
+
     while attempt < max_retries:
-        
-        feedback = []
-        
         try:
             budget.check()
         except BudgetExceeded:
-            return CoTResult(method=None, format_ok=False, answer=None, valid=False, reason='budget', thought=None, attempts=attempt, total_cost=total_spend, error_log=error_log, raw=None)
-        
-        resp = llm.complete(system = system_prompt, messages = history, temperature=0.0, max_tokens = curr_max)
+            return result("budget")
+
+        resp = llm.complete(system=system_prompt, messages=history, temperature=0.0, max_tokens=curr_max)
         attempt += 1
         budget.add(resp.cost)
         total_spend += resp.cost
-        
-        if resp.stop_reason == 'refusal':
-            return CoTResult(method=None, format_ok=False, answer=None, valid=False, reason='refusal', thought=None, attempts=attempt, total_cost=total_spend, error_log=error_log, raw=resp)
-        
-        if resp.stop_reason == 'max_tokens':
-            while resp.stop_reason == 'max_tokens' and attempt < max_retries:
-                
-                try:
-                    budget.check()
-                except BudgetExceeded:
-                    return CoTResult(method=None, format_ok=False, answer=None, valid=False, reason='truncated', thought=None, attempts=attempt, total_cost=total_spend, error_log=error_log, raw=None)
-                                
-                curr_max = int(curr_max * 1.5)
-                
-                resp = llm.complete(system=system_prompt, messages=history, temperature=0.0, max_tokens=curr_max)
-                budget.add(resp.cost)
-                total_spend += resp.cost
-                attempt += 1
-        
-        if resp.stop_reason == "end_turn":
+        in_tok += resp.input_tokens
+        out_tok += resp.output_tokens
 
-            ans, think, method, errors = parse_output(resp.text)
-            error_log += errors
-            feedback += errors
-            
-            
-            if ans is not None:
-                formating = len(errors) == 0
-                return CoTResult(method=method, format_ok = formating, answer=ans, valid=True, reason='ok',thought=think, attempts=attempt, total_cost=total_spend, error_log=error_log, raw=resp)
-        
-        history.append({'role': 'assistant', 'content': resp.text})
-        error_prompt = error_template.render(error_logs=feedback)
-        history.append({'role': 'user', 'content': error_prompt})
-    
-    if resp.stop_reason == "max_tokens":
-        return CoTResult(method=None, format_ok = False, answer=None, valid=False, reason='truncated',thought=None, attempts=attempt, total_cost=total_spend, error_log=error_log, raw=resp)
+        if resp.stop_reason == "refusal":
+            return result("refusal")
+
+        if resp.stop_reason == "max_tokens":
+            error_log.append(f"truncated at max_tokens={curr_max}")
+            curr_max = min(int(curr_max * 1.5), MAX_TOKENS_CAP)
+            continue
+
+        answer, thought, method, errors = parse_output(resp.text, require_thinking=use_cot)
+        error_log += errors
+        if answer is not None:
+            return result("ok", answer=answer, thought=thought, method=method, format_ok=not errors)
+
+        history.append({"role": "assistant", "content": resp.text})
+        history.append({"role": "user", "content": render("user/invalid_output_error_log.j2", error_logs=errors)})
+
+    last_truncated = resp is not None and resp.stop_reason == "max_tokens"
+    return result("truncated" if last_truncated else "exhausted")
+
+
+def parse_output(response: str, require_thinking: bool = True):
+    """Returns (answer: float | None, thought: str | None, method: str | None, errors: list[str])."""
+    errors: list[str] = []
+
+    for method, pattern in (("tag", RE_TAG), ("open_tag", RE_OPEN), ("marker", RE_MARKER)):
+        matches = list(re.finditer(pattern, response, FLAGS))
+        if matches:
+            break
+        errors.append({"tag": "No <answer>...</answer> block found",
+                       "open_tag": "No opening <answer> tag found",
+                       "marker": "No final answer found anywhere in the response"}[method])
     else:
-        return CoTResult(method=None, format_ok = False, answer=None, valid=False, reason='exhausted',thought=None, attempts=attempt, total_cost=total_spend, error_log=error_log, raw=resp)      
-
-
-def parse_output(response):
-    errors = []
-    flags = re.DOTALL | re.IGNORECASE
-    method = None
-    match = None
-    RE_TAG = r"<\s*answer\s*>(.*?)<\s*/\s*answer\s*>"
-    RE_OPEN = r"<\s*answer\s*>\s*([^<\n]*)"
-    RE_MARKET = r"(?:####|final answer\s*(?:is)?\s*[:=]?|the answer is|answer\s*:)\s*\$?\s*(-?\d[\d,]*(?:\.\d+)?)"
-    
-    answers = re.findall(RE_TAG, response, flags=flags)
-    
-    answer = None
-    if len(answers) == 0:
-        
-        errors.append("Formating error no <answer></answer> brackets where found encasing an answer")
-        
-        answers = re.findall(RE_OPEN, response, flags=flags)
-        
-        if len(answers) == 0:
-            errors.append("No opening answer bracket detected within the response")
-            
-            answers = re.findall(RE_MARKET, response, flags=flags)
-            if len(answers) == 0:
-                errors.append("Could not find any trace of an answer within the response")
-                return None, None, None, errors
-            
-            method = "marker"
-            answer = extract_answer_from_list(answers, errors)
-            matches = list(re.finditer(RE_MARKET, response, flags))
-            match = matches[-1]
-            
-        else:
-            
-            method = "open_tag"
-            
-            answer = extract_answer_from_list(answers, errors)
-            matches = list(re.finditer(RE_OPEN, response, flags))
-            match = matches[-1]
-    else:
-        method = "tag"
-        answer = extract_answer_from_list(answers, errors)
-        matches = list(re.finditer(RE_TAG, response, flags))
-        match = matches[-1]
-    
-    try:
-        answer = clean_answer(answer)
-    
-    except ValueError:
-        errors.append(f"Answer Must be of type float. Invalid output: {answer}")
         return None, None, None, errors
-    
-    
-    thinking = re.findall(r"<\s*thinking\s*>(.*?)<\s*/\s*thinking\s*>", response, flags=flags)
-    
-    if len(thinking) == 0:
-        errors.append("No Thinking blocks where found in the response")
-        if match is None:
-            return answer, None, False, errors
-        
-        thought = response[:match.start()].strip()
+
+    if len(matches) > 1:
+        errors.append("Multiple answers found; only one is allowed")
+    match = matches[-1]
+
+    raw_answer = match.group(1)
+    try:
+        answer = clean_answer(raw_answer)
+    except ValueError:
+        errors.append(f"The answer must be a plain number, got: {raw_answer.strip()!r}")
+        return None, None, None, errors
+
+    thinking = re.findall(RE_THINKING, response, FLAGS)
+    if thinking:
+        thought = thinking[-1].strip()
     else:
-        thought = extract_answer_from_list(thinking, errors, answer=False)
-    
-    
+        if require_thinking:
+            errors.append("No <thinking>...</thinking> block found")
+        thought = response[:match.start()].strip() or None
+
     return answer, thought, method, errors
-    
-
-def extract_answer_from_list(answers, errors, answer=True):
-    
-    if len(answers) > 1 and answer:
-        errors.append("Multiple answer brackets where found within response.")
-    return answers[-1]
 
 
-def clean_answer(ans):
-    
-    return float(re.sub(r"[,$\s]", "", ans)) 
-    
-    
+def clean_answer(ans: str) -> float:
+    return float(re.sub(r"[,$\s]", "", ans))

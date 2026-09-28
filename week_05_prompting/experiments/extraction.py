@@ -1,8 +1,3 @@
-# shape of what the helper should return — one dict per field
-# {"name": "urgency", "type": "string", "nullable": False,
-#  "allowed": ["high", "low", "medium"], "description": "how quickly the customer needs help"}
-# {"name": "amount_mentioned", "type": "number", "nullable": True,
-#  "allowed": None, "description": "money amount stated in the message, no currency symbol"}
 from prompting.llm import AnthropicClient
 from prompting.extraction import extraction
 from prompting.budget import BudgetExceeded
@@ -12,6 +7,7 @@ from experiments.constants import TEMPLATE_DIR, RESULTS_DIR, QUERY_COLUMN, LABEL
 import re
 import pandas as pd
 import json
+from prompting.extraction import get_schema_template
 
 llm = AnthropicClient()
 SEED = 42
@@ -116,25 +112,6 @@ def search_extracted_amount(query, amount_mentioned):
     
     return "none_ok"
 
-def get_schema_template(schema_dict) -> list[dict]:
-    
-    type_mapping = {
-        int: 'integer',
-        float: 'float',
-        str: 'string',
-        bool: 'boolean'
-    }
-    results = []
-    for name, items in schema_dict.items():
-        
-        curr = {'name': name, 'type': type_mapping.get(items['type'][-1]), 'nullable': items['nullable'], 'description': items['description']}
-        if 'allowed' in items:
-            curr['allowed'] = items['allowed']
-            
-        results.append(curr)
-    
-    return results
-
 def get_extraction_schema(label_names: str) -> dict:
     
     EXTRACTION_SCHEMA = {
@@ -145,23 +122,20 @@ def get_extraction_schema(label_names: str) -> dict:
             "description": "The single intent that best describes what the customer is asking for. All valid valid intents all listed above.",
         },
         "urgency": {
-            "type": (str,),
-            "nullable": False,
-            "allowed": ["low", "medium", "high"],
+            "type": (str,), "nullable": False, "allowed": ["low", "medium", "high"],
             "description": (
-                "high = possible fraude, lost/stolen/compromised case, or money missing.",
-                "medium = money stuck, pending, failed or declined, or the customer is blocked from using there account.",
-                "low = general questions, low-to, fees, limits, or information requests"
+                "high = possible fraud; lost, stolen or compromised card; or money missing. "
+                "medium = money stuck, pending, failed or declined, or the customer is blocked from using their account. "
+                "low = general questions, how-to, fees, limits, or information requests."
             ),
         },
         "amount_mentioned": {
-            "type" : (int, float),
-            "nullable": True,
+            "type": (int, float), "nullable": True,
             "description": (
-                "The money amount writtin in the message as a plain number, no currency symbol or commas "
-                "ex. $1,250.50 -> 1250.5. If no amount is mentioned the field should be set to null"
-                "If there are several amounts listed only include the one which is refrenced within the actual request"
-            )
+                "The money amount written in the message as a plain number, no currency symbol or commas "
+                "(e.g. $1,250.50 -> 1250.5). Use null if no amount is mentioned. "
+                "If several amounts appear, use the one the request is about."
+            ),
         }
     }
     

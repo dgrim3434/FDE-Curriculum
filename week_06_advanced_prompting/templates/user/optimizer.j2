@@ -1,0 +1,27 @@
+Here is the current prompt:
+<current_prompt>
+{{ prompt }}
+</current_prompt>
+
+{% if examples %}
+Here are problems the model got wrong with this prompt:
+{% for ex in examples %}
+<failure {{ loop.index }}>
+Problem: {{ ex.question }}
+Model output:
+<model_output>
+{{ ex.output }}
+</model_output>
+Correct answer: {{ ex.gold }}
+</failure {{ loop.index }}>
+{% endfor %}
+{% else %}
+The model got every training problem right. Make the prompt clearer and shorter without changing what works.
+{% endif %}
+
+Constraints:
+- The new prompt must be under {{ max_words }} words.
+- The new prompt must tell the model to end with its final answer as a plain number in answer tags, for example <answer>42</answer>.
+- Do not copy these problems into the new prompt.
+
+Reply with <diagnosis></diagnosis> first, then the full new prompt inside <prompt></prompt>.

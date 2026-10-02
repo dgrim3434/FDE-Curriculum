@@ -1,0 +1,14 @@
+Here is everything that was found while researching the question:
+
+{% for m in history %}
+{% if m.role == "user" %}{{ m.content }}{% else %}Agent: {{ m.content }}{% endif %}
+
+{% endfor %}
+Using only the information above, give your final answer to the question.
+
+Rules:
+- Answer with only the short answer: yes, no, a name, a place, a date, or a number. No sentence.
+- If the information above does not fully answer the question, give your best guess from it.
+- Put the answer between <finish> and </finish>, and write nothing else.
+
+Example of the format: <finish>Ostrava</finish>

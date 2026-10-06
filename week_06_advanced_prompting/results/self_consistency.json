@@ -1,0 +1,74 @@
+{
+  "baseline": {
+    "accuracy": 0.88,
+    "sec_per_question": 1.194435551998904,
+    "sec_per_correct": 1.3573131272714818,
+    "parse_rate": 1.0,
+    "truncation_rate": 0.0
+  },
+  "by_n": {
+    "1": {
+      "accuracy": 0.86,
+      "sec_per_question": 1.3480409330004477,
+      "sec_per_correct": 1.5674894569772648,
+      "valid_rate": 1.0,
+      "insufficient_rate": 0.0,
+      "tie_rate": 0.0
+    },
+    "3": {
+      "accuracy": 0.91,
+      "sec_per_question": 3.8343792190021486,
+      "sec_per_correct": 4.213603537364999,
+      "valid_rate": 0.9,
+      "insufficient_rate": 0.0,
+      "tie_rate": 0.1
+    },
+    "5": {
+      "accuracy": 0.95,
+      "sec_per_question": 6.297644831001235,
+      "sec_per_correct": 6.6290998221065625,
+      "valid_rate": 1.0,
+      "insufficient_rate": 0.0,
+      "tie_rate": 0.0
+    }
+  },
+  "calibration": [
+    {
+      "vote_share": 0.4,
+      "n": 6,
+      "accuracy": 1.0
+    },
+    {
+      "vote_share": 0.6,
+      "n": 13,
+      "accuracy": 0.7692307692307693
+    },
+    {
+      "vote_share": 0.8,
+      "n": 12,
+      "accuracy": 0.9166666666666666
+    },
+    {
+      "vote_share": 1.0,
+      "n": 69,
+      "accuracy": 0.9855072463768116
+    }
+  ],
+  "coverage": [
+    {
+      "threshold": 1,
+      "coverage": 69,
+      "accuracy": 0.9855072463768116
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 81,
+      "accuracy": 0.9753086419753086
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 94,
+      "accuracy": 0.9468085106382979
+    }
+  ]
+}

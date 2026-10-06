@@ -1,0 +1,15 @@
+{
+  "Model": "llama3.2:3b",
+  "Chain_em": 0.24489795918367346,
+  "Base_em": 0.5,
+  "Chain_f1": 0.42844589350148105,
+  "Base_f1": 0.6588233055189577,
+  "router_accuracy": 0.86,
+  "grounded_a": 0.75,
+  "grounded_b": 0.75,
+  "grounded_bridge": 0.9130434782608695,
+  "avg_input_tokens": 3492.8,
+  "avg_output_tokens": 193.78,
+  "avg_latency_chain": 2.195955456001684,
+  "avg_latency_base": 0.6623359479993814
+}

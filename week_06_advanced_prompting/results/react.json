@@ -1,0 +1,21 @@
+{
+  "id": 50,
+  "em": 0.34,
+  "f1": 0.4171379731379731,
+  "contains": 0.4,
+  "seconds_per_question": 1.9796942640005,
+  "avg_steps": 6.34,
+  "status_counts": {
+    "ok": 37,
+    "max_steps": 7,
+    "loop": 6
+  },
+  "contains_no_fallback": 0.4,
+  "contains_with_fallback": 0.0,
+  "hit_rate": 0.8056666666666666,
+  "tools_used": {
+    "search": 128,
+    "lookup": 111,
+    "calculate": 28
+  }
+}

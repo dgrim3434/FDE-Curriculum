@@ -1,0 +1,51 @@
+id,gold,answer,em,f1,contains,status,used_fallback,n_steps,tools_used,title_hit_rate,seconds
+0,1755,157,False,0.0,False,ok,False,5,"['lookup', 'search', 'search', 'calculate']",1.0,10.525002999998833
+1,Dutch,Dutch,True,1.0,True,ok,False,9,"['lookup', 'search', 'lookup', 'search', 'search', 'search', 'search', 'lookup']",0.4,2.30029770001056
+2,Kevin Spacey,Mena Suvari,False,0.0,False,ok,False,9,"['search', 'search', 'search', 'search', 'search', 'search', 'lookup', 'calculate']",0.16666666666666666,2.5737363999942318
+3,40 members,40,False,0.6666666666666666,False,ok,False,7,"['lookup', 'search', 'lookup', 'search', 'lookup', 'search']",1.0,1.6872496999931172
+4,Greyia,Calibanus,False,0.0,False,ok,False,5,"['lookup', 'search', 'search', 'calculate']",1.0,1.2118814999994356
+5,yes,John Updike,False,0.0,False,ok,False,4,"['search', 'search', 'calculate']",1.0,1.035568899995269
+6,John André,John André,True,1.0,True,ok,False,6,"['lookup', 'search', 'lookup', 'search', 'search']",1.0,1.4005065000019385
+7,Salma Hayek Pinault,Ethel Houbiers,False,0.0,False,max_steps,True,9,"['search', 'lookup', 'lookup', 'lookup', 'lookup', 'lookup', 'lookup', 'lookup']",1.0,2.279247000002215
+8,Gatwick Airport,Gatwick Airport,True,1.0,True,ok,False,6,"['search', 'lookup', 'search', 'lookup', 'search']",0.6666666666666666,1.4600034000031883
+9,The Changing Scottish Landscape,"1991's ""The Changing Scottish Landscape"" characterizes it as ""one of the most isolated fortifications in Britain...[and] also one of the strangest.""",False,0.2857142857142857,True,ok,False,5,"['lookup', 'search', 'lookup', 'search']",1.0,1.521295700003975
+10,"""Home of the Submarine Force""","Groton, Connecticut",False,0.0,False,ok,False,5,"['lookup', 'search', 'calculate', 'search']",1.0,1.1467819000026793
+11,U2,U2,True,1.0,True,ok,False,6,"['lookup', 'search', 'lookup', 'search', 'calculate']",1.0,1.779964099998324
+12,Laurie Metcalf,Gale Weathers,False,0.0,False,ok,False,9,"['search', 'lookup', 'search', 'calculate', 'calculate', 'calculate', 'calculate', 'search']",0.6666666666666666,2.8734115000079328
+13,"Nairobi, Kenya",Nairobi,False,0.6666666666666666,False,ok,False,7,"['search', 'search', 'lookup', 'search', 'lookup', 'calculate']",1.0,1.7103669999996782
+14,Cyclic Defrost,Cyclic Defrost,True,1.0,True,ok,False,5,"['search', 'lookup', 'search', 'lookup']",0.5,1.146954399999231
+15,729 at the 2010 census,"According to the 2020 United States Census, the population of Nelson, New Hampshire is approximately 1,433.",False,0.11111111111111112,False,ok,False,5,"['search', 'lookup', 'lookup', 'lookup']",1.0,1.1054483000007167
+16,Francis McPeake,"The basis of the song is ""Wild Mountain Thyme"" by Francis McPeake 1st",False,0.3076923076923077,True,ok,False,4,"['lookup', 'search', 'lookup']",1.0,1.4475763000009465
+17,Slaughterhouse-Five,Kurt Vonnegut,False,0.0,False,loop,True,6,"['search', 'lookup', 'search', 'search', 'lookup']",0.3333333333333333,1.7541486999980407
+18,strings,The Sarod,False,0.0,False,ok,False,4,"['lookup', 'search', 'calculate']",1.0,0.8891617000044789
+19,Ride a Wild Pony,Ride a Wild Pony,True,1.0,True,ok,False,4,"['search', 'search', 'calculate']",1.0,0.9097364000044763
+20,dogs,dogs,True,1.0,True,ok,False,4,"['lookup', 'search', 'search']",1.0,1.0858532000020205
+21,Modern thinkers associated with classical realism are Carl von Clausewitz,Classical realism,False,0.33333333333333337,False,max_steps,True,10,"['lookup', 'search', 'search', 'search', 'lookup', 'search', 'search', 'calculate', 'calculate']",1.0,3.0149514000004274
+22,Royal Air Force,RAF,False,0.0,False,loop,True,6,"['lookup', 'search', 'search', 'search', 'lookup']",1.0,2.0356282999964606
+23,Norwegian language,Sudanese Arabic,False,0.0,False,ok,False,7,"['search', 'lookup', 'lookup', 'search', 'lookup', 'lookup']",1.0,1.831905300005019
+24,the Parthian Empire,224 to 427,False,0.0,False,ok,False,5,"['lookup', 'search', 'search', 'calculate']",1.0,1.4667302000016207
+25,Stone Brewing,Stone Brewing Co.,False,0.8,True,ok,False,5,"['search', 'lookup', 'lookup', 'search']",1.0,1.2782031999995525
+26,Tim Cluess,no,False,0.0,False,loop,True,7,"['lookup', 'search', 'search', 'search', 'search', 'lookup']",0.0,2.206866299995454
+27,the Cold War (1947–91),Crimean War,False,0.4,False,ok,False,5,"['search', 'lookup', 'search', 'calculate']",0.5,1.8910765000000538
+28,about 115 miles (185 km),410 miles,False,0.28571428571428575,False,ok,False,5,"['search', 'search', 'lookup', 'calculate']",0.5,1.3364633999954094
+29,Puli Alam,Puli Alam,True,1.0,True,ok,False,3,"['search', 'search']",1.0,0.7014732000025106
+30,310,310,True,1.0,True,ok,False,8,"['search', 'lookup', 'lookup', 'lookup', 'lookup', 'lookup', 'search']",1.0,2.061048399998981
+31,"""Kitty Hawk""",CM-13,False,0.0,False,max_steps,True,10,"['search', 'lookup', 'lookup', 'search', 'search', 'lookup', 'lookup', 'calculate', 'lookup']",0.3333333333333333,2.653125500000897
+32,Marvel,Secret Warriors,False,0.0,False,max_steps,True,10,"['search', 'lookup', 'search', 'lookup', 'search', 'search', 'lookup', 'search', 'search']",0.5,3.1373254000027373
+33,"Harry Lillis ""Bing"" Crosby Jr.",George Burns,False,0.0,False,ok,False,5,"['search', 'lookup', 'lookup', 'lookup']",1.0,1.2923278999987815
+34,Jane Mayer,No,False,0.0,False,max_steps,True,9,"['search', 'lookup', 'lookup', 'lookup', 'lookup', 'lookup', 'lookup', 'lookup']",1.0,1.9290601999928185
+35,Albany,Colonie,False,0.0,False,ok,False,8,"['search', 'lookup', 'lookup', 'search', 'search', 'calculate', 'lookup']",0.6666666666666666,2.343830400004663
+36,Chiwetel Ejiofor,Chiwetel Ejiofor,True,1.0,True,ok,False,8,"['lookup', 'search', 'lookup', 'lookup', 'search', 'calculate', 'calculate']",1.0,2.965229099994758
+37,Agra,Agra,True,1.0,True,ok,False,3,"['calculate', 'search']",0.0,1.2228973000019323
+38,Rome,La Bohème,False,0.0,False,loop,True,6,"['search', 'lookup', 'search', 'search', 'lookup']",1.0,2.3500679999960994
+39,Buffalo,Shire River,False,0.0,False,max_steps,True,9,"['search', 'search', 'lookup', 'lookup', 'lookup', 'lookup', 'calculate', 'lookup']",1.0,2.55095209999854
+40,Smoothie King Center,The Smoothie King Center,True,1.0,True,ok,False,4,"['search', 'search', 'lookup']",1.0,0.9314941000011459
+41,extensive use of segues,jam band sound,False,0.0,False,ok,False,8,"['lookup', 'search', 'lookup', 'lookup', 'calculate', 'lookup', 'search']",1.0,2.0549810999946203
+42,Charlotte Carnegie,Robert Burns,False,0.0,False,loop,True,9,"['search', 'lookup', 'search', 'lookup', 'lookup', 'search', 'search', 'lookup']",0.25,2.9434817000110343
+43,World War II,World War II,True,1.0,True,ok,False,5,"['search', 'lookup', 'search', 'calculate']",0.5,1.6378378000008524
+44,Oklahoma State University,College of the Pacific,False,0.0,False,max_steps,True,9,"['lookup', 'search', 'search', 'search', 'lookup', 'lookup', 'lookup', 'search']",0.5,2.4984797000033723
+45,Brady Seals,Brady Seals,True,1.0,True,ok,False,7,"['lookup', 'search', 'search', 'search', 'calculate', 'calculate']",1.0,1.8867310999994515
+46,Nusretiye Mosque,Nusretiye Mosque,True,1.0,True,ok,False,4,"['lookup', 'search', 'search']",1.0,1.154437200002576
+47,Georgetown University,Detroit Cristian Laettner,False,0.0,False,loop,True,8,"['lookup', 'search', 'search', 'search', 'search', 'search', 'lookup']",0.8,2.935973700001341
+48,Turkey,Turkey,True,1.0,True,ok,False,4,"['search', 'search', 'lookup']",1.0,1.049655900002108
+49,William McKinley,William McKinley,True,1.0,True,ok,False,6,"['search', 'lookup', 'search', 'lookup', 'search']",1.0,1.778285500000493

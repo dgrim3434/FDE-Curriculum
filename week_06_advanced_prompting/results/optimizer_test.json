@@ -1,0 +1,9 @@
+{
+  "stop_reason": "patience",
+  "Final_prompt": "Solve the problem step by step, showing your calculations. Check each calculation carefully. End your response with the final number in answer tags, for example <answer>42</answer>.",
+  "Test_Accuracy": 0.53,
+  "Truncation_Rate": 0.01,
+  "Avg_input_tokens": 121.885,
+  "Avg_Parsed_Rate": 0.67,
+  "Avg_latency": 1.5046808064999642
+}

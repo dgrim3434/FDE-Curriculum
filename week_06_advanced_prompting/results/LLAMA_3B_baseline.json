@@ -1,0 +1,11 @@
+{
+  "model": "llama3.2:3b",
+  "seed": 42,
+  "dataset": "GSMK8",
+  "n": 50,
+  "valid_response_rate": 0.94,
+  "accuracy": 0.68,
+  "accuracy_on_valid_response": 0.723404255319149,
+  "truncation_rate": 0.06,
+  "total_latency": 95.77461589986342
+}

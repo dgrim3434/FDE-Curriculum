@@ -1,0 +1,101 @@
+[
+  {
+    "question": "Find a sentence that mentions Germany and tell me what it says.",
+    "steps": 1,
+    "hit_max_steps": false,
+    "tool_calls": [
+      [
+        "search_sentences",
+        {
+          "keyword": "Germany",
+          "limit": 1
+        },
+        false
+      ]
+    ],
+    "final_text": "I found a sentence that mentions Germany. Here's what it says:\n\n**\"Add Women's singles, third round Linda Wild (U.S.) beat Barbara Rittner (Germany) 6-4 4-6 7-5 Asa Carlsson (Sweden) beat 15 - Gabriela Sabatini (Argentina) 7-5 3-6 6-2\"**\n\nThis sentence describes the results of women's singles tennis matches in the third round. It mentions that Linda Wild from the U.S. defeated Barbara Rittner from Germany with a score of 6-4, 4-6, 7-5. It also includes another match result where Asa Carlsson from Sweden beat Gabriela Sabatini from Argentina."
+  },
+  {
+    "question": "How many of the first sentences about cricket mention a person? Name them.",
+    "steps": 3,
+    "hit_max_steps": false,
+    "tool_calls": [
+      [
+        "search_sentences",
+        {
+          "keyword": "cricket",
+          "limit": 20
+        },
+        false
+      ],
+      [
+        "get_sentence",
+        {
+          "sentence_id": "conll03_validation_0"
+        },
+        false
+      ],
+      [
+        "get_sentence",
+        {
+          "sentence_id": "conll03_validation_16"
+        },
+        false
+      ],
+      [
+        "get_sentence",
+        {
+          "sentence_id": "conll03_validation_29"
+        },
+        false
+      ],
+      [
+        "get_sentence",
+        {
+          "sentence_id": "conll03_validation_33"
+        },
+        false
+      ],
+      [
+        "record_entities",
+        {
+          "entities": [
+            {
+              "text": "LEICESTERSHIRE",
+              "type": "ORG"
+            },
+            {
+              "text": "ENGLISH",
+              "type": "MISC"
+            },
+            {
+              "text": "ASHES",
+              "type": "MISC"
+            },
+            {
+              "text": "Test and County Cricket Board",
+              "type": "ORG"
+            }
+          ]
+        },
+        false
+      ]
+    ],
+    "final_text": "Based on my search of the first sentences about cricket, **none of them mention a person**. \n\nThe four sentences found were:\n1. \"CRICKET - LEICESTERSHIRE TAKE OVER AT TOP AFTER INNINGS VICTORY .\" - mentions an organization (Leicestershire)\n2. \"CRICKET - ENGLISH COUNTY CHAMPIONSHIP SCORES .\" - mentions a nationality/descriptor (English)\n3. \"CRICKET - 1997 ASHES INTINERARY .\" - mentions an event (Ashes)\n4. \"starting on May 13 next year , the Test and County Cricket Board\" - mentions an organization (Test and County Cricket Board)\n\nAll entities mentioned are organizations, events, or descriptors, but no individual persons are named in these cricket-related sentences."
+  },
+  {
+    "question": "Find the sentence at id -100",
+    "steps": 1,
+    "hit_max_steps": false,
+    "tool_calls": [
+      [
+        "get_sentence",
+        {
+          "sentence_id": "-100"
+        },
+        true
+      ]
+    ],
+    "final_text": "I was unable to find a sentence with ID -100 in the corpus. This ID doesn't appear to exist in the available data. \n\nCould you please:\n1. Double-check the sentence ID you're looking for?\n2. Or, if you're looking for information on a specific topic, I can search for sentences containing a particular keyword instead?"
+  }
+]

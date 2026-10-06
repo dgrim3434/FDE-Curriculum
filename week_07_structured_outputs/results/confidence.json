@@ -1,0 +1,9165 @@
+[
+  {
+    "model": "qwen2.5:3b",
+    "n_samples": 5,
+    "entity_confidence": {
+      "0.6": {
+        "samples": 53,
+        "accuracy": 0.49056603773584906
+      },
+      "0.4": {
+        "samples": 69,
+        "accuracy": 0.2753623188405797
+      },
+      "0.2": {
+        "samples": 106,
+        "accuracy": 0.1320754716981132
+      },
+      "0.8": {
+        "samples": 36,
+        "accuracy": 0.6944444444444444
+      },
+      "1.0": {
+        "samples": 44,
+        "accuracy": 0.8181818181818182
+      }
+    },
+    "relation_confidence": {
+      "0.6": {
+        "samples": 17,
+        "accuracy": 0.058823529411764705
+      },
+      "0.2": {
+        "samples": 167,
+        "accuracy": 0.041916167664670656
+      },
+      "0.4": {
+        "samples": 32,
+        "accuracy": 0.0625
+      },
+      "1.0": {
+        "samples": 10,
+        "accuracy": 0.2
+      },
+      "0.8": {
+        "samples": 12,
+        "accuracy": 0.3333333333333333
+      }
+    },
+    "f1": {
+      "entity": 0.5256797583081572,
+      "relation": 0.12727272727272726
+    },
+    "sentences": [
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0050",
+        "valid_resonses": 4,
+        "entity_pred": [
+          [
+            "April 1985",
+            "Other"
+          ],
+          [
+            "D-Fla.",
+            "Other"
+          ],
+          [
+            "Sen. Jake Garn",
+            "Peop"
+          ],
+          [
+            "R-Utah",
+            "Other"
+          ],
+          [
+            "NASA's administrator",
+            "Peop"
+          ],
+          [
+            "Rep. Bill Nelson",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Sen. Jake Garn",
+            "Work_For",
+            "R-Utah"
+          ],
+          [
+            "Rep. Bill Nelson",
+            "Work_For",
+            "D-Fla."
+          ]
+        ],
+        "gold_entities": [
+          [
+            "1985",
+            "Other"
+          ],
+          [
+            "Bill Nelson",
+            "Peop"
+          ],
+          [
+            "Jake Garn",
+            "Peop"
+          ],
+          [
+            "1986",
+            "Other"
+          ],
+          [
+            "NASA",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Jake Garn",
+            "Work_For",
+            "NASA"
+          ],
+          [
+            "Bill Nelson",
+            "Work_For",
+            "NASA"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 8299,
+        "output_tokens": 2443
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0051",
+        "valid_resonses": 3,
+        "entity_pred": [
+          [
+            "earthquake-devastated Soviet Armenia",
+            "Loc"
+          ],
+          [
+            "Washington",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Soviet",
+            "Loc"
+          ],
+          [
+            "Armenia.",
+            "Loc"
+          ],
+          [
+            "Washington",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Armenia.",
+            "Located_In",
+            "Soviet"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 7572,
+        "output_tokens": 2054
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0052",
+        "valid_resonses": 4,
+        "entity_pred": [
+          [
+            "Juppe",
+            "Peop"
+          ],
+          [
+            "Turkey",
+            "Loc"
+          ],
+          [
+            "French Government",
+            "Org"
+          ],
+          [
+            "Cetin",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Cetin",
+            "Work_For",
+            "French Government"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Juppe",
+            "Peop"
+          ],
+          [
+            "Turkey",
+            "Loc"
+          ],
+          [
+            "French Government",
+            "Org"
+          ],
+          [
+            "Cetin",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Cetin",
+            "Live_In",
+            "Turkey"
+          ],
+          [
+            "Juppe",
+            "Work_For",
+            "French Government"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            true
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 4557,
+        "output_tokens": 1329
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0053",
+        "valid_resonses": 4,
+        "entity_pred": [
+          [
+            "Jose Vicente Maldonado",
+            "Peop"
+          ],
+          [
+            "Ecuador",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Venezuela",
+            "Loc"
+          ],
+          [
+            "Jose Vicente Maldonado",
+            "Peop"
+          ],
+          [
+            "Peru",
+            "Loc"
+          ],
+          [
+            "Andean Group",
+            "Org"
+          ],
+          [
+            "Ecuador",
+            "Loc"
+          ],
+          [
+            "Colombia",
+            "Loc"
+          ],
+          [
+            "Bolivia",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Andean Group",
+            "OrgBased_In",
+            "Ecuador"
+          ],
+          [
+            "Andean Group",
+            "OrgBased_In",
+            "Colombia"
+          ],
+          [
+            "Andean Group",
+            "OrgBased_In",
+            "Peru"
+          ],
+          [
+            "Andean Group",
+            "OrgBased_In",
+            "Bolivia"
+          ],
+          [
+            "Andean Group",
+            "OrgBased_In",
+            "Venezuela"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.8,
+            true
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 10100,
+        "output_tokens": 3914
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0054",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Elizabeth",
+            "Peop"
+          ],
+          [
+            "Dole",
+            "Peop"
+          ],
+          [
+            "Salisbury, N.C.",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Elizabeth",
+            "Live_In",
+            "Salisbury, N.C."
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Elizabeth",
+            "Peop"
+          ],
+          [
+            "Dole",
+            "Peop"
+          ],
+          [
+            "Salisbury , N.C",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Elizabeth",
+            "Live_In",
+            "Salisbury , N.C"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 3904,
+        "output_tokens": 864
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0055",
+        "valid_resonses": 3,
+        "entity_pred": [
+          [
+            "Sofia",
+            "Loc"
+          ],
+          [
+            "NATO",
+            "Org"
+          ],
+          [
+            "Bulgaria",
+            "Loc"
+          ],
+          [
+            "Bosnia",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "NATO",
+            "Org"
+          ],
+          [
+            "Bulgarian Socialist ( formerly Communist ) Party",
+            "Org"
+          ],
+          [
+            "SDS",
+            "Org"
+          ],
+          [
+            "Union of Democratic Forces",
+            "Org"
+          ],
+          [
+            "February 15",
+            "Other"
+          ],
+          [
+            "Bulgaria",
+            "Loc"
+          ],
+          [
+            "Sofia",
+            "Loc"
+          ],
+          [
+            "Bosnia",
+            "Loc"
+          ],
+          [
+            "BTA",
+            "Org"
+          ],
+          [
+            "BSP",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "BSP",
+            "OrgBased_In",
+            "Bulgaria"
+          ],
+          [
+            "BTA",
+            "OrgBased_In",
+            "Sofia"
+          ],
+          [
+            "Union of Democratic Forces",
+            "OrgBased_In",
+            "Bulgaria"
+          ],
+          [
+            "SDS",
+            "OrgBased_In",
+            "Bulgaria"
+          ],
+          [
+            "Bulgarian Socialist ( formerly Communist ) Party",
+            "OrgBased_In",
+            "Bulgaria"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 6909,
+        "output_tokens": 2706
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0056",
+        "valid_resonses": 3,
+        "entity_pred": [
+          [
+            "Robert Bork",
+            "Peop"
+          ],
+          [
+            "Starr",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Starr",
+            "Work_For",
+            "William French Smith"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "District of Columbia",
+            "Loc"
+          ],
+          [
+            "Robert Bork",
+            "Peop"
+          ],
+          [
+            "Supreme Court",
+            "Org"
+          ],
+          [
+            "William French Smith",
+            "Peop"
+          ],
+          [
+            "Senate",
+            "Org"
+          ],
+          [
+            "Starr",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Senate",
+            "OrgBased_In",
+            "District of Columbia"
+          ],
+          [
+            "Supreme Court",
+            "OrgBased_In",
+            "District of Columbia"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            true
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 6670,
+        "output_tokens": 2367
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0057",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "The program",
+            "Other"
+          ],
+          [
+            "United States Agency for International Development",
+            "Org"
+          ],
+          [
+            "Madagascar",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "The program",
+            "Located_In",
+            "Madagascar"
+          ],
+          [
+            "The program",
+            "Work_For",
+            "United States Agency for International Development"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Africa.",
+            "Loc"
+          ],
+          [
+            "Indian Ocean",
+            "Loc"
+          ],
+          [
+            "Madagascar",
+            "Loc"
+          ],
+          [
+            "International Development",
+            "Other"
+          ],
+          [
+            "United States Agency",
+            "Other"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Madagascar",
+            "Located_In",
+            "Indian Ocean"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 5828,
+        "output_tokens": 1563
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0058",
+        "valid_resonses": 4,
+        "entity_pred": [],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Paris",
+            "Loc"
+          ],
+          [
+            "1700 GMT",
+            "Other"
+          ],
+          [
+            "7 Apr 94",
+            "Other"
+          ],
+          [
+            "Radio Monte Carlo",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Radio Monte Carlo",
+            "OrgBased_In",
+            "Paris"
+          ]
+        ],
+        "entity_confidence_pairs": [],
+        "relation_confidence_pairs": [],
+        "input_tokens": 4180,
+        "output_tokens": 2905
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0059",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Francisco Pizarro",
+            "Peop"
+          ],
+          [
+            "Incan King of Peru",
+            "Peop"
+          ],
+          [
+            "Atahualpa",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Atahualpa",
+            "Kill",
+            "Francisco Pizarro"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Incan King",
+            "Other"
+          ],
+          [
+            "Peru",
+            "Loc"
+          ],
+          [
+            "Atahualpa",
+            "Peop"
+          ],
+          [
+            "Francisco Pizarro",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Francisco Pizarro",
+            "Kill",
+            "Atahualpa"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.8,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2823,
+        "output_tokens": 728
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0060",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Atlanta businessman Neil Estes",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Atlanta",
+            "Loc"
+          ],
+          [
+            "Neil Estes.",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Neil Estes.",
+            "Live_In",
+            "Atlanta"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 4659,
+        "output_tokens": 898
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0061",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Netherlands",
+            "Loc"
+          ],
+          [
+            "Robert C. Corduwener",
+            "Peop"
+          ],
+          [
+            "Rinn family",
+            "Other"
+          ],
+          [
+            "Minox",
+            "Org"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Minox",
+            "Work_For",
+            "Robert C. Corduwener"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "April 1 , 1988",
+            "Other"
+          ],
+          [
+            "1981",
+            "Other"
+          ],
+          [
+            "Netherlands",
+            "Loc"
+          ],
+          [
+            "Minox",
+            "Org"
+          ],
+          [
+            "51 percent",
+            "Other"
+          ],
+          [
+            "Robert C. Corduwener",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Robert C. Corduwener",
+            "Live_In",
+            "Netherlands"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            1.0,
+            false
+          ]
+        ],
+        "input_tokens": 3631,
+        "output_tokens": 879
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0062",
+        "valid_resonses": 2,
+        "entity_pred": [],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Indonesia",
+            "Loc"
+          ],
+          [
+            "Sahara desert",
+            "Loc"
+          ],
+          [
+            "Madagascar",
+            "Loc"
+          ],
+          [
+            "Nicaragua",
+            "Loc"
+          ],
+          [
+            "Africa",
+            "Loc"
+          ],
+          [
+            "Brazil",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Sahara desert",
+            "Located_In",
+            "Africa"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 8967,
+        "output_tokens": 3453
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0063",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Willi Marx",
+            "Peop"
+          ],
+          [
+            "The Associated Press",
+            "Org"
+          ],
+          [
+            "Heuchelheim",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Willi Marx",
+            "Work_For",
+            "The Associated Press"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Willi Marx",
+            "Peop"
+          ],
+          [
+            "Associated Press",
+            "Org"
+          ],
+          [
+            "Heuchelheim",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Willi Marx",
+            "Live_In",
+            "Heuchelheim"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            true
+          ]
+        ],
+        "input_tokens": 2185,
+        "output_tokens": 607
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0064",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Jeff Shia",
+            "Peop"
+          ],
+          [
+            "Kiangsu Chekiang Association",
+            "Org"
+          ],
+          [
+            "I",
+            "Other"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Chinese",
+            "Other"
+          ],
+          [
+            "Jeff Shia",
+            "Peop"
+          ],
+          [
+            "Kiangsu Chekiang Association",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Jeff Shia",
+            "Work_For",
+            "Kiangsu Chekiang Association"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2986,
+        "output_tokens": 827
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0065",
+        "valid_resonses": 3,
+        "entity_pred": [
+          [
+            "World War II",
+            "Other"
+          ],
+          [
+            "Italy",
+            "Loc"
+          ],
+          [
+            "Anzio",
+            "Loc"
+          ],
+          [
+            "30 Seconds Over Tokyo",
+            "Other"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Italy",
+            "Loc"
+          ],
+          [
+            "33 miles",
+            "Other"
+          ],
+          [
+            "Anzio",
+            "Loc"
+          ],
+          [
+            "Tokyo",
+            "Loc"
+          ],
+          [
+            "World War II",
+            "Other"
+          ],
+          [
+            "Rome",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Anzio",
+            "Located_In",
+            "Italy"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 6123,
+        "output_tokens": 1808
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0066",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "James Earl Ray",
+            "Peop"
+          ],
+          [
+            "Rev. Martin Luther King Jr.",
+            "Peop"
+          ],
+          [
+            "Anna Sandhu Ray",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Anna Sandhu Ray",
+            "Kill",
+            "James Earl Ray"
+          ],
+          [
+            "Anna Sandhu Ray",
+            "Work_For",
+            "Rev. Martin Luther King Jr."
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Thursday",
+            "Other"
+          ],
+          [
+            "Rev. Martin Luther King Jr.",
+            "Peop"
+          ],
+          [
+            "James Earl Ray",
+            "Peop"
+          ],
+          [
+            "Anna Sandhu Ray",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "James Earl Ray",
+            "Kill",
+            "Rev. Martin Luther King Jr."
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.4,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.4,
+            false
+          ]
+        ],
+        "input_tokens": 6242,
+        "output_tokens": 1731
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0067",
+        "valid_resonses": 4,
+        "entity_pred": [
+          [
+            "Tiananmen Square",
+            "Loc"
+          ],
+          [
+            "May 30",
+            "Other"
+          ],
+          [
+            "Beijing",
+            "Loc"
+          ],
+          [
+            "23-foot-tall statue",
+            "Other"
+          ],
+          [
+            "Chinese pro-democracy demonstrators",
+            "Other"
+          ],
+          [
+            "30-foot-tall Goddess of Democracy",
+            "Other"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "23-foot-tall statue",
+            "Located_In",
+            "Tiananmen Square"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Tiananmen Square",
+            "Loc"
+          ],
+          [
+            "May 30.",
+            "Other"
+          ],
+          [
+            "Beijing",
+            "Loc"
+          ],
+          [
+            "Goddess of Democracy",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Tiananmen Square",
+            "Located_In",
+            "Beijing"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.8,
+            true
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.8,
+            false
+          ]
+        ],
+        "input_tokens": 7988,
+        "output_tokens": 2285
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0068",
+        "valid_resonses": 2,
+        "entity_pred": [],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "State Palace",
+            "Loc"
+          ],
+          [
+            "People 's Republic of China",
+            "Loc"
+          ],
+          [
+            "XINHUA",
+            "Org"
+          ],
+          [
+            "P. Jasray",
+            "Peop"
+          ],
+          [
+            "29 Apr",
+            "Other"
+          ],
+          [
+            "29 April",
+            "Other"
+          ],
+          [
+            "China",
+            "Loc"
+          ],
+          [
+            "Li Peng",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Li Peng",
+            "Live_In",
+            "China"
+          ],
+          [
+            "XINHUA",
+            "OrgBased_In",
+            "China"
+          ],
+          [
+            "XINHUA",
+            "OrgBased_In",
+            "People 's Republic of China"
+          ],
+          [
+            "Li Peng",
+            "Live_In",
+            "People 's Republic of China"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.4,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 9849,
+        "output_tokens": 3758
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0069",
+        "valid_resonses": 0,
+        "entity_pred": [],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Herbert Clark Hoover",
+            "Peop"
+          ],
+          [
+            "West Branch , Iowa",
+            "Loc"
+          ],
+          [
+            "United States",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Herbert Clark Hoover",
+            "Live_In",
+            "West Branch , Iowa"
+          ]
+        ],
+        "entity_confidence_pairs": [],
+        "relation_confidence_pairs": [],
+        "input_tokens": 9285,
+        "output_tokens": 1665
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0070",
+        "valid_resonses": 3,
+        "entity_pred": [
+          [
+            "Bugesera",
+            "Loc"
+          ],
+          [
+            "Rwanda",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Rwanda",
+            "Loc"
+          ],
+          [
+            "Bugesera",
+            "Loc"
+          ],
+          [
+            "Rwandan Patriotic Front",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Bugesera",
+            "Located_In",
+            "Rwanda"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 7444,
+        "output_tokens": 2320
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0071",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Andrew Hall",
+            "Peop"
+          ],
+          [
+            "Warner",
+            "Org"
+          ],
+          [
+            "Miami, Fla.",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Andrew Hall",
+            "Work_For",
+            "Warner"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Andrew Hall",
+            "Peop"
+          ],
+          [
+            "Warner",
+            "Peop"
+          ],
+          [
+            "Fla.",
+            "Loc"
+          ],
+          [
+            "Miami",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Miami",
+            "Located_In",
+            "Fla."
+          ],
+          [
+            "Andrew Hall",
+            "Live_In",
+            "Miami"
+          ],
+          [
+            "Andrew Hall",
+            "Live_In",
+            "Fla."
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.6,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            0.6,
+            false
+          ]
+        ],
+        "input_tokens": 2140,
+        "output_tokens": 486
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0072",
+        "valid_resonses": 1,
+        "entity_pred": [],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "GRAND RAPIDS",
+            "Loc"
+          ],
+          [
+            "Mich .",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "GRAND RAPIDS",
+            "Located_In",
+            "Mich ."
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 6602,
+        "output_tokens": 543
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0073",
+        "valid_resonses": 4,
+        "entity_pred": [
+          [
+            "Thomas Kean",
+            "Peop"
+          ],
+          [
+            "New Jersey",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Thomas Kean",
+            "Peop"
+          ],
+          [
+            "New Jersey",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Thomas Kean",
+            "Live_In",
+            "New Jersey"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.8,
+            true
+          ],
+          [
+            0.8,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            true
+          ]
+        ],
+        "input_tokens": 3558,
+        "output_tokens": 616
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0074",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Institute of Contemporary Studies",
+            "Org"
+          ],
+          [
+            "The country",
+            "Loc"
+          ],
+          [
+            "Marcos Victorica",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Marcos Victorica",
+            "Work_For",
+            "Institute of Contemporary Studies"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Institute of Contemporary Studies.",
+            "Org"
+          ],
+          [
+            "Marcos Victorica",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Marcos Victorica",
+            "Work_For",
+            "Institute of Contemporary Studies."
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2784,
+        "output_tokens": 869
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0075",
+        "valid_resonses": 3,
+        "entity_pred": [
+          [
+            "Excess Lira",
+            "Other"
+          ],
+          [
+            "Kanal-6 Television",
+            "Org"
+          ],
+          [
+            "London",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "19 Jan 94",
+            "Other"
+          ],
+          [
+            "London",
+            "Loc"
+          ],
+          [
+            "1700 GMT",
+            "Other"
+          ],
+          [
+            "Kanal-6 Television",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Kanal-6 Television",
+            "OrgBased_In",
+            "London"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 7907,
+        "output_tokens": 2260
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0076",
+        "valid_resonses": 4,
+        "entity_pred": [
+          [
+            "John Wilkes Booth",
+            "Peop"
+          ],
+          [
+            "Union soldiers",
+            "Org"
+          ],
+          [
+            "Garrett place",
+            "Loc"
+          ],
+          [
+            "Lincoln",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "John Wilkes Booth",
+            "Work_For",
+            "Union soldiers"
+          ],
+          [
+            "John Wilkes Booth",
+            "Located_In",
+            "Garrett place"
+          ],
+          [
+            "John Wilkes Booth",
+            "Kill",
+            "Lincoln"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "John Wilkes Booth",
+            "Peop"
+          ],
+          [
+            "Union",
+            "Org"
+          ],
+          [
+            "Lincoln",
+            "Peop"
+          ],
+          [
+            "April",
+            "Other"
+          ],
+          [
+            "Garrett",
+            "Other"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "John Wilkes Booth",
+            "Kill",
+            "Lincoln"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.8,
+            true
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.6,
+            false
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 4208,
+        "output_tokens": 1601
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0077",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "BANGKOK",
+            "Loc"
+          ],
+          [
+            "Thailand",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "BANGKOK",
+            "Located_In",
+            "Thailand"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "BANGKOK",
+            "Loc"
+          ],
+          [
+            "AP",
+            "Org"
+          ],
+          [
+            "Thailand",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "BANGKOK",
+            "Located_In",
+            "Thailand"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            true
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.6,
+            true
+          ]
+        ],
+        "input_tokens": 4581,
+        "output_tokens": 544
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0078",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Joseph Cicippio",
+            "Peop"
+          ],
+          [
+            "American University of Beirut",
+            "Org"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Joseph Cicippio",
+            "Live_In",
+            "American University of Beirut"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Joseph Cicippio",
+            "Peop"
+          ],
+          [
+            "Sept. 12 , 1986.",
+            "Other"
+          ],
+          [
+            "American University of Beirut",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Joseph Cicippio",
+            "Work_For",
+            "American University of Beirut"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.8,
+            false
+          ],
+          [
+            0.2,
+            true
+          ]
+        ],
+        "input_tokens": 2200,
+        "output_tokens": 570
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0079",
+        "valid_resonses": 3,
+        "entity_pred": [
+          [
+            "adjacent communities",
+            "Other"
+          ],
+          [
+            "mountain passes",
+            "Other"
+          ],
+          [
+            "high pressure",
+            "Other"
+          ],
+          [
+            "Santa Ana winds",
+            "Other"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Santa Ana winds",
+            "Work_For",
+            "high pressure"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Santa Ana",
+            "Loc"
+          ],
+          [
+            "Southern California",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Santa Ana",
+            "Located_In",
+            "Southern California"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 6249,
+        "output_tokens": 1848
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0080",
+        "valid_resonses": 3,
+        "entity_pred": [
+          [
+            "Reloj Network",
+            "Org"
+          ],
+          [
+            "Havana Radio",
+            "Org"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "27 Jun 94",
+            "Other"
+          ],
+          [
+            "1402 GMT",
+            "Other"
+          ],
+          [
+            "Havana",
+            "Loc"
+          ],
+          [
+            "Radio Reloj Network",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Radio Reloj Network",
+            "OrgBased_In",
+            "Havana"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.4,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ]
+        ],
+        "input_tokens": 6819,
+        "output_tokens": 1901
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0081",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "International Paper",
+            "Org"
+          ],
+          [
+            "Our white paper, market pulp and packaging businesses",
+            "Other"
+          ],
+          [
+            "John A. Georges",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "John A. Georges",
+            "Work_For",
+            "International Paper"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "International Paper",
+            "Org"
+          ],
+          [
+            "John A. Georges",
+            "Peop"
+          ],
+          [
+            "1988",
+            "Other"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "John A. Georges",
+            "Work_For",
+            "International Paper"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.8,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2215,
+        "output_tokens": 544
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0082",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Pinecastle Electronic Warfare Range",
+            "Loc"
+          ],
+          [
+            "Ocala National Forest",
+            "Loc"
+          ],
+          [
+            "FA-18 Hornet",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "FA-18 Hornet",
+            "Located_In",
+            "Pinecastle Electronic Warfare Range"
+          ],
+          [
+            "FA-18 Hornet",
+            "Located_In",
+            "Ocala National Forest"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Pinecastle Electronic Warfare Range",
+            "Loc"
+          ],
+          [
+            "Ocala National Forest",
+            "Loc"
+          ],
+          [
+            "1 : 50 p.m .",
+            "Other"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Pinecastle Electronic Warfare Range",
+            "Located_In",
+            "Ocala National Forest"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            1.0,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.8,
+            false
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2205,
+        "output_tokens": 823
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0083",
+        "valid_resonses": 4,
+        "entity_pred": [
+          [
+            "Mich.",
+            "Loc"
+          ],
+          [
+            "EAST LANSING",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Mich.",
+            "Loc"
+          ],
+          [
+            "EAST LANSING",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "EAST LANSING",
+            "Located_In",
+            "Mich."
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            true
+          ],
+          [
+            0.6,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            true
+          ]
+        ],
+        "input_tokens": 3169,
+        "output_tokens": 345
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0084",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Athens",
+            "Loc"
+          ],
+          [
+            "Oberlin College",
+            "Org"
+          ],
+          [
+            "United States",
+            "Loc"
+          ],
+          [
+            "Psacharopoulos",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Psacharopoulos",
+            "Live_In",
+            "Athens"
+          ],
+          [
+            "Psacharopoulos",
+            "Work_For",
+            "Oberlin College"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Athens",
+            "Loc"
+          ],
+          [
+            "Oberlin College",
+            "Org"
+          ],
+          [
+            "United States",
+            "Loc"
+          ],
+          [
+            "Psacharopoulos",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Oberlin College",
+            "OrgBased_In",
+            "United States"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2160,
+        "output_tokens": 852
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0085",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Perry",
+            "Peop"
+          ],
+          [
+            "Jack Ruby",
+            "Peop"
+          ],
+          [
+            "Kennedy's assassin",
+            "Other"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Perry",
+            "Work_For",
+            "Lee Harvey Oswald"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Kill",
+            "Jack Ruby"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Perry",
+            "Peop"
+          ],
+          [
+            "Jack Ruby",
+            "Peop"
+          ],
+          [
+            "Kennedy",
+            "Peop"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Jack Ruby",
+            "Kill",
+            "Lee Harvey Oswald"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Kill",
+            "Kennedy"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.8,
+            false
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2135,
+        "output_tokens": 628
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0086",
+        "valid_resonses": 4,
+        "entity_pred": [
+          [
+            "South Africa",
+            "Loc"
+          ],
+          [
+            "Foreign Ministry",
+            "Org"
+          ],
+          [
+            "Datuk Sri Datin Paduka Dr. Siti Hasmah",
+            "Peop"
+          ],
+          [
+            "Datuk Abdul Halim Ali",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Foreign Ministry",
+            "Org"
+          ],
+          [
+            "Datuk Sri Datin Paduka Dr. Siti Hasmah",
+            "Peop"
+          ],
+          [
+            "South Africa",
+            "Loc"
+          ],
+          [
+            "Datuk Abdul Halim Ali",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Datuk Abdul Halim Ali",
+            "Work_For",
+            "Foreign Ministry"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.8,
+            true
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 5505,
+        "output_tokens": 1491
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0087",
+        "valid_resonses": 4,
+        "entity_pred": [
+          [
+            "Arizona",
+            "Loc"
+          ],
+          [
+            "John Harvey Adamson",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "federal appeals court",
+            "Work_For",
+            "Arizona"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Arizona",
+            "Loc"
+          ],
+          [
+            "John Harvey Adamson",
+            "Peop"
+          ],
+          [
+            "Don Bolles",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "John Harvey Adamson",
+            "Kill",
+            "Don Bolles"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.8,
+            true
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 4409,
+        "output_tokens": 5586
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0088",
+        "valid_resonses": 2,
+        "entity_pred": [],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Kennedy",
+            "Peop"
+          ],
+          [
+            "Stone",
+            "Peop"
+          ],
+          [
+            "New Orleans",
+            "Loc"
+          ],
+          [
+            "Kevin Costner",
+            "Peop"
+          ],
+          [
+            "FBI",
+            "Org"
+          ],
+          [
+            "Jim Garrison",
+            "Peop"
+          ],
+          [
+            "CIA",
+            "Org"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Lee Harvey Oswald",
+            "Kill",
+            "Kennedy"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.4,
+            true
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 9597,
+        "output_tokens": 3391
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0089",
+        "valid_resonses": 4,
+        "entity_pred": [
+          [
+            "Linda Schmitt",
+            "Peop"
+          ],
+          [
+            "Becton Dickinson",
+            "Org"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Linda Schmitt",
+            "Peop"
+          ],
+          [
+            "Becton Dickinson",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Linda Schmitt",
+            "Work_For",
+            "Becton Dickinson"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 5506,
+        "output_tokens": 1416
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0090",
+        "valid_resonses": 3,
+        "entity_pred": [
+          [
+            "Kennedy",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Sirhan Bishara Sirhan",
+            "Peop"
+          ],
+          [
+            "Kennedy",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Sirhan Bishara Sirhan",
+            "Kill",
+            "Kennedy"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 10722,
+        "output_tokens": 2574
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0091",
+        "valid_resonses": 4,
+        "entity_pred": [],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "6 Apr 94",
+            "Other"
+          ],
+          [
+            "AL-AHALI",
+            "Org"
+          ],
+          [
+            "Cairo",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "AL-AHALI",
+            "OrgBased_In",
+            "Cairo"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 3767,
+        "output_tokens": 494
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0092",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Texas",
+            "Loc"
+          ],
+          [
+            "Buddy Holly",
+            "Peop"
+          ],
+          [
+            "Charles Hardin Holley",
+            "Peop"
+          ],
+          [
+            "Lubbock",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Buddy Holly",
+            "Work_For",
+            "Charles Hardin Holley"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Lubbock , Texas",
+            "Loc"
+          ],
+          [
+            "Buddy Holly",
+            "Peop"
+          ],
+          [
+            "Charles Hardin Holley",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Buddy Holly",
+            "Live_In",
+            "Lubbock , Texas"
+          ],
+          [
+            "Charles Hardin Holley",
+            "Live_In",
+            "Lubbock , Texas"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.4,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 5777,
+        "output_tokens": 1748
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0093",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Belli",
+            "Peop"
+          ],
+          [
+            "John F. Kennedy",
+            "Peop"
+          ],
+          [
+            "Jack Ruby",
+            "Peop"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ],
+          [
+            "Jim and Tammy Bakker",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Jack Ruby",
+            "Kill",
+            "Lee Harvey Oswald"
+          ],
+          [
+            "Jack Ruby",
+            "Work_For",
+            "Jim and Tammy Bakker"
+          ],
+          [
+            "Belli",
+            "Work_For",
+            "Jack Ruby"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "John F. Kennedy",
+            "Peop"
+          ],
+          [
+            "Tammy Bakker",
+            "Peop"
+          ],
+          [
+            "Jack Ruby",
+            "Peop"
+          ],
+          [
+            "Jim",
+            "Peop"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ],
+          [
+            "Belli",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Jack Ruby",
+            "Kill",
+            "Lee Harvey Oswald"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Kill",
+            "John F. Kennedy"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 3926,
+        "output_tokens": 1352
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0094",
+        "valid_resonses": 4,
+        "entity_pred": [
+          [
+            "Gavrilo Princip",
+            "Peop"
+          ],
+          [
+            "World War I",
+            "Other"
+          ],
+          [
+            "Bosnia",
+            "Other"
+          ],
+          [
+            "Sarajevo",
+            "Loc"
+          ],
+          [
+            "Austrian Archduke Franz Ferdinand",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Gavrilo Princip",
+            "Kill",
+            "Austrian Archduke Franz Ferdinand"
+          ],
+          [
+            "Sarajevo",
+            "Located_In",
+            "Bosnia"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Gavrilo Princip",
+            "Peop"
+          ],
+          [
+            "World War",
+            "Other"
+          ],
+          [
+            "Sarajevo",
+            "Loc"
+          ],
+          [
+            "Bosnia",
+            "Loc"
+          ],
+          [
+            "Austrian Archduke Franz Ferdinand",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Gavrilo Princip",
+            "Kill",
+            "Austrian Archduke Franz Ferdinand"
+          ],
+          [
+            "Sarajevo",
+            "Located_In",
+            "Bosnia"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.8,
+            true
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            false
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 4710,
+        "output_tokens": 2086
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0095",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Walesa",
+            "Peop"
+          ],
+          [
+            "Solidarity",
+            "Org"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Walesa",
+            "Work_For",
+            "Solidarity"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Walesa",
+            "Peop"
+          ],
+          [
+            "Solidarity",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Walesa",
+            "Work_For",
+            "Solidarity"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ]
+        ],
+        "input_tokens": 4355,
+        "output_tokens": 767
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0096",
+        "valid_resonses": 0,
+        "entity_pred": [],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Concord , Mass",
+            "Loc"
+          ],
+          [
+            "Henry David Thoreau",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Henry David Thoreau",
+            "Live_In",
+            "Concord , Mass"
+          ]
+        ],
+        "entity_confidence_pairs": [],
+        "relation_confidence_pairs": [],
+        "input_tokens": 8910,
+        "output_tokens": 1410
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0097",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "John F. Kennedy",
+            "Peop"
+          ],
+          [
+            "Dallas",
+            "Loc"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Dallas",
+            "Located_In",
+            "Lee Harvey Oswald"
+          ],
+          [
+            "Dallas",
+            "Located_In",
+            "John F. Kennedy"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ],
+          [
+            "Nov.",
+            "Other"
+          ],
+          [
+            "Dallas",
+            "Loc"
+          ],
+          [
+            "President John F. Kennedy",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Lee Harvey Oswald",
+            "Kill",
+            "President John F. Kennedy"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.4,
+            false
+          ]
+        ],
+        "input_tokens": 3075,
+        "output_tokens": 969
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0098",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Berlin",
+            "Loc"
+          ],
+          [
+            "Bossi",
+            "Peop"
+          ],
+          [
+            "Fini",
+            "Peop"
+          ],
+          [
+            "the south",
+            "Loc"
+          ],
+          [
+            "Hitler",
+            "Peop"
+          ],
+          [
+            "Minoli",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Minoli",
+            "Work_For",
+            "Bossi"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Berlin",
+            "Loc"
+          ],
+          [
+            "Bossi",
+            "Peop"
+          ],
+          [
+            "Fini",
+            "Peop"
+          ],
+          [
+            "Hitler",
+            "Peop"
+          ],
+          [
+            "Minoli",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Hitler",
+            "Live_In",
+            "Berlin"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 4035,
+        "output_tokens": 1565
+      },
+      {
+        "model": "qwen2.5:3b",
+        "id": "conll04_validation_0099",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "the Pentagon",
+            "Loc"
+          ],
+          [
+            "Mrs. Higgins",
+            "Peop"
+          ],
+          [
+            "the Marine Corps",
+            "Org"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Marine Corps",
+            "Org"
+          ],
+          [
+            "Pentagon",
+            "Org"
+          ],
+          [
+            "Mrs. Higgins",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Mrs. Higgins",
+            "Work_For",
+            "Pentagon"
+          ],
+          [
+            "Mrs. Higgins",
+            "Work_For",
+            "Marine Corps"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.8,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2979,
+        "output_tokens": 833
+      }
+    ]
+  },
+  {
+    "model": "claude-haiku-4-5-20251001",
+    "n_samples": 5,
+    "entity_confidence": {
+      "0.4": {
+        "samples": 9,
+        "accuracy": 0.5555555555555556
+      },
+      "1.0": {
+        "samples": 164,
+        "accuracy": 0.8109756097560976
+      },
+      "0.6": {
+        "samples": 10,
+        "accuracy": 0.2
+      },
+      "0.2": {
+        "samples": 8,
+        "accuracy": 0.375
+      },
+      "0.8": {
+        "samples": 8,
+        "accuracy": 0.625
+      }
+    },
+    "relation_confidence": {
+      "0.2": {
+        "samples": 18,
+        "accuracy": 0.2222222222222222
+      },
+      "0.6": {
+        "samples": 6,
+        "accuracy": 0.16666666666666666
+      },
+      "0.8": {
+        "samples": 9,
+        "accuracy": 0.4444444444444444
+      },
+      "0.4": {
+        "samples": 10,
+        "accuracy": 0.6
+      },
+      "1.0": {
+        "samples": 27,
+        "accuracy": 0.5185185185185185
+      }
+    },
+    "f1": {
+      "entity": 0.736842105263158,
+      "relation": 0.33628318584070793
+    },
+    "sentences": [
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0050",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Sen. Jake Garn",
+            "Peop"
+          ],
+          [
+            "D-Fla.",
+            "Loc"
+          ],
+          [
+            "R-Utah",
+            "Loc"
+          ],
+          [
+            "Rep. Bill Nelson",
+            "Peop"
+          ],
+          [
+            "NASA",
+            "Org"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Sen. Jake Garn",
+            "Work_For",
+            "R-Utah"
+          ],
+          [
+            "Rep. Bill Nelson",
+            "Work_For",
+            "D-Fla."
+          ]
+        ],
+        "gold_entities": [
+          [
+            "1985",
+            "Other"
+          ],
+          [
+            "Bill Nelson",
+            "Peop"
+          ],
+          [
+            "Jake Garn",
+            "Peop"
+          ],
+          [
+            "1986",
+            "Other"
+          ],
+          [
+            "NASA",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Jake Garn",
+            "Work_For",
+            "NASA"
+          ],
+          [
+            "Bill Nelson",
+            "Work_For",
+            "NASA"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            true
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ]
+        ],
+        "input_tokens": 2440,
+        "output_tokens": 802
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0051",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Soviet",
+            "Other"
+          ],
+          [
+            "American",
+            "Other"
+          ],
+          [
+            "Soviet Armenia",
+            "Loc"
+          ],
+          [
+            "Washington",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Soviet",
+            "Loc"
+          ],
+          [
+            "Armenia.",
+            "Loc"
+          ],
+          [
+            "Washington",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Armenia.",
+            "Located_In",
+            "Soviet"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.6,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2345,
+        "output_tokens": 555
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0052",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Juppe",
+            "Peop"
+          ],
+          [
+            "Turkey",
+            "Loc"
+          ],
+          [
+            "French Government",
+            "Org"
+          ],
+          [
+            "Cetin",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Juppe",
+            "Peop"
+          ],
+          [
+            "Turkey",
+            "Loc"
+          ],
+          [
+            "French Government",
+            "Org"
+          ],
+          [
+            "Cetin",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Cetin",
+            "Live_In",
+            "Turkey"
+          ],
+          [
+            "Juppe",
+            "Work_For",
+            "French Government"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 2390,
+        "output_tokens": 400
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0053",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Venezuela",
+            "Loc"
+          ],
+          [
+            "Jose Vicente Maldonado",
+            "Peop"
+          ],
+          [
+            "Peru",
+            "Loc"
+          ],
+          [
+            "Andean Group",
+            "Org"
+          ],
+          [
+            "Ecuador",
+            "Loc"
+          ],
+          [
+            "Colombia",
+            "Loc"
+          ],
+          [
+            "Bolivia",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Jose Vicente Maldonado",
+            "Work_For",
+            "Ecuador"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Venezuela",
+            "Loc"
+          ],
+          [
+            "Jose Vicente Maldonado",
+            "Peop"
+          ],
+          [
+            "Peru",
+            "Loc"
+          ],
+          [
+            "Andean Group",
+            "Org"
+          ],
+          [
+            "Ecuador",
+            "Loc"
+          ],
+          [
+            "Colombia",
+            "Loc"
+          ],
+          [
+            "Bolivia",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Andean Group",
+            "OrgBased_In",
+            "Ecuador"
+          ],
+          [
+            "Andean Group",
+            "OrgBased_In",
+            "Colombia"
+          ],
+          [
+            "Andean Group",
+            "OrgBased_In",
+            "Peru"
+          ],
+          [
+            "Andean Group",
+            "OrgBased_In",
+            "Bolivia"
+          ],
+          [
+            "Andean Group",
+            "OrgBased_In",
+            "Venezuela"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.8,
+            false
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2445,
+        "output_tokens": 1199
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0054",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "N.C",
+            "Loc"
+          ],
+          [
+            "Elizabeth",
+            "Peop"
+          ],
+          [
+            "Dole",
+            "Peop"
+          ],
+          [
+            "Salisbury",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Elizabeth",
+            "Live_In",
+            "Salisbury"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Elizabeth",
+            "Peop"
+          ],
+          [
+            "Dole",
+            "Peop"
+          ],
+          [
+            "Salisbury , N.C",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Elizabeth",
+            "Live_In",
+            "Salisbury , N.C"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ]
+        ],
+        "input_tokens": 2285,
+        "output_tokens": 575
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0055",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "NATO",
+            "Org"
+          ],
+          [
+            "SDS",
+            "Org"
+          ],
+          [
+            "Bulgarian Socialist Party",
+            "Org"
+          ],
+          [
+            "BSP",
+            "Org"
+          ],
+          [
+            "Sofia",
+            "Loc"
+          ],
+          [
+            "Bulgaria",
+            "Loc"
+          ],
+          [
+            "Bosnia",
+            "Loc"
+          ],
+          [
+            "Union of Democratic Forces",
+            "Org"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Bulgarian Socialist Party",
+            "OrgBased_In",
+            "Bulgaria"
+          ],
+          [
+            "Union of Democratic Forces",
+            "OrgBased_In",
+            "Bulgaria"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "NATO",
+            "Org"
+          ],
+          [
+            "Bulgarian Socialist ( formerly Communist ) Party",
+            "Org"
+          ],
+          [
+            "SDS",
+            "Org"
+          ],
+          [
+            "Union of Democratic Forces",
+            "Org"
+          ],
+          [
+            "February 15",
+            "Other"
+          ],
+          [
+            "Bulgaria",
+            "Loc"
+          ],
+          [
+            "Sofia",
+            "Loc"
+          ],
+          [
+            "Bosnia",
+            "Loc"
+          ],
+          [
+            "BTA",
+            "Org"
+          ],
+          [
+            "BSP",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "BSP",
+            "OrgBased_In",
+            "Bulgaria"
+          ],
+          [
+            "BTA",
+            "OrgBased_In",
+            "Sofia"
+          ],
+          [
+            "Union of Democratic Forces",
+            "OrgBased_In",
+            "Bulgaria"
+          ],
+          [
+            "SDS",
+            "OrgBased_In",
+            "Bulgaria"
+          ],
+          [
+            "Bulgarian Socialist ( formerly Communist ) Party",
+            "OrgBased_In",
+            "Bulgaria"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            0.8,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.8,
+            false
+          ],
+          [
+            0.8,
+            true
+          ]
+        ],
+        "input_tokens": 2525,
+        "output_tokens": 970
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0056",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "District of Columbia",
+            "Loc"
+          ],
+          [
+            "Robert Bork",
+            "Peop"
+          ],
+          [
+            "William French Smith",
+            "Peop"
+          ],
+          [
+            "Senate",
+            "Org"
+          ],
+          [
+            "Starr",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Starr",
+            "Work_For",
+            "William French Smith"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "District of Columbia",
+            "Loc"
+          ],
+          [
+            "Robert Bork",
+            "Peop"
+          ],
+          [
+            "Supreme Court",
+            "Org"
+          ],
+          [
+            "William French Smith",
+            "Peop"
+          ],
+          [
+            "Senate",
+            "Org"
+          ],
+          [
+            "Starr",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Senate",
+            "OrgBased_In",
+            "District of Columbia"
+          ],
+          [
+            "Supreme Court",
+            "OrgBased_In",
+            "District of Columbia"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.8,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ]
+        ],
+        "input_tokens": 2510,
+        "output_tokens": 644
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0057",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "United States Agency for International Development",
+            "Org"
+          ],
+          [
+            "Indian Ocean",
+            "Loc"
+          ],
+          [
+            "Madagascar",
+            "Loc"
+          ],
+          [
+            "Africa",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Madagascar",
+            "Located_In",
+            "Indian Ocean"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Africa.",
+            "Loc"
+          ],
+          [
+            "Indian Ocean",
+            "Loc"
+          ],
+          [
+            "Madagascar",
+            "Loc"
+          ],
+          [
+            "International Development",
+            "Other"
+          ],
+          [
+            "United States Agency",
+            "Other"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Madagascar",
+            "Located_In",
+            "Indian Ocean"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ]
+        ],
+        "input_tokens": 5396,
+        "output_tokens": 1604
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0058",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Paris Radio Monte Carlo",
+            "Org"
+          ],
+          [
+            "Arabic",
+            "Other"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Paris",
+            "Loc"
+          ],
+          [
+            "1700 GMT",
+            "Other"
+          ],
+          [
+            "7 Apr 94",
+            "Other"
+          ],
+          [
+            "Radio Monte Carlo",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Radio Monte Carlo",
+            "OrgBased_In",
+            "Paris"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            0.8,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 2300,
+        "output_tokens": 240
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0059",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Francisco Pizarro",
+            "Peop"
+          ],
+          [
+            "Peru",
+            "Loc"
+          ],
+          [
+            "Atahualpa",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Francisco Pizarro",
+            "Kill",
+            "Atahualpa"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Incan King",
+            "Other"
+          ],
+          [
+            "Peru",
+            "Loc"
+          ],
+          [
+            "Atahualpa",
+            "Peop"
+          ],
+          [
+            "Francisco Pizarro",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Francisco Pizarro",
+            "Kill",
+            "Atahualpa"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ]
+        ],
+        "input_tokens": 2385,
+        "output_tokens": 730
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0060",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Atlanta",
+            "Loc"
+          ],
+          [
+            "Neil Estes",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Neil Estes",
+            "Live_In",
+            "Atlanta"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Atlanta",
+            "Loc"
+          ],
+          [
+            "Neil Estes.",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Neil Estes.",
+            "Live_In",
+            "Atlanta"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ]
+        ],
+        "input_tokens": 2300,
+        "output_tokens": 360
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0061",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Netherlands",
+            "Loc"
+          ],
+          [
+            "Robert C. Corduwener",
+            "Peop"
+          ],
+          [
+            "Rinn family",
+            "Peop"
+          ],
+          [
+            "Minox",
+            "Org"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Robert C. Corduwener",
+            "Work_For",
+            "Minox"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "April 1 , 1988",
+            "Other"
+          ],
+          [
+            "1981",
+            "Other"
+          ],
+          [
+            "Netherlands",
+            "Loc"
+          ],
+          [
+            "Minox",
+            "Org"
+          ],
+          [
+            "51 percent",
+            "Other"
+          ],
+          [
+            "Robert C. Corduwener",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Robert C. Corduwener",
+            "Live_In",
+            "Netherlands"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ]
+        ],
+        "input_tokens": 2465,
+        "output_tokens": 660
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0062",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Indonesia",
+            "Loc"
+          ],
+          [
+            "Sahara desert",
+            "Loc"
+          ],
+          [
+            "Madagascar",
+            "Loc"
+          ],
+          [
+            "Nicaragua",
+            "Loc"
+          ],
+          [
+            "Africa",
+            "Loc"
+          ],
+          [
+            "Brazil",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Indonesia",
+            "Loc"
+          ],
+          [
+            "Sahara desert",
+            "Loc"
+          ],
+          [
+            "Madagascar",
+            "Loc"
+          ],
+          [
+            "Nicaragua",
+            "Loc"
+          ],
+          [
+            "Africa",
+            "Loc"
+          ],
+          [
+            "Brazil",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Sahara desert",
+            "Located_In",
+            "Africa"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            0.8,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 2370,
+        "output_tokens": 549
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0063",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Willi Marx",
+            "Peop"
+          ],
+          [
+            "The Associated Press",
+            "Org"
+          ],
+          [
+            "Heuchelheim",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Willi Marx",
+            "Work_For",
+            "Heuchelheim"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Willi Marx",
+            "Peop"
+          ],
+          [
+            "Associated Press",
+            "Org"
+          ],
+          [
+            "Heuchelheim",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Willi Marx",
+            "Live_In",
+            "Heuchelheim"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ]
+        ],
+        "input_tokens": 2375,
+        "output_tokens": 684
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0064",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Jeff Shia",
+            "Peop"
+          ],
+          [
+            "Kiangsu Chekiang Association",
+            "Org"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Jeff Shia",
+            "Work_For",
+            "Kiangsu Chekiang Association"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Chinese",
+            "Other"
+          ],
+          [
+            "Jeff Shia",
+            "Peop"
+          ],
+          [
+            "Kiangsu Chekiang Association",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Jeff Shia",
+            "Work_For",
+            "Kiangsu Chekiang Association"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ]
+        ],
+        "input_tokens": 2510,
+        "output_tokens": 524
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0065",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Italy",
+            "Loc"
+          ],
+          [
+            "Anzio",
+            "Loc"
+          ],
+          [
+            "30 Seconds Over Tokyo",
+            "Other"
+          ],
+          [
+            "World War II",
+            "Other"
+          ],
+          [
+            "Rome",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Anzio",
+            "Located_In",
+            "Italy"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Italy",
+            "Loc"
+          ],
+          [
+            "33 miles",
+            "Other"
+          ],
+          [
+            "Anzio",
+            "Loc"
+          ],
+          [
+            "Tokyo",
+            "Loc"
+          ],
+          [
+            "World War II",
+            "Other"
+          ],
+          [
+            "Rome",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Anzio",
+            "Located_In",
+            "Italy"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.8,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.8,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 5753,
+        "output_tokens": 1394
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0066",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "James Earl Ray",
+            "Peop"
+          ],
+          [
+            "Rev. Martin Luther King Jr.",
+            "Peop"
+          ],
+          [
+            "Anna Sandhu Ray",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "James Earl Ray",
+            "Kill",
+            "Rev. Martin Luther King Jr."
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Thursday",
+            "Other"
+          ],
+          [
+            "Rev. Martin Luther King Jr.",
+            "Peop"
+          ],
+          [
+            "James Earl Ray",
+            "Peop"
+          ],
+          [
+            "Anna Sandhu Ray",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "James Earl Ray",
+            "Kill",
+            "Rev. Martin Luther King Jr."
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ]
+        ],
+        "input_tokens": 2385,
+        "output_tokens": 613
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0067",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Tiananmen Square",
+            "Loc"
+          ],
+          [
+            "Goddess of Democracy",
+            "Other"
+          ],
+          [
+            "Beijing",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Goddess of Democracy",
+            "Located_In",
+            "Tiananmen Square"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Tiananmen Square",
+            "Loc"
+          ],
+          [
+            "May 30.",
+            "Other"
+          ],
+          [
+            "Beijing",
+            "Loc"
+          ],
+          [
+            "Goddess of Democracy",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Tiananmen Square",
+            "Located_In",
+            "Beijing"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ]
+        ],
+        "input_tokens": 2405,
+        "output_tokens": 613
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0068",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "State Palace",
+            "Loc"
+          ],
+          [
+            "XINHUA",
+            "Org"
+          ],
+          [
+            "Ulaanbaatar",
+            "Loc"
+          ],
+          [
+            "People's Republic of China",
+            "Loc"
+          ],
+          [
+            "P. Jasray",
+            "Peop"
+          ],
+          [
+            "Mongolia",
+            "Loc"
+          ],
+          [
+            "Li Peng",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "P. Jasray",
+            "OrgBased_In",
+            "Mongolia"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "State Palace",
+            "Loc"
+          ],
+          [
+            "People 's Republic of China",
+            "Loc"
+          ],
+          [
+            "XINHUA",
+            "Org"
+          ],
+          [
+            "P. Jasray",
+            "Peop"
+          ],
+          [
+            "29 Apr",
+            "Other"
+          ],
+          [
+            "29 April",
+            "Other"
+          ],
+          [
+            "China",
+            "Loc"
+          ],
+          [
+            "Li Peng",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Li Peng",
+            "Live_In",
+            "China"
+          ],
+          [
+            "XINHUA",
+            "OrgBased_In",
+            "China"
+          ],
+          [
+            "XINHUA",
+            "OrgBased_In",
+            "People 's Republic of China"
+          ],
+          [
+            "Li Peng",
+            "Live_In",
+            "People 's Republic of China"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.2,
+            true
+          ],
+          [
+            0.8,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.4,
+            false
+          ]
+        ],
+        "input_tokens": 3426,
+        "output_tokens": 1534
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0069",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Herbert Clark Hoover",
+            "Peop"
+          ],
+          [
+            "West Branch",
+            "Loc"
+          ],
+          [
+            "United States",
+            "Loc"
+          ],
+          [
+            "Iowa",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Herbert Clark Hoover",
+            "Live_In",
+            "West Branch"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Herbert Clark Hoover",
+            "Peop"
+          ],
+          [
+            "West Branch , Iowa",
+            "Loc"
+          ],
+          [
+            "United States",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Herbert Clark Hoover",
+            "Live_In",
+            "West Branch , Iowa"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2330,
+        "output_tokens": 745
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0070",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "RPF",
+            "Org"
+          ],
+          [
+            "Bugesera",
+            "Loc"
+          ],
+          [
+            "Rwanda",
+            "Loc"
+          ],
+          [
+            "Rwandan Patriotic Front",
+            "Org"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Rwandan Patriotic Front",
+            "Located_In",
+            "Rwanda"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Rwanda",
+            "Loc"
+          ],
+          [
+            "Bugesera",
+            "Loc"
+          ],
+          [
+            "Rwandan Patriotic Front",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Bugesera",
+            "Located_In",
+            "Rwanda"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.8,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2365,
+        "output_tokens": 668
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0071",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Andrew Hall",
+            "Peop"
+          ],
+          [
+            "Warner",
+            "Peop"
+          ],
+          [
+            "Fla.",
+            "Loc"
+          ],
+          [
+            "Miami",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Andrew Hall",
+            "Live_In",
+            "Miami"
+          ],
+          [
+            "Andrew Hall",
+            "Work_For",
+            "Warner"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Andrew Hall",
+            "Peop"
+          ],
+          [
+            "Warner",
+            "Peop"
+          ],
+          [
+            "Fla.",
+            "Loc"
+          ],
+          [
+            "Miami",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Miami",
+            "Located_In",
+            "Fla."
+          ],
+          [
+            "Andrew Hall",
+            "Live_In",
+            "Miami"
+          ],
+          [
+            "Andrew Hall",
+            "Live_In",
+            "Fla."
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.6,
+            true
+          ],
+          [
+            1.0,
+            false
+          ]
+        ],
+        "input_tokens": 2320,
+        "output_tokens": 706
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0072",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Mich",
+            "Loc"
+          ],
+          [
+            "GRAND RAPIDS",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "GRAND RAPIDS",
+            "Loc"
+          ],
+          [
+            "Mich .",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "GRAND RAPIDS",
+            "Located_In",
+            "Mich ."
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 2225,
+        "output_tokens": 235
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0073",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Thomas Kean",
+            "Peop"
+          ],
+          [
+            "New Jersey",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Thomas Kean",
+            "OrgBased_In",
+            "New Jersey"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Thomas Kean",
+            "Peop"
+          ],
+          [
+            "New Jersey",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Thomas Kean",
+            "Live_In",
+            "New Jersey"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ]
+        ],
+        "input_tokens": 2370,
+        "output_tokens": 427
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0074",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Institute of Contemporary Studies",
+            "Org"
+          ],
+          [
+            "Marcos Victorica",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Marcos Victorica",
+            "Work_For",
+            "Institute of Contemporary Studies"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Institute of Contemporary Studies.",
+            "Org"
+          ],
+          [
+            "Marcos Victorica",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Marcos Victorica",
+            "Work_For",
+            "Institute of Contemporary Studies."
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ]
+        ],
+        "input_tokens": 2320,
+        "output_tokens": 484
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0075",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "London",
+            "Loc"
+          ],
+          [
+            "Kanal-6 Television",
+            "Org"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Kanal-6 Television",
+            "OrgBased_In",
+            "London"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "19 Jan 94",
+            "Other"
+          ],
+          [
+            "London",
+            "Loc"
+          ],
+          [
+            "1700 GMT",
+            "Other"
+          ],
+          [
+            "Kanal-6 Television",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Kanal-6 Television",
+            "OrgBased_In",
+            "London"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.8,
+            true
+          ]
+        ],
+        "input_tokens": 2370,
+        "output_tokens": 413
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0076",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "John Wilkes Booth",
+            "Peop"
+          ],
+          [
+            "Union soldiers",
+            "Other"
+          ],
+          [
+            "Garrett place",
+            "Loc"
+          ],
+          [
+            "Lincoln",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "John Wilkes Booth",
+            "Kill",
+            "Lincoln"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "John Wilkes Booth",
+            "Peop"
+          ],
+          [
+            "Union",
+            "Org"
+          ],
+          [
+            "Lincoln",
+            "Peop"
+          ],
+          [
+            "April",
+            "Other"
+          ],
+          [
+            "Garrett",
+            "Other"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "John Wilkes Booth",
+            "Kill",
+            "Lincoln"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.4,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2370,
+        "output_tokens": 739
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0077",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "BANGKOK",
+            "Loc"
+          ],
+          [
+            "AP",
+            "Org"
+          ],
+          [
+            "Thailand",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "BANGKOK",
+            "Loc"
+          ],
+          [
+            "AP",
+            "Org"
+          ],
+          [
+            "Thailand",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "BANGKOK",
+            "Located_In",
+            "Thailand"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 2215,
+        "output_tokens": 295
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0078",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Joseph Cicippio",
+            "Peop"
+          ],
+          [
+            "American University of Beirut",
+            "Org"
+          ],
+          [
+            "Beirut",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Joseph Cicippio",
+            "Work_For",
+            "American University of Beirut"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Joseph Cicippio",
+            "Peop"
+          ],
+          [
+            "Sept. 12 , 1986.",
+            "Other"
+          ],
+          [
+            "American University of Beirut",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Joseph Cicippio",
+            "Work_For",
+            "American University of Beirut"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2380,
+        "output_tokens": 648
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0079",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Santa Ana winds",
+            "Other"
+          ],
+          [
+            "Southern California",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Santa Ana",
+            "Loc"
+          ],
+          [
+            "Southern California",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Santa Ana",
+            "Located_In",
+            "Southern California"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 2450,
+        "output_tokens": 273
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0080",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Havana Radio Reloj Network",
+            "Org"
+          ],
+          [
+            "Havana",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "27 Jun 94",
+            "Other"
+          ],
+          [
+            "1402 GMT",
+            "Other"
+          ],
+          [
+            "Havana",
+            "Loc"
+          ],
+          [
+            "Radio Reloj Network",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Radio Reloj Network",
+            "OrgBased_In",
+            "Havana"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2315,
+        "output_tokens": 302
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0081",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "International Paper",
+            "Org"
+          ],
+          [
+            "John A. Georges",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "John A. Georges",
+            "Work_For",
+            "International Paper"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "International Paper",
+            "Org"
+          ],
+          [
+            "John A. Georges",
+            "Peop"
+          ],
+          [
+            "1988",
+            "Other"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "John A. Georges",
+            "Work_For",
+            "International Paper"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ]
+        ],
+        "input_tokens": 2390,
+        "output_tokens": 412
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0082",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Pinecastle Electronic Warfare Range",
+            "Loc"
+          ],
+          [
+            "Ocala National Forest",
+            "Loc"
+          ],
+          [
+            "FA-18 Hornet",
+            "Other"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "FA-18 Hornet",
+            "Located_In",
+            "Ocala National Forest"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Pinecastle Electronic Warfare Range",
+            "Loc"
+          ],
+          [
+            "Ocala National Forest",
+            "Loc"
+          ],
+          [
+            "1 : 50 p.m .",
+            "Other"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Pinecastle Electronic Warfare Range",
+            "Located_In",
+            "Ocala National Forest"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.8,
+            false
+          ],
+          [
+            0.2,
+            true
+          ]
+        ],
+        "input_tokens": 2410,
+        "output_tokens": 628
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0083",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Mich.",
+            "Loc"
+          ],
+          [
+            "EAST LANSING",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Mich.",
+            "Loc"
+          ],
+          [
+            "EAST LANSING",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "EAST LANSING",
+            "Located_In",
+            "Mich."
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 2230,
+        "output_tokens": 272
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0084",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Athens",
+            "Loc"
+          ],
+          [
+            "Oberlin College",
+            "Org"
+          ],
+          [
+            "United States",
+            "Loc"
+          ],
+          [
+            "Psacharopoulos",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Psacharopoulos",
+            "Live_In",
+            "Athens"
+          ],
+          [
+            "Psacharopoulos",
+            "Live_In",
+            "United States"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Athens",
+            "Loc"
+          ],
+          [
+            "Oberlin College",
+            "Org"
+          ],
+          [
+            "United States",
+            "Loc"
+          ],
+          [
+            "Psacharopoulos",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Oberlin College",
+            "OrgBased_In",
+            "United States"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            0.6,
+            false
+          ],
+          [
+            0.4,
+            false
+          ]
+        ],
+        "input_tokens": 2350,
+        "output_tokens": 751
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0085",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Perry",
+            "Peop"
+          ],
+          [
+            "Jack Ruby",
+            "Peop"
+          ],
+          [
+            "Kennedy",
+            "Peop"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Jack Ruby",
+            "Kill",
+            "Lee Harvey Oswald"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Perry",
+            "Peop"
+          ],
+          [
+            "Jack Ruby",
+            "Peop"
+          ],
+          [
+            "Kennedy",
+            "Peop"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Jack Ruby",
+            "Kill",
+            "Lee Harvey Oswald"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Kill",
+            "Kennedy"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 2320,
+        "output_tokens": 618
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0086",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "South Africa",
+            "Loc"
+          ],
+          [
+            "Foreign Ministry",
+            "Org"
+          ],
+          [
+            "Datuk Sri Datin Paduka Dr. Siti Hasmah",
+            "Peop"
+          ],
+          [
+            "Datuk Abdul Halim Ali",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Datuk Abdul Halim Ali",
+            "Work_For",
+            "Foreign Ministry"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Foreign Ministry",
+            "Org"
+          ],
+          [
+            "Datuk Sri Datin Paduka Dr. Siti Hasmah",
+            "Peop"
+          ],
+          [
+            "South Africa",
+            "Loc"
+          ],
+          [
+            "Datuk Abdul Halim Ali",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Datuk Abdul Halim Ali",
+            "Work_For",
+            "Foreign Ministry"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ]
+        ],
+        "input_tokens": 2445,
+        "output_tokens": 908
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0087",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Arizona",
+            "Loc"
+          ],
+          [
+            "John Harvey Adamson",
+            "Peop"
+          ],
+          [
+            "Don Bolles",
+            "Peop"
+          ],
+          [
+            "federal appeals court",
+            "Org"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "John Harvey Adamson",
+            "Kill",
+            "Don Bolles"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Arizona",
+            "Loc"
+          ],
+          [
+            "John Harvey Adamson",
+            "Peop"
+          ],
+          [
+            "Don Bolles",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "John Harvey Adamson",
+            "Kill",
+            "Don Bolles"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ]
+        ],
+        "input_tokens": 2370,
+        "output_tokens": 785
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0088",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Kennedy",
+            "Peop"
+          ],
+          [
+            "Stone",
+            "Peop"
+          ],
+          [
+            "New Orleans",
+            "Loc"
+          ],
+          [
+            "Kevin Costner",
+            "Peop"
+          ],
+          [
+            "FBI",
+            "Org"
+          ],
+          [
+            "Jim Garrison",
+            "Peop"
+          ],
+          [
+            "CIA",
+            "Org"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Jim Garrison",
+            "Live_In",
+            "New Orleans"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Kennedy",
+            "Peop"
+          ],
+          [
+            "Stone",
+            "Peop"
+          ],
+          [
+            "New Orleans",
+            "Loc"
+          ],
+          [
+            "Kevin Costner",
+            "Peop"
+          ],
+          [
+            "FBI",
+            "Org"
+          ],
+          [
+            "Jim Garrison",
+            "Peop"
+          ],
+          [
+            "CIA",
+            "Org"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Lee Harvey Oswald",
+            "Kill",
+            "Kennedy"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            false
+          ]
+        ],
+        "input_tokens": 5768,
+        "output_tokens": 1834
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0089",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Linda Schmitt",
+            "Peop"
+          ],
+          [
+            "Becton Dickinson",
+            "Org"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Linda Schmitt",
+            "Peop"
+          ],
+          [
+            "Becton Dickinson",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Linda Schmitt",
+            "Work_For",
+            "Becton Dickinson"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.2,
+            false
+          ],
+          [
+            0.2,
+            true
+          ]
+        ],
+        "input_tokens": 2345,
+        "output_tokens": 395
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0090",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Sirhan Bishara Sirhan",
+            "Peop"
+          ],
+          [
+            "Kennedy",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Sirhan Bishara Sirhan",
+            "Peop"
+          ],
+          [
+            "Kennedy",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Sirhan Bishara Sirhan",
+            "Kill",
+            "Kennedy"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 2355,
+        "output_tokens": 383
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0091",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "AL-AHALI",
+            "Org"
+          ],
+          [
+            "Cairo",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "6 Apr 94",
+            "Other"
+          ],
+          [
+            "AL-AHALI",
+            "Org"
+          ],
+          [
+            "Cairo",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "AL-AHALI",
+            "OrgBased_In",
+            "Cairo"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 2300,
+        "output_tokens": 245
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0092",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Texas",
+            "Loc"
+          ],
+          [
+            "Buddy Holly",
+            "Peop"
+          ],
+          [
+            "Charles Hardin Holley",
+            "Peop"
+          ],
+          [
+            "Lubbock",
+            "Loc"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Buddy Holly",
+            "Live_In",
+            "Lubbock"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Lubbock , Texas",
+            "Loc"
+          ],
+          [
+            "Buddy Holly",
+            "Peop"
+          ],
+          [
+            "Charles Hardin Holley",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Buddy Holly",
+            "Live_In",
+            "Lubbock , Texas"
+          ],
+          [
+            "Charles Hardin Holley",
+            "Live_In",
+            "Lubbock , Texas"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.8,
+            false
+          ]
+        ],
+        "input_tokens": 2320,
+        "output_tokens": 603
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0093",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Tammy Bakker",
+            "Peop"
+          ],
+          [
+            "John F. Kennedy assassin Lee Harvey Oswald",
+            "Peop"
+          ],
+          [
+            "Jack Ruby",
+            "Peop"
+          ],
+          [
+            "Jim",
+            "Peop"
+          ],
+          [
+            "Belli",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Jack Ruby",
+            "Kill",
+            "John F. Kennedy assassin Lee Harvey Oswald"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "John F. Kennedy",
+            "Peop"
+          ],
+          [
+            "Tammy Bakker",
+            "Peop"
+          ],
+          [
+            "Jack Ruby",
+            "Peop"
+          ],
+          [
+            "Jim",
+            "Peop"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ],
+          [
+            "Belli",
+            "Loc"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Jack Ruby",
+            "Kill",
+            "Lee Harvey Oswald"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Kill",
+            "John F. Kennedy"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            0.4,
+            true
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.6,
+            true
+          ],
+          [
+            0.4,
+            true
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            0.4,
+            false
+          ],
+          [
+            0.6,
+            false
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            0.4,
+            true
+          ],
+          [
+            0.6,
+            false
+          ]
+        ],
+        "input_tokens": 2355,
+        "output_tokens": 910
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0094",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Gavrilo Princip",
+            "Peop"
+          ],
+          [
+            "World War I",
+            "Other"
+          ],
+          [
+            "Sarajevo",
+            "Loc"
+          ],
+          [
+            "Bosnia",
+            "Loc"
+          ],
+          [
+            "Austrian Archduke Franz Ferdinand",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Gavrilo Princip",
+            "Kill",
+            "Austrian Archduke Franz Ferdinand"
+          ],
+          [
+            "Sarajevo",
+            "Located_In",
+            "Bosnia"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Gavrilo Princip",
+            "Peop"
+          ],
+          [
+            "World War",
+            "Other"
+          ],
+          [
+            "Sarajevo",
+            "Loc"
+          ],
+          [
+            "Bosnia",
+            "Loc"
+          ],
+          [
+            "Austrian Archduke Franz Ferdinand",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Gavrilo Princip",
+            "Kill",
+            "Austrian Archduke Franz Ferdinand"
+          ],
+          [
+            "Sarajevo",
+            "Located_In",
+            "Bosnia"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "input_tokens": 2585,
+        "output_tokens": 885
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0095",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Walesa",
+            "Peop"
+          ],
+          [
+            "Solidarity",
+            "Org"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Walesa",
+            "Peop"
+          ],
+          [
+            "Solidarity",
+            "Org"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Walesa",
+            "Work_For",
+            "Solidarity"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 2240,
+        "output_tokens": 245
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0096",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Concord",
+            "Loc"
+          ],
+          [
+            "Mass",
+            "Loc"
+          ],
+          [
+            "Henry David Thoreau",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Henry David Thoreau",
+            "Live_In",
+            "Concord"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Concord , Mass",
+            "Loc"
+          ],
+          [
+            "Henry David Thoreau",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Henry David Thoreau",
+            "Live_In",
+            "Concord , Mass"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            false
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            false
+          ]
+        ],
+        "input_tokens": 2300,
+        "output_tokens": 562
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0097",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Dallas",
+            "Loc"
+          ],
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ],
+          [
+            "President John F. Kennedy",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Lee Harvey Oswald",
+            "Kill",
+            "President John F. Kennedy"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Lee Harvey Oswald",
+            "Peop"
+          ],
+          [
+            "Nov.",
+            "Other"
+          ],
+          [
+            "Dallas",
+            "Loc"
+          ],
+          [
+            "President John F. Kennedy",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Lee Harvey Oswald",
+            "Kill",
+            "President John F. Kennedy"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ]
+        ],
+        "input_tokens": 2525,
+        "output_tokens": 628
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0098",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Berlin",
+            "Loc"
+          ],
+          [
+            "Bossi",
+            "Peop"
+          ],
+          [
+            "Fini",
+            "Peop"
+          ],
+          [
+            "Hitler",
+            "Peop"
+          ],
+          [
+            "Minoli",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [],
+        "gold_entities": [
+          [
+            "Berlin",
+            "Loc"
+          ],
+          [
+            "Bossi",
+            "Peop"
+          ],
+          [
+            "Fini",
+            "Peop"
+          ],
+          [
+            "Hitler",
+            "Peop"
+          ],
+          [
+            "Minoli",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Hitler",
+            "Live_In",
+            "Berlin"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            1.0,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [],
+        "input_tokens": 2715,
+        "output_tokens": 497
+      },
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "id": "conll04_validation_0099",
+        "valid_resonses": 5,
+        "entity_pred": [
+          [
+            "Marine Corps",
+            "Org"
+          ],
+          [
+            "Pentagon",
+            "Loc"
+          ],
+          [
+            "Mrs. Higgins",
+            "Peop"
+          ]
+        ],
+        "relations_pred": [
+          [
+            "Mrs. Higgins",
+            "Work_For",
+            "Pentagon"
+          ],
+          [
+            "Mrs. Higgins",
+            "Work_For",
+            "Marine Corps"
+          ]
+        ],
+        "gold_entities": [
+          [
+            "Marine Corps",
+            "Org"
+          ],
+          [
+            "Pentagon",
+            "Org"
+          ],
+          [
+            "Mrs. Higgins",
+            "Peop"
+          ]
+        ],
+        "gold_relations": [
+          [
+            "Mrs. Higgins",
+            "Work_For",
+            "Pentagon"
+          ],
+          [
+            "Mrs. Higgins",
+            "Work_For",
+            "Marine Corps"
+          ]
+        ],
+        "entity_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            0.8,
+            false
+          ],
+          [
+            1.0,
+            true
+          ],
+          [
+            0.2,
+            true
+          ]
+        ],
+        "relation_confidence_pairs": [
+          [
+            1.0,
+            true
+          ],
+          [
+            0.8,
+            true
+          ]
+        ],
+        "input_tokens": 2485,
+        "output_tokens": 611
+      }
+    ]
+  }
+]

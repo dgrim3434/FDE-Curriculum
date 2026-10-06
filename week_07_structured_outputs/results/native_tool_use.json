@@ -1,0 +1,1000 @@
+{
+  "model": "claude-haiku-4-5-20251001",
+  "f1": 0.8880597014925373,
+  "precision": 0.8814814814814815,
+  "recall": 0.8947368421052632,
+  "first_pass": 50,
+  "pass_after_retry": 0,
+  "failed": 0,
+  "output_tokens": 3938,
+  "input_tokens": 54692,
+  "sentences": [
+    {
+      "id": "conll03_validation_0",
+      "calls": 1,
+      "input_tokens": 1085,
+      "output_tokens": 50,
+      "valid": true,
+      "pairs": [
+        [
+          "LEICESTERSHIRE",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_2",
+      "calls": 1,
+      "input_tokens": 1112,
+      "output_tokens": 103,
+      "valid": true,
+      "pairs": [
+        [
+          "Leicestershire",
+          "ORG"
+        ],
+        [
+          "West Indian",
+          "MISC"
+        ],
+        [
+          "Somerset",
+          "ORG"
+        ],
+        [
+          "Phil Simmons",
+          "PER"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_3",
+      "calls": 1,
+      "input_tokens": 1113,
+      "output_tokens": 121,
+      "valid": true,
+      "pairs": [
+        [
+          "Essex",
+          "ORG"
+        ],
+        [
+          "Surrey",
+          "ORG"
+        ],
+        [
+          "Nottinghamshire",
+          "ORG"
+        ],
+        [
+          "Derbyshire",
+          "ORG"
+        ],
+        [
+          "Kent",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_4",
+      "calls": 1,
+      "input_tokens": 1119,
+      "output_tokens": 119,
+      "valid": true,
+      "pairs": [
+        [
+          "England",
+          "LOC"
+        ],
+        [
+          "Leicestershire",
+          "ORG"
+        ],
+        [
+          "Andy Caddick",
+          "PER"
+        ],
+        [
+          "Somerset",
+          "ORG"
+        ],
+        [
+          "Grace Road",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_5",
+      "calls": 1,
+      "input_tokens": 1097,
+      "output_tokens": 64,
+      "valid": true,
+      "pairs": [
+        [
+          "Simmons",
+          "PER"
+        ],
+        [
+          "Somerset",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_6",
+      "calls": 1,
+      "input_tokens": 1104,
+      "output_tokens": 121,
+      "valid": true,
+      "pairs": [
+        [
+          "Essex",
+          "ORG"
+        ],
+        [
+          "Headingley",
+          "LOC"
+        ],
+        [
+          "Yorkshire",
+          "ORG"
+        ],
+        [
+          "Nasser Hussain",
+          "PER"
+        ],
+        [
+          "Peter Such",
+          "PER"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_7",
+      "calls": 1,
+      "input_tokens": 1111,
+      "output_tokens": 78,
+      "valid": true,
+      "pairs": [
+        [
+          "Hussain",
+          "PER"
+        ],
+        [
+          "Essex",
+          "ORG"
+        ],
+        [
+          "England",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_8",
+      "calls": 1,
+      "input_tokens": 1119,
+      "output_tokens": 62,
+      "valid": true,
+      "pairs": [
+        [
+          "Yorkshire",
+          "ORG"
+        ],
+        [
+          "Such",
+          "PER"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_9",
+      "calls": 1,
+      "input_tokens": 1116,
+      "output_tokens": 117,
+      "valid": true,
+      "pairs": [
+        [
+          "Surrey",
+          "ORG"
+        ],
+        [
+          "England",
+          "LOC"
+        ],
+        [
+          "Chris Lewis",
+          "PER"
+        ],
+        [
+          "Oval",
+          "LOC"
+        ],
+        [
+          "Warwickshire",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_10",
+      "calls": 1,
+      "input_tokens": 1100,
+      "output_tokens": 79,
+      "valid": true,
+      "pairs": [
+        [
+          "Surrey",
+          "ORG"
+        ],
+        [
+          "Mark Butcher",
+          "PER"
+        ],
+        [
+          "England",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_11",
+      "calls": 1,
+      "input_tokens": 1112,
+      "output_tokens": 72,
+      "valid": true,
+      "pairs": [
+        [
+          "Derbyshire",
+          "ORG"
+        ],
+        [
+          "Worcestershire",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_12",
+      "calls": 1,
+      "input_tokens": 1116,
+      "output_tokens": 123,
+      "valid": true,
+      "pairs": [
+        [
+          "Australian",
+          "MISC"
+        ],
+        [
+          "Derbyshire",
+          "ORG"
+        ],
+        [
+          "Chris Adams",
+          "PER"
+        ],
+        [
+          "Tim O'Gorman",
+          "PER"
+        ],
+        [
+          "Tom Moody",
+          "PER"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_13",
+      "calls": 1,
+      "input_tokens": 1100,
+      "output_tokens": 66,
+      "valid": true,
+      "pairs": [
+        [
+          "Kent",
+          "ORG"
+        ],
+        [
+          "Nottinghamshire",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_14",
+      "calls": 1,
+      "input_tokens": 1098,
+      "output_tokens": 78,
+      "valid": true,
+      "pairs": [
+        [
+          "Paul Johnson",
+          "PER"
+        ],
+        [
+          "Martin McCague",
+          "PER"
+        ],
+        [
+          "England",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_15",
+      "calls": 1,
+      "input_tokens": 1078,
+      "output_tokens": 48,
+      "valid": true,
+      "pairs": [
+        [
+          "Kent",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_16",
+      "calls": 1,
+      "input_tokens": 1078,
+      "output_tokens": 65,
+      "valid": true,
+      "pairs": [
+        [
+          "COUNTY CHAMPIONSHIP",
+          "MISC"
+        ],
+        [
+          "ENGLISH",
+          "MISC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_18",
+      "calls": 1,
+      "input_tokens": 1080,
+      "output_tokens": 47,
+      "valid": true,
+      "pairs": [
+        [
+          "English",
+          "MISC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_19",
+      "calls": 1,
+      "input_tokens": 1082,
+      "output_tokens": 84,
+      "valid": true,
+      "pairs": [
+        [
+          "Leicestershire",
+          "ORG"
+        ],
+        [
+          "Leicester",
+          "LOC"
+        ],
+        [
+          "Somerset",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_20",
+      "calls": 1,
+      "input_tokens": 1094,
+      "output_tokens": 83,
+      "valid": true,
+      "pairs": [
+        [
+          "Leicestershire",
+          "ORG"
+        ],
+        [
+          "P. Simmons",
+          "PER"
+        ],
+        [
+          "Somerset",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_21",
+      "calls": 1,
+      "input_tokens": 1079,
+      "output_tokens": 63,
+      "valid": true,
+      "pairs": [
+        [
+          "Somerset",
+          "LOC"
+        ],
+        [
+          "Leicestershire",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_22",
+      "calls": 1,
+      "input_tokens": 1135,
+      "output_tokens": 163,
+      "valid": true,
+      "pairs": [
+        [
+          "S. Watkin",
+          "PER"
+        ],
+        [
+          "A. Dale",
+          "PER"
+        ],
+        [
+          "Glamorgan",
+          "ORG"
+        ],
+        [
+          "D. Blenkiron",
+          "PER"
+        ],
+        [
+          "Durham",
+          "ORG"
+        ],
+        [
+          "Chester-le-Street",
+          "LOC"
+        ],
+        [
+          "H. Morris",
+          "PER"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_23",
+      "calls": 1,
+      "input_tokens": 1104,
+      "output_tokens": 123,
+      "valid": true,
+      "pairs": [
+        [
+          "Nottinghamshire",
+          "ORG"
+        ],
+        [
+          "Tunbridge Wells",
+          "LOC"
+        ],
+        [
+          "P. Johnson",
+          "PER"
+        ],
+        [
+          "Kent",
+          "ORG"
+        ],
+        [
+          "M. McCague",
+          "PER"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_24",
+      "calls": 1,
+      "input_tokens": 1136,
+      "output_tokens": 197,
+      "valid": true,
+      "pairs": [
+        [
+          "London",
+          "LOC"
+        ],
+        [
+          "Surrey",
+          "ORG"
+        ],
+        [
+          "D. Bicknell",
+          "PER"
+        ],
+        [
+          "G. Kersey",
+          "PER"
+        ],
+        [
+          "M. Butcher",
+          "PER"
+        ],
+        [
+          "Warwickshire",
+          "ORG"
+        ],
+        [
+          "The Oval",
+          "LOC"
+        ],
+        [
+          "J. Ratcliffe",
+          "PER"
+        ],
+        [
+          "C. Lewis",
+          "PER"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_25",
+      "calls": 1,
+      "input_tokens": 1119,
+      "output_tokens": 158,
+      "valid": true,
+      "pairs": [
+        [
+          "Hove",
+          "LOC"
+        ],
+        [
+          "V. Drakes",
+          "PER"
+        ],
+        [
+          "Sussex",
+          "ORG"
+        ],
+        [
+          "W. Hegg",
+          "PER"
+        ],
+        [
+          "W. Athey",
+          "PER"
+        ],
+        [
+          "Lancashire",
+          "ORG"
+        ],
+        [
+          "I. Austin",
+          "PER"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_26",
+      "calls": 1,
+      "input_tokens": 1120,
+      "output_tokens": 143,
+      "valid": true,
+      "pairs": [
+        [
+          "M. Ramprakash",
+          "PER"
+        ],
+        [
+          "M. Gatting",
+          "PER"
+        ],
+        [
+          "Middlesex",
+          "ORG"
+        ],
+        [
+          "J. Pooley",
+          "PER"
+        ],
+        [
+          "Hampshire",
+          "ORG"
+        ],
+        [
+          "Portsmouth",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_27",
+      "calls": 1,
+      "input_tokens": 1132,
+      "output_tokens": 164,
+      "valid": true,
+      "pairs": [
+        [
+          "T. Moody",
+          "PER"
+        ],
+        [
+          "Derbyshire",
+          "LOC"
+        ],
+        [
+          "T.O'Gorman",
+          "PER"
+        ],
+        [
+          "Worcestershire",
+          "LOC"
+        ],
+        [
+          "Chesterfield",
+          "LOC"
+        ],
+        [
+          "K. Barnett",
+          "PER"
+        ],
+        [
+          "J. Adams",
+          "PER"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_28",
+      "calls": 1,
+      "input_tokens": 1119,
+      "output_tokens": 141,
+      "valid": true,
+      "pairs": [
+        [
+          "Northamptonshire",
+          "ORG"
+        ],
+        [
+          "Bristol",
+          "LOC"
+        ],
+        [
+          "J. Russell",
+          "PER"
+        ],
+        [
+          "A. Smith",
+          "PER"
+        ],
+        [
+          "Gloucestershire",
+          "ORG"
+        ],
+        [
+          "K. Curran",
+          "PER"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_29",
+      "calls": 1,
+      "input_tokens": 1081,
+      "output_tokens": 64,
+      "valid": true,
+      "pairs": [
+        [
+          "CRICKET",
+          "MISC"
+        ],
+        [
+          "ASHES",
+          "MISC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_31",
+      "calls": 1,
+      "input_tokens": 1074,
+      "output_tokens": 63,
+      "valid": true,
+      "pairs": [
+        [
+          "Ashes",
+          "MISC"
+        ],
+        [
+          "Australia",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_32",
+      "calls": 1,
+      "input_tokens": 1079,
+      "output_tokens": 47,
+      "valid": true,
+      "pairs": [
+        [
+          "England",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_33",
+      "calls": 1,
+      "input_tokens": 1081,
+      "output_tokens": 52,
+      "valid": true,
+      "pairs": [
+        [
+          "Test and County Cricket Board",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_35",
+      "calls": 1,
+      "input_tokens": 1077,
+      "output_tokens": 47,
+      "valid": true,
+      "pairs": [
+        [
+          "Australia",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_36",
+      "calls": 1,
+      "input_tokens": 1081,
+      "output_tokens": 33,
+      "valid": true,
+      "pairs": []
+    },
+    {
+      "id": "conll03_validation_37",
+      "calls": 1,
+      "input_tokens": 1076,
+      "output_tokens": 33,
+      "valid": true,
+      "pairs": []
+    },
+    {
+      "id": "conll03_validation_38",
+      "calls": 1,
+      "input_tokens": 1075,
+      "output_tokens": 61,
+      "valid": true,
+      "pairs": [
+        [
+          "British",
+          "MISC"
+        ],
+        [
+          "English",
+          "MISC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_39",
+      "calls": 1,
+      "input_tokens": 1078,
+      "output_tokens": 49,
+      "valid": true,
+      "pairs": [
+        [
+          "Minor Counties",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_43",
+      "calls": 1,
+      "input_tokens": 1074,
+      "output_tokens": 47,
+      "valid": true,
+      "pairs": [
+        [
+          "London",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_44",
+      "calls": 1,
+      "input_tokens": 1075,
+      "output_tokens": 48,
+      "valid": true,
+      "pairs": [
+        [
+          "Lord's",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_45",
+      "calls": 1,
+      "input_tokens": 1084,
+      "output_tokens": 66,
+      "valid": true,
+      "pairs": [
+        [
+          "Duke of Norfolk",
+          "PER"
+        ],
+        [
+          "Arundel",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_49",
+      "calls": 1,
+      "input_tokens": 1082,
+      "output_tokens": 50,
+      "valid": true,
+      "pairs": [
+        [
+          "Headingley",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_51",
+      "calls": 1,
+      "input_tokens": 1081,
+      "output_tokens": 49,
+      "valid": true,
+      "pairs": [
+        [
+          "The Oval",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_53",
+      "calls": 1,
+      "input_tokens": 1083,
+      "output_tokens": 62,
+      "valid": true,
+      "pairs": [
+        [
+          "London",
+          "LOC"
+        ],
+        [
+          "Lord's",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_54",
+      "calls": 1,
+      "input_tokens": 1082,
+      "output_tokens": 80,
+      "valid": true,
+      "pairs": [
+        [
+          "Gloucestershire",
+          "ORG"
+        ],
+        [
+          "Surrey",
+          "ORG"
+        ],
+        [
+          "Sussex",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_56",
+      "calls": 1,
+      "input_tokens": 1084,
+      "output_tokens": 50,
+      "valid": true,
+      "pairs": [
+        [
+          "Derbyshire",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_58",
+      "calls": 1,
+      "input_tokens": 1085,
+      "output_tokens": 65,
+      "valid": true,
+      "pairs": [
+        [
+          "Edgbaston",
+          "LOC"
+        ],
+        [
+          "Birmingham",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_59",
+      "calls": 1,
+      "input_tokens": 1082,
+      "output_tokens": 33,
+      "valid": true,
+      "pairs": []
+    },
+    {
+      "id": "conll03_validation_60",
+      "calls": 1,
+      "input_tokens": 1080,
+      "output_tokens": 49,
+      "valid": true,
+      "pairs": [
+        [
+          "Leicestershire",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_61",
+      "calls": 1,
+      "input_tokens": 1080,
+      "output_tokens": 48,
+      "valid": true,
+      "pairs": [
+        [
+          "Lord's",
+          "LOC"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_62",
+      "calls": 1,
+      "input_tokens": 1082,
+      "output_tokens": 63,
+      "valid": true,
+      "pairs": [
+        [
+          "Oxford",
+          "LOC"
+        ],
+        [
+          "British Universities",
+          "ORG"
+        ]
+      ]
+    },
+    {
+      "id": "conll03_validation_63",
+      "calls": 1,
+      "input_tokens": 1078,
+      "output_tokens": 47,
+      "valid": true,
+      "pairs": [
+        [
+          "Hampshire",
+          "LOC"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "qwen2.5:3b": {
+    "EntityTypes": {
+      "n": 50,
+      "first_pass": 0.98,
+      "retry": 0.02,
+      "accuracy": {
+        "has_person": 0.78,
+        "has_organization": 0.42,
+        "has_location": 0.72,
+        "has_misc": 0.72
+      }
+    },
+    "Extraction": {
+      "n": 50,
+      "first_pass": 0.94,
+      "failed": 0.02,
+      "retry": 0.04,
+      "precision_all": 0.6230769230769231,
+      "recall_all": 0.6090225563909775,
+      "f1_all": 0.6159695817490495,
+      "precision_valid": 0.6230769230769231,
+      "recall_valid": 0.6183206106870229,
+      "f1_valid": 0.6206896551724138,
+      "grounded_rate": 1.0
+    },
+    "Event": {
+      "n": 50,
+      "first_pass": 0.84,
+      "retry": 0.12,
+      "failed": 0.04
+    },
+    "Graph": {
+      "n": 50,
+      "first_pass": 0.58,
+      "failed": 0.22,
+      "retry": 0.2,
+      "entity_precision_all": 0.5789473684210527,
+      "entity_recall_all": 0.4444444444444444,
+      "entity_f1_all": 0.5028571428571428,
+      "relation_precision_all": 0.09859154929577464,
+      "relation_recall_all": 0.09859154929577464,
+      "relation_f1_all": 0.09859154929577464,
+      "entity_precision_valid": 0.5789473684210527,
+      "entity_recall_valid": 0.5569620253164557,
+      "entity_f1_valid": 0.567741935483871,
+      "relation_precision_valid": 0.09859154929577464,
+      "relation_recall_valid": 0.12727272727272726,
+      "relation_f1_valid": 0.1111111111111111,
+      "grounded_rate": 0.9407894736842105
+    },
+    "input_tokens": 98385,
+    "output_tokens": 20739,
+    "extract_json_span": 2,
+    "strip_fences": 2
+  },
+  "claude-haiku-4-5-20251001": {
+    "EntityTypes": {
+      "n": 50,
+      "first_pass": 0.96,
+      "repaired": 0.04,
+      "accuracy": {
+        "has_person": 0.98,
+        "has_organization": 0.96,
+        "has_location": 0.86,
+        "has_misc": 0.72
+      }
+    },
+    "Extraction": {
+      "n": 50,
+      "repaired": 0.88,
+      "first_pass": 0.12,
+      "precision_all": 0.8677685950413223,
+      "recall_all": 0.7894736842105263,
+      "f1_all": 0.8267716535433072,
+      "precision_valid": 0.8677685950413223,
+      "recall_valid": 0.7894736842105263,
+      "f1_valid": 0.8267716535433072,
+      "grounded_rate": 0.9752066115702479
+    },
+    "Event": {
+      "n": 50,
+      "repaired": 0.76,
+      "retry": 0.24
+    },
+    "Graph": {
+      "n": 50,
+      "repaired": 0.94,
+      "retry": 0.06,
+      "entity_precision_all": 0.7717391304347826,
+      "entity_recall_all": 0.7171717171717171,
+      "entity_f1_all": 0.7434554973821988,
+      "relation_precision_all": 0.5208333333333334,
+      "relation_recall_all": 0.352112676056338,
+      "relation_f1_all": 0.42016806722689076,
+      "entity_precision_valid": 0.7717391304347826,
+      "entity_recall_valid": 0.7171717171717171,
+      "entity_f1_valid": 0.7434554973821988,
+      "relation_precision_valid": 0.5208333333333334,
+      "relation_recall_valid": 0.352112676056338,
+      "relation_f1_valid": 0.42016806722689076,
+      "grounded_rate": 0.9891304347826086
+    },
+    "input_tokens": 72552,
+    "output_tokens": 13726,
+    "strip_fences": 146
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "e5_vs_e5_noprefix": {
+    "direction": "e5 - e5_noprefix",
+    "wins": 44,
+    "losses": 26,
+    "ties": 230,
+    "mean_difference": 0.00896271145625352,
+    "bootstrapping_low_2_5th": -0.005948887790142421,
+    "bootstrapping_high_97_5th": 0.023571774019626904,
+    "bootstrapping_includes_zero": true,
+    "e5_mean": 0.7194288840281022,
+    "e5_noprefix_mean": 0.7104661725718487
+  },
+  "bge_vs_bge_noprefix": {
+    "direction": "bge - bge_noprefix",
+    "wins": 36,
+    "losses": 35,
+    "ties": 229,
+    "mean_difference": 0.002765005478119121,
+    "bootstrapping_low_2_5th": -0.015059983440827783,
+    "bootstrapping_high_97_5th": 0.020810941918140688,
+    "bootstrapping_includes_zero": true,
+    "bge_mean": 0.740391287918679,
+    "bge_noprefix_mean": 0.7376262824405598
+  },
+  "minilm_vs_mpnet": {
+    "direction": "minilm - mpnet",
+    "wins": 50,
+    "losses": 56,
+    "ties": 194,
+    "mean_difference": -0.010615264347833256,
+    "bootstrapping_low_2_5th": -0.03434723944340168,
+    "bootstrapping_high_97_5th": 0.013825016741905914,
+    "bootstrapping_includes_zero": true,
+    "minilm_mean": 0.6450816521455776,
+    "mpnet_mean": 0.6556969164934108
+  },
+  "bge_vs_e5": {
+    "direction": "bge - e5",
+    "wins": 64,
+    "losses": 45,
+    "ties": 191,
+    "mean_difference": 0.02096240389057674,
+    "bootstrapping_low_2_5th": -0.0026434106904786397,
+    "bootstrapping_high_97_5th": 0.04332455065062274,
+    "bootstrapping_includes_zero": true,
+    "bge_mean": 0.740391287918679,
+    "e5_mean": 0.7194288840281022
+  }
+}

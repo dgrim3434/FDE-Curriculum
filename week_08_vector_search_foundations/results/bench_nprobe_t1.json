@@ -1,0 +1,131 @@
+{
+  "brute_force": {
+    "p50_latency": 45.488849995308556,
+    "p95_latency": 47.92356500765891,
+    "recall": "1.0, reference"
+  },
+  "ivf_info": {
+    "build_time": 42.86098710000806,
+    "min_cluster_size": 136,
+    "median_cluster_size": 675,
+    "max_cluster_size": 1874
+  },
+  "experiment": [
+    {
+      "nprobe": 1,
+      "p50_latency": 0.5636499990941957,
+      "p95_latency": 0.9001899998111184,
+      "index_recall@1": 0.81,
+      "index_recall@10": 0.6472,
+      "index_recall@100": 0.52955,
+      "perc_corpus_scanned": 0.1610579598455628
+    },
+    {
+      "nprobe": 2,
+      "p50_latency": 0.9610499982954934,
+      "p95_latency": 1.4818249896052291,
+      "index_recall@1": 0.93,
+      "index_recall@10": 0.7747,
+      "index_recall@100": 0.66326,
+      "perc_corpus_scanned": 0.3191262327152148
+    },
+    {
+      "nprobe": 4,
+      "p50_latency": 1.813999995647464,
+      "p95_latency": 2.5042350047442596,
+      "index_recall@1": 0.964,
+      "index_recall@10": 0.8563999999999999,
+      "index_recall@100": 0.76707,
+      "perc_corpus_scanned": 0.620613427010447
+    },
+    {
+      "nprobe": 8,
+      "p50_latency": 3.5622500072349794,
+      "p95_latency": 4.68746499682311,
+      "index_recall@1": 0.979,
+      "index_recall@10": 0.9144000000000001,
+      "index_recall@100": 0.84508,
+      "perc_corpus_scanned": 1.2130870038303332
+    },
+    {
+      "nprobe": 16,
+      "p50_latency": 6.757649993232917,
+      "p95_latency": 8.349434998672223,
+      "index_recall@1": 0.99,
+      "index_recall@10": 0.9484000000000001,
+      "index_recall@100": 0.9002100000000001,
+      "perc_corpus_scanned": 2.386547747217128
+    },
+    {
+      "nprobe": 32,
+      "p50_latency": 13.494099999661557,
+      "p95_latency": 16.727650001121216,
+      "index_recall@1": 0.994,
+      "index_recall@10": 0.9688,
+      "index_recall@100": 0.9393900000000001,
+      "perc_corpus_scanned": 4.699119769147363
+    },
+    {
+      "nprobe": 64,
+      "p50_latency": 27.64634999766713,
+      "p95_latency": 36.863045003701686,
+      "index_recall@1": 0.996,
+      "index_recall@10": 0.9845,
+      "index_recall@100": 0.9667899999999999,
+      "perc_corpus_scanned": 9.287082234558671
+    },
+    {
+      "nprobe": 128,
+      "p50_latency": 52.29315000178758,
+      "p95_latency": 57.38393999490654,
+      "index_recall@1": 0.997,
+      "index_recall@10": 0.9923,
+      "index_recall@100": 0.9841,
+      "perc_corpus_scanned": 18.350729637370893
+    },
+    {
+      "nprobe": 256,
+      "p50_latency": 104.98799999913899,
+      "p95_latency": 112.53096500149695,
+      "index_recall@1": 0.998,
+      "index_recall@10": 0.9971,
+      "index_recall@100": 0.9943900000000001,
+      "perc_corpus_scanned": 36.278825695933115
+    },
+    {
+      "nprobe": 723,
+      "p50_latency": 316.78414999623783,
+      "p95_latency": 333.10782498956536,
+      "index_recall@1": 0.999,
+      "index_recall@10": 0.9995,
+      "index_recall@100": 1.0,
+      "perc_corpus_scanned": 100.0
+    }
+  ],
+  "config": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "d": 384,
+    "seed": 0,
+    "warm_up": 20,
+    "latency_k": 10,
+    "recall_k": 100,
+    "threads": "1",
+    "thread_info": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libscipy_openblas",
+        "filepath": "C:\\Users\\dylan\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll",
+        "version": "0.3.34.106.0",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      }
+    ],
+    "numpy_version": "2.5.3",
+    "number_of_queries": 1000,
+    "N": 522931,
+    "nlist": 723,
+    "train_size": 185088
+  }
+}

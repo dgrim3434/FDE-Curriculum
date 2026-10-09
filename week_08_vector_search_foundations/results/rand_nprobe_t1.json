@@ -1,0 +1,100 @@
+{
+  "experiments": [
+    {
+      "nprobe": 1,
+      "index_recall@1": 0.01,
+      "index_recall@10": 0.0092,
+      "index_recall@100": 0.00784,
+      "perc_corpus_scanned": 0.13818151916792082
+    },
+    {
+      "nprobe": 2,
+      "index_recall@1": 0.02,
+      "index_recall@10": 0.016200000000000003,
+      "index_recall@100": 0.01464,
+      "perc_corpus_scanned": 0.27656000504846723
+    },
+    {
+      "nprobe": 4,
+      "index_recall@1": 0.028,
+      "index_recall@10": 0.0312,
+      "index_recall@100": 0.026660000000000003,
+      "perc_corpus_scanned": 0.5528530532708904
+    },
+    {
+      "nprobe": 8,
+      "index_recall@1": 0.048,
+      "index_recall@10": 0.0538,
+      "index_recall@100": 0.04798,
+      "perc_corpus_scanned": 1.1054731886233558
+    },
+    {
+      "nprobe": 16,
+      "index_recall@1": 0.096,
+      "index_recall@10": 0.09419999999999999,
+      "index_recall@100": 0.08348000000000001,
+      "perc_corpus_scanned": 2.211742275749573
+    },
+    {
+      "nprobe": 32,
+      "index_recall@1": 0.176,
+      "index_recall@10": 0.159,
+      "index_recall@100": 0.14032,
+      "perc_corpus_scanned": 4.424315253828899
+    },
+    {
+      "nprobe": 64,
+      "index_recall@1": 0.29,
+      "index_recall@10": 0.261,
+      "index_recall@100": 0.23776,
+      "perc_corpus_scanned": 8.850981487041311
+    },
+    {
+      "nprobe": 128,
+      "index_recall@1": 0.438,
+      "index_recall@10": 0.4142,
+      "index_recall@100": 0.3874,
+      "perc_corpus_scanned": 17.70544679890846
+    },
+    {
+      "nprobe": 256,
+      "index_recall@1": 0.662,
+      "index_recall@10": 0.6492,
+      "index_recall@100": 0.61136,
+      "perc_corpus_scanned": 35.40520336335004
+    },
+    {
+      "nprobe": 723,
+      "index_recall@1": 1.0,
+      "index_recall@10": 1.0,
+      "index_recall@100": 1.0,
+      "perc_corpus_scanned": 100.0
+    }
+  ],
+  "config": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "d": 384,
+    "seed": 0,
+    "warm_up": 20,
+    "latency_k": 10,
+    "recall_k": 100,
+    "threads": "1",
+    "thread_info": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libscipy_openblas",
+        "filepath": "C:\\Users\\dylan\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll",
+        "version": "0.3.34.106.0",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      }
+    ],
+    "numpy_version": "2.5.3",
+    "number_of_queries": 500,
+    "nlist": 723,
+    "train_size": 185088,
+    "N": 522931
+  }
+}

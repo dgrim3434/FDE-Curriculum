@@ -1,0 +1,99 @@
+{
+  "config": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "d": 384,
+    "seed": 0,
+    "warm_up": 20,
+    "latency_k": 10,
+    "recall_k": 100,
+    "threads": "8",
+    "thread_info": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 8,
+        "prefix": "libscipy_openblas",
+        "filepath": "C:\\Users\\dylan\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll",
+        "version": "0.3.34.106.0",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      }
+    ],
+    "numpy_version": "2.5.3",
+    "number_of_queries": 500,
+    "nprobe": 8,
+    "train_size": "all"
+  },
+  "experiment": [
+    {
+      "N": 1000,
+      "brute_latency_p50": 0.08030000026337802,
+      "brute_latency_p95": 0.08713999413885172,
+      "ivf_latency_p50": 0.06779999239370227,
+      "ivf_latency_p95": 0.1121149951359257,
+      "index_recall@10": 0.8692000000000001,
+      "ivf_build_time": 0.1192175999894971,
+      "n_list": 31
+    },
+    {
+      "N": 5000,
+      "brute_latency_p50": 0.16479999612784013,
+      "brute_latency_p95": 0.2590850068372674,
+      "ivf_latency_p50": 0.1934999891091138,
+      "ivf_latency_p95": 0.5217049983912145,
+      "index_recall@10": 0.8686000000000001,
+      "ivf_build_time": 0.46044320000510197,
+      "n_list": 70
+    },
+    {
+      "N": 10000,
+      "brute_latency_p50": 0.36535000253934413,
+      "brute_latency_p95": 0.5139249988133088,
+      "ivf_latency_p50": 0.504999996337574,
+      "ivf_latency_p95": 0.7085499950335359,
+      "index_recall@10": 0.8754000000000001,
+      "ivf_build_time": 0.9457485000020824,
+      "n_list": 100
+    },
+    {
+      "N": 50000,
+      "brute_latency_p50": 2.607050002552569,
+      "brute_latency_p95": 3.0114999943180005,
+      "ivf_latency_p50": 1.185150002129376,
+      "ivf_latency_p95": 1.4038699941011146,
+      "index_recall@10": 0.877,
+      "ivf_build_time": 5.019406200008234,
+      "n_list": 223
+    },
+    {
+      "N": 100000,
+      "brute_latency_p50": 6.524399999761954,
+      "brute_latency_p95": 8.011119999719083,
+      "ivf_latency_p50": 1.6999499930534512,
+      "ivf_latency_p95": 2.20089500726317,
+      "index_recall@10": 0.8914000000000001,
+      "ivf_build_time": 10.4768796999997,
+      "n_list": 316
+    },
+    {
+      "N": 250000,
+      "brute_latency_p50": 14.877000008709729,
+      "brute_latency_p95": 15.975660002732184,
+      "ivf_latency_p50": 2.469400002155453,
+      "ivf_latency_p95": 2.9611650010338044,
+      "index_recall@10": 0.9032,
+      "ivf_build_time": 30.56298699999752,
+      "n_list": 500
+    },
+    {
+      "N": 522931,
+      "brute_latency_p50": 31.695550002041273,
+      "brute_latency_p95": 34.1084950028744,
+      "ivf_latency_p50": 3.5496000054990873,
+      "ivf_latency_p95": 4.556605002289871,
+      "index_recall@10": 0.9164000000000001,
+      "ivf_build_time": 66.08145859999058,
+      "n_list": 723
+    }
+  ]
+}

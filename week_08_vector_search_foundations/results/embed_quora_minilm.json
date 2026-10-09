@@ -1,0 +1,24 @@
+{
+  "corpus": {
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "dim": 384,
+    "max_length": 256,
+    "prefix": "",
+    "batch_size": 256,
+    "N": 522931,
+    "seconds": 74.34156939999957,
+    "passages_per_sec": 7034.166808967084,
+    "gpu_name": "NVIDIA GeForce RTX 2080 Ti"
+  },
+  "query": {
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "dim": 384,
+    "max_length": 256,
+    "prefix": "",
+    "batch_size": 256,
+    "N": 10000,
+    "seconds": 1.209344200004125,
+    "passages_per_sec": 8268.944441099475,
+    "gpu_name": "NVIDIA GeForce RTX 2080 Ti"
+  }
+}

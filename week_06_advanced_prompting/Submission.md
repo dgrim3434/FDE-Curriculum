@@ -1,6 +1,6 @@
 # Week 6 — Advanced Prompting: Chaining, Self-Consistency, ReAct, Prompt Optimizer
 
-**Model setup:** every experiment this week ran locally through Ollama on an RTX 2080 Ti. The task model is `llama3.2:3b` (`num_ctx=8192`, one request at a time). The optimizer's proposer model is `<!-- TODO: llama3.1:8b or qwen2.5:7b — whichever you ran -->`. I chose a small local model on purpose: Claude scored too well in Week 5 to leave failures worth debugging, and a 3B model leaves real errors to study.
+**Model setup:** every experiment this week ran locally through Ollama on an RTX 2080 Ti. The task model is `llama3.2:3b` (`num_ctx=8192`, one request at a time). The optimizer's proposer model is `qwen2.5:7b`. I chose a small local model on purpose: Claude scored too well in Week 5 to leave failures worth debugging, and a 3B model leaves real errors to study.
 
 ---
 

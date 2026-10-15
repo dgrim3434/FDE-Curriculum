@@ -1,0 +1,11 @@
+{
+  "title_coverage": 1.0,
+  "title_accuracy": 0.9666666666666667,
+  "title_accuracy_covered": 0.9666666666666667,
+  "authors_coverage": 0.9666666666666667,
+  "authors_accuracy": 0.9666666666666667,
+  "authors_accuracy_covered": 1.0,
+  "date_coverage": 1.0,
+  "date_accuracy": 1.0,
+  "date_accuracy_covered": 1.0
+}

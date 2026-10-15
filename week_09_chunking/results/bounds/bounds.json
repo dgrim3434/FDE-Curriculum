@@ -1,0 +1,107 @@
+{
+  "hard_ceiling": {
+    "max_seq_length": {
+      "value": 256,
+      "evidence": "read"
+    },
+    "special_tokens": {
+      "value": 2,
+      "evidence": "read"
+    },
+    "ceiling": {
+      "value": 254,
+      "evidence": "computed"
+    },
+    "prefix_tokens": {
+      "value": {
+        "title": {
+          "p50": 14.0,
+          "p95": 24.0,
+          "max": 40,
+          "n": 416
+        },
+        "title_section": {
+          "p50": 21.0,
+          "p95": 35.0,
+          "max": 72,
+          "n": 6181
+        }
+      },
+      "evidence": "measured"
+    },
+    "budget_with_prefix": {
+      "value": {
+        "title": 230,
+        "title_section": 219
+      },
+      "evidence": "computed"
+    }
+  },
+  "document_lengths": {
+    "value": {
+      "scifact": {
+        "n": 5183,
+        "p50": 293.0,
+        "p90": 472.0,
+        "p99": 733.9000000000015,
+        "max": 1921,
+        "truncation_rate": 0.6326451861856068,
+        "past_ceiling_ratio": 0.2607377115232132
+      },
+      "qasper_test": {
+        "n": 416,
+        "p50": 4800.5,
+        "p90": 8021.5,
+        "p99": 14463.350000000011,
+        "max": 31147,
+        "truncation_rate": 1.0,
+        "past_ceiling_ratio": 0.9506664400689504
+      }
+    },
+    "evidence": "measured"
+  },
+  "sentence_lengths": {
+    "value": {
+      "scifact": {
+        "n": 45918,
+        "p50": 32.0,
+        "p90": 58.0,
+        "p99": 97.0
+      },
+      "qasper_test": {
+        "n": 68980,
+        "p50": 27.0,
+        "p90": 52.0,
+        "p99": 106.0
+      }
+    },
+    "evidence": "measured"
+  },
+  "structure": {
+    "value": {
+      "scifact": 0.0,
+      "qasper_test": 1.0
+    },
+    "evidence": "measured"
+  },
+  "budget": {
+    "assumptions": {
+      "window": 4096,
+      "instructions": 300,
+      "question": 50,
+      "answer_reserve": 500,
+      "header_per_chunk": 20,
+      "r": 1.0,
+      "r_note": "assumed, not measured"
+    },
+    "available": 3246,
+    "k_max": {
+      "64": 38,
+      "96": 27,
+      "128": 21,
+      "192": 15,
+      "254": 11
+    },
+    "evidence": "computed"
+  }
+}

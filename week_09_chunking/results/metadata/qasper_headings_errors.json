@@ -1,0 +1,20 @@
+[
+  {
+    "example_id": "1910.10781",
+    "failure_mode": "false_positve",
+    "errors": "label: 1, title: newsgroups for topic identification task, consisting of written text;",
+    "gold": "label: 1, title: Abstract, label: 1, title: Introduction, label: 1, title: Related work, label: 1, title: Method > BERT, label: 1, title: Method > Recurrence over BERT, label: 1, title: Method > Transformer over BERT, label: 1, title: Experiments, label: 1, title: Experiments > CSAT, label: 1, title: Experiments > 20 newsgroups, label: 1, title: Experiments > Fisher, label: 1, title: Experiments > Dataset Statistics, label: 1, title: Experiments > Architecture and Training Details, label: 1, title: Results, label: 1, title: Conclusions"
+  },
+  {
+    "example_id": "2001.02885",
+    "failure_mode": "false_positve",
+    "errors": "label: 1, title: \u2013 Out-Of-Scope 1 \u2013 In-Scope",
+    "gold": "label: 1, title: Abstract, label: 1, title: Introduction, label: 1, title: Methodology and Experimental Setup, label: 1, title: Results: Speculation Cue Detection and Scope Resolution, label: 1, title: Negation Cue Detection and Scope Resolution, label: 1, title: Conclusion and Future Scope"
+  },
+  {
+    "example_id": "1907.03187",
+    "failure_mode": "false_positve",
+    "errors": "label: 1, title: laesiladefendemosentretodes es nuestra linea es nuestro eje.\\",
+    "gold": "label: 1, title: Abstract, label: 1, title: Introduction, label: 1, title: Task and Dataset Description, label: 1, title: System Description, label: 1, title: Additional Data, label: 1, title: Cleaning, label: 1, title: Tokenization, label: 1, title: LM Training and Fine-tuning, label: 1, title: Classification and Regression Fitting, label: 1, title: Random Seed as a Hyperparamter, label: 1, title: Results, label: 1, title: Conclusion, label: 1, title: Author Contributions, label: 1, title: Acknowledgements"
+  }
+]

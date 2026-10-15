@@ -1,0 +1,17 @@
+{
+  "config": {
+    "name": "A1_fixed_64",
+    "corpus": "scifact",
+    "strategy": "fixed",
+    "size": 64,
+    "overlap": 0,
+    "min_tokens": 0,
+    "window": 1,
+    "prefix": "none"
+  },
+  "config_id": "1c778b96a3",
+  "n_chunks": 27955,
+  "truncation_rate": 0.0,
+  "retrieval_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "coherence_model": "sentence-transformers/all-mpnet-base-v2"
+}

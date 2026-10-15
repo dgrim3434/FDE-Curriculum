@@ -53,7 +53,7 @@ def locate_evidence(doc_text, evidence) -> tuple[list[tuple[int, int]], dict]:
         
         if i != -1:
             
-            spans.append(tuple(i, i + len(ev)))
+            spans.append(tuple([i, i + len(ev)]))
             counts['found'] += 1
             continue
         
@@ -62,7 +62,7 @@ def locate_evidence(doc_text, evidence) -> tuple[list[tuple[int, int]], dict]:
         i = doc_text.find(s)
         
         if i != -1:
-            spans.append(tuple(i, i + len(s)))
+            spans.append(tuple([i, i + len(s)]))
             counts['found'] += 1
             continue
         

@@ -1,0 +1,17 @@
+{
+  "config": {
+    "name": "B4_recursive_128_title",
+    "corpus": "qasper",
+    "strategy": "recursive",
+    "size": 128,
+    "overlap": 0,
+    "min_tokens": 52,
+    "window": 1,
+    "prefix": "title"
+  },
+  "config_id": "e743d9d61c",
+  "n_chunks": 24339,
+  "truncation_rate": 0.0,
+  "retrieval_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "coherence_model": "sentence-transformers/all-mpnet-base-v2"
+}

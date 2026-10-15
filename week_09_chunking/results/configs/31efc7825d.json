@@ -1,0 +1,17 @@
+{
+  "config": {
+    "name": "B2_sentence_128",
+    "corpus": "qasper",
+    "strategy": "sentence",
+    "size": 128,
+    "overlap": 0,
+    "min_tokens": 0,
+    "window": 1,
+    "prefix": "none"
+  },
+  "config_id": "31efc7825d",
+  "n_chunks": 20136,
+  "truncation_rate": 0.0,
+  "retrieval_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "coherence_model": "sentence-transformers/all-mpnet-base-v2"
+}

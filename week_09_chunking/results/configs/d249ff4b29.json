@@ -1,0 +1,70 @@
+{
+  "config": {
+    "name": "B2_semantic_128",
+    "corpus": "qasper",
+    "strategy": "semantic",
+    "size": 128,
+    "overlap": 0,
+    "min_tokens": 52,
+    "window": 2,
+    "prefix": "none"
+  },
+  "config_id": "d249ff4b29",
+  "n_chunks": 20906,
+  "truncation_rate": 0.0,
+  "retrieval_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "coherence_model": "sentence-transformers/all-mpnet-base-v2",
+  "semantic_percentile": 98,
+  "semantic_threshold": 0.8592376241087918,
+  "semantic_tuning": {
+    "target_mean_fixed": 126.4682905982906,
+    "records": [
+      {
+        "percentile": 50,
+        "threshold": 0.4975193738937378,
+        "mean_tokens": 81.00991020586947
+      },
+      {
+        "percentile": 60,
+        "threshold": 0.5387234210968017,
+        "mean_tokens": 83.07029363876256
+      },
+      {
+        "percentile": 70,
+        "threshold": 0.5845235109329223,
+        "mean_tokens": 85.59820653746023
+      },
+      {
+        "percentile": 80,
+        "threshold": 0.6397046387195587,
+        "mean_tokens": 89.14116158573322
+      },
+      {
+        "percentile": 85,
+        "threshold": 0.6727883994579315,
+        "mean_tokens": 91.63662826706305
+      },
+      {
+        "percentile": 90,
+        "threshold": 0.7154213905334474,
+        "mean_tokens": 94.8682354449859
+      },
+      {
+        "percentile": 95,
+        "threshold": 0.7790174901485444,
+        "mean_tokens": 99.20645031514013
+      },
+      {
+        "percentile": 98,
+        "threshold": 0.8500557506084443,
+        "mean_tokens": 102.60506241331484
+      }
+    ],
+    "chosen": {
+      "percentile": 98,
+      "threshold": 0.8500557506084443,
+      "mean_tokens": 102.60506241331484
+    },
+    "within_5_percent": false
+  }
+}

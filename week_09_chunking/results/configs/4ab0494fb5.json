@@ -1,0 +1,17 @@
+{
+  "config": {
+    "name": "B1_fixed_64",
+    "corpus": "qasper",
+    "strategy": "fixed",
+    "size": 64,
+    "overlap": 0,
+    "min_tokens": 0,
+    "window": 1,
+    "prefix": "none"
+  },
+  "config_id": "4ab0494fb5",
+  "n_chunks": 33671,
+  "truncation_rate": 0.0,
+  "retrieval_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "coherence_model": "sentence-transformers/all-mpnet-base-v2"
+}

@@ -1,0 +1,38 @@
+{
+  "size": {
+    "n": 33671,
+    "min": 1,
+    "max": 66,
+    "mean": 63.61872234266877,
+    "p5": 64.0,
+    "p50": 64.0,
+    "p95": 64.0,
+    "cv": 0.06432390009545987,
+    "fill_mean": 0.9940425366041995,
+    "above_ceiling_rate": 0.0,
+    "below_floor_rate": 0.009652222981200439
+  },
+  "single_chunk_doc_rate": 0.0,
+  "boundary": {
+    "n_internal_cuts": 33255,
+    "sentence_aligned_end_rate": 0.03175462336490753,
+    "sentence_aligned_start_rate": 0.03175462336490753,
+    "mid_word_rate": 0.13282213201022403,
+    "dangling_start_rate": 0.02095925424748158
+  },
+  "overlap": {
+    "mean_overlap_chars": 0.00012028266426101338,
+    "max_overlap_chars": 1,
+    "redundancy_ratio": 1.0000004130665763,
+    "n_straddling": 32199,
+    "straddle_protection_rate": 0.0
+  },
+  "coherence": {
+    "n": 4614,
+    "n_nan": 240,
+    "mean": 0.6029664629641929,
+    "p5": 0.42358371168375014,
+    "p50": 0.594381719827652,
+    "p95": 0.8008475720882412
+  }
+}

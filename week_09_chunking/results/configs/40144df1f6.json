@@ -1,0 +1,17 @@
+{
+  "config": {
+    "name": "B3_fixed_128_o52",
+    "corpus": "qasper",
+    "strategy": "fixed",
+    "size": 128,
+    "overlap": 52,
+    "min_tokens": 0,
+    "window": 1,
+    "prefix": "none"
+  },
+  "config_id": "40144df1f6",
+  "n_chunks": 28104,
+  "truncation_rate": 0.0,
+  "retrieval_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "coherence_model": "sentence-transformers/all-mpnet-base-v2"
+}

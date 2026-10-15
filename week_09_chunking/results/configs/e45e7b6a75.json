@@ -1,0 +1,70 @@
+{
+  "config": {
+    "name": "A2_semantic_128",
+    "corpus": "scifact",
+    "strategy": "semantic",
+    "size": 128,
+    "overlap": 0,
+    "min_tokens": 58,
+    "window": 2,
+    "prefix": "none"
+  },
+  "config_id": "e45e7b6a75",
+  "n_chunks": 17577,
+  "truncation_rate": 0.0,
+  "retrieval_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "coherence_model": "sentence-transformers/all-mpnet-base-v2",
+  "semantic_percentile": 98,
+  "semantic_threshold": 0.7965061277151108,
+  "semantic_tuning": {
+    "target_mean_fixed": 106.5575070450226,
+    "records": [
+      {
+        "percentile": 50,
+        "threshold": 0.3872838020324707,
+        "mean_tokens": 79.84950144899062
+      },
+      {
+        "percentile": 60,
+        "threshold": 0.4288057804107666,
+        "mean_tokens": 80.69774137503103
+      },
+      {
+        "percentile": 70,
+        "threshold": 0.4764835238456726,
+        "mean_tokens": 82.30752873272239
+      },
+      {
+        "percentile": 80,
+        "threshold": 0.5341016471385955,
+        "mean_tokens": 84.64753970320228
+      },
+      {
+        "percentile": 85,
+        "threshold": 0.5714864909648896,
+        "mean_tokens": 86.27378867483947
+      },
+      {
+        "percentile": 90,
+        "threshold": 0.6200275778770447,
+        "mean_tokens": 88.15927331887201
+      },
+      {
+        "percentile": 95,
+        "threshold": 0.6979403883218765,
+        "mean_tokens": 90.53558699042102
+      },
+      {
+        "percentile": 98,
+        "threshold": 0.7965061277151108,
+        "mean_tokens": 92.48773965978268
+      }
+    ],
+    "chosen": {
+      "percentile": 98,
+      "threshold": 0.7965061277151108,
+      "mean_tokens": 92.48773965978268
+    },
+    "within_5_percent": false
+  }
+}

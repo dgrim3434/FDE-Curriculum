@@ -1,0 +1,17 @@
+{
+  "config": {
+    "name": "A0_whole",
+    "corpus": "scifact",
+    "strategy": "whole",
+    "size": null,
+    "overlap": 0,
+    "min_tokens": 0,
+    "window": 1,
+    "prefix": "none"
+  },
+  "config_id": "7c14099b4c",
+  "n_chunks": 5183,
+  "truncation_rate": 0.6326451861856068,
+  "retrieval_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "coherence_model": "sentence-transformers/all-mpnet-base-v2"
+}
